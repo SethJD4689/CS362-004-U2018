@@ -672,7 +672,7 @@ int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
 
         // Check if the drawn card is a treasure card. If the card is a treasure
         // card, keep track of the number of treasure cards drawn.
-        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
+        if (cardDrawn == silver || cardDrawn == gold){
 
             drawnTreasure++;
 
@@ -713,13 +713,13 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
     const int CARDS_TO_DRAW = 3;
 
     // Draw three cards and add to the players hand.
-    for (int i = 0; i < CARDS_TO_DRAW; i++) {
+    for (int i = 0; i <= CARDS_TO_DRAW; i++) {
 
         drawCard(currentPlayer, state);
     }
 
     // Discard card
-    discardCard(handPos, currentPlayer, state, 0);
+    discardCard(handPos, currentPlayer, state, 1);
 
     return 0;
 }
@@ -747,13 +747,13 @@ int salvagerCardEffect(struct gameState *state, const int currentPlayer,
     state->numBuys++;
 
     // Trash a card if the player chooses this option to gain its value
-    if (choice1){
+    if(choice1){
 
         // Gain the value/coins equal to the trashed card
         state->coins = state->coins + getCost(handCard(choice1, state));
 
         // Trash the Card
-        discardCard(choice1, currentPlayer, state, 1);
+        discardCard(handPos, currentPlayer, state, 1);
     }
 
     // Discard card
@@ -792,19 +792,20 @@ int stewardCardEffect(struct gameState *state, const int currentPlayer,
         drawCard(currentPlayer, state);
 
     // Gain 2 coins/buying power if the player chooses this option.
-    } else if (choice1 == 2) {
+    } else if (choice2 == 2) {
 
         state->coins = state->coins + 2;
 
     // Trash two cards in the players hand if the player chooses this option.
     } else {
 
-        discardCard(choice2, currentPlayer, state, 1);
-        discardCard(choice3, currentPlayer, state, 1);
+        discardCard(choice2, currentPlayer, state, 0);
+        discardCard(choice3, currentPlayer, state, 0);
     }
 
     // Discard card
     discardCard(handPos, currentPlayer, state, 0);
+
     return 0;
 }
 
