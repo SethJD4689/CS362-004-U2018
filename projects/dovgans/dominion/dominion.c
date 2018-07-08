@@ -652,7 +652,7 @@ int getCost(int cardNumber)
 **  param: gameState *state - state of the game
 **  param: int currentPlayer - current player for the game
 **
-**	post: state modified with additional treasure cards added to player's hand.
+**  post: state modified with additional treasure cards added to player's hand.
 **  post: state modified with adventurer card removed from player's hand.
 **  post: state modfied with deck and discard pile being altered from drawing cards.
 *******************************************************************************/
@@ -710,7 +710,7 @@ int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
 **  param: int currentPlayer - current player for the game
 **  param: int handPos - position of smithy card
 **
-**	post: state modified with additional cards added to player's hand.
+**  post: state modified with additional cards added to player's hand.
 **  post: state modified with smithy card removed from player's hand.
 **  post: state modfied with deck and discard pile being altered from drawing cards.
 *******************************************************************************/
@@ -742,8 +742,8 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
 **  param: int handPos - position of salvager card
 **  param: choice1 - player choice for card to trash
 **
-**	post: state modified with an additional number of buys for the player.
-**	post: state modified with additional coins based on the trashed card selection
+**  post: state modified with an additional number of buys for the player.
+**  post: state modified with additional coins based on the trashed card selection
 **  post: state modified with trash card pile being altered
 **  post: state modified with salvager card removed from player's hand.
 *******************************************************************************/
@@ -782,9 +782,9 @@ int salvagerCardEffect(struct gameState *state, const int currentPlayer,
 **
 **  post: state modified with steward card removed from player's hand.
 **
-**	post: state modified with additional cards added to player's hand.
+**  post: state modified with additional cards added to player's hand.
 **      or
-**	post: state modified with an additional 2 coins
+**  post: state modified with an additional 2 coins
 **      or
 **  post: state modified with trash card pile being altered by 2 cards
 *******************************************************************************/
@@ -824,14 +824,14 @@ int stewardCardEffect(struct gameState *state, const int currentPlayer,
 **  param: int currentPlayer - current player for the game
 **  param: choice1 - player choice for option
 **
-**	post: state modified with an additional number of buys for the player.
+**  post: state modified with an additional number of buys for the player.
 **  post: state modified with baron card removed from player's hand.
 **
-**	post: state modified with additional coins added to player's hand
+**  post: state modified with additional coins added to player's hand
 **      and
 **  post: state modfied with discard pile being altered.
 **      or
-**	post: state modified with estate card count modification.
+**  post: state modified with estate card count modification.
 **      and
 **  post: state modified with supply card count.
 *******************************************************************************/
