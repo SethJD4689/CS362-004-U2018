@@ -713,13 +713,13 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
     const int CARDS_TO_DRAW = 3;
 
     // Draw three cards and add to the players hand.
-    for (int i = 0; i <= CARDS_TO_DRAW; i++) {
+    for (int i = 0; i < CARDS_TO_DRAW; i++) {
 
         drawCard(currentPlayer, state);
     }
 
     // Discard card
-    discardCard(handPos, currentPlayer, state, 1);
+    discardCard(handPos, currentPlayer, state, 0);
 
     return 0;
 }
