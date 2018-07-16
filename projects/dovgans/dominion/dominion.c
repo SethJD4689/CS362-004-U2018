@@ -441,7 +441,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -654,7 +654,7 @@ int getCost(int cardNumber)
 **
 **  post: state modified with additional treasure cards added to player's hand.
 **  post: state modified with adventurer card removed from player's hand.
-**  post: state modfied with deck and discard pile being altered from drawing cards.
+**  post: state modified with deck and discard pile being altered from drawing cards.
 *******************************************************************************/
 int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
 
@@ -668,11 +668,11 @@ int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
 
         // Draw a card and add to player's hand.
         drawCard(currentPlayer, state);
-        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
+        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
 
         // Check if the drawn card is a treasure card. If the card is a treasure
         // card, keep track of the number of treasure cards drawn.
-        if (cardDrawn == silver || cardDrawn == gold){
+        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
 
             drawnTreasure++;
 
@@ -753,7 +753,7 @@ int salvagerCardEffect(struct gameState *state, const int currentPlayer,
         state->coins = state->coins + getCost(handCard(choice1, state));
 
         // Trash the Card
-        discardCard(handPos, currentPlayer, state, 1);
+        discardCard(choice1, currentPlayer, state, 1);
     }
 
     // Discard card
