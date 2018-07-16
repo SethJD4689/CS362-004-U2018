@@ -109,7 +109,7 @@ int main() {
     assertTrue(isGameOver(&game), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
 
-    
+
 
     printf("\n# Summary\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
            tests, passed, (tests - passed));
