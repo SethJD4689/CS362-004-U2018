@@ -138,6 +138,7 @@ int main() {
     memcpy(&test, &game, sizeof(struct gameState));
     cardEffect(salvager, CHOICE_2, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
+
     printf("\n# Testing Current Player Playing %s card without trash option...\n\n", TEST_CARD);
 
     // Test changes to the current players hand

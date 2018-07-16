@@ -4,7 +4,7 @@
 ** Author: Seth Dovgan
 ** Date: 10 July 2017
 **
-** Description: Tests the Smithy Card.
+** Description: Tests the Steward Card.
 *******************************************************************************/
 
 #include "dominion.h"
@@ -16,7 +16,7 @@
 #include "rngs.h"
 #include <stdlib.h>
 
-#define TEST_CARD "Steward"
+#define TEST_CARD "Council Room"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
@@ -70,17 +70,14 @@ int main() {
 
     const int SEED = 100;
     int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
-                           village, minion, feast, embargo, outpost};
+                           village, minion, feast, embargo, council_room};
 
+    const int CHOICE = 0;
     const int HAND_POS = 0;
-    const int CARDS_DRAWN = 2;
+    const int CARDS_DRAWN = 4;
     const int CARDS_PLAYED = 1;
-    const int COIN_GAIN = 2;
-    const int TRASHED_CARDS = 2;
-
-    int choice1 = 0;
-    int choice2 = 0;
-    int choice3 = 0;
+    const int BUY_GAIN = 1;
+    const int OTHER_CARDS_DRAWN = 1;
 
     int bonus = 0;
     int tests = 0;
@@ -93,11 +90,10 @@ int main() {
     printf("\n-------------------- Testing Card: %s --------------------\n", TEST_CARD);
 
 
-    printf("\n# Testing Current Player Playing %s card with drawn card option...\n\n", TEST_CARD);
+    printf("\n# Testing Current Player Playing %s card...\n\n", TEST_CARD);
 
-    choice1 = 1;
     memcpy(&test, &game, sizeof(struct gameState));
-    cardEffect(steward, choice1, choice2, choice3, &test, HAND_POS, &bonus);
+    cardEffect(council_room, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
     // Test changes to the current players hand
     assertTrue(game.handCount[CURRENT_PLAYER] + CARDS_DRAWN - CARDS_PLAYED,
@@ -119,87 +115,7 @@ int main() {
     assertTrue(game.coins, test.coins, "Coins Remaining", &passed, &tests);
 
     // Test changes to the remaining buys
-    assertTrue(game.numBuys, test.numBuys, "Buys Remaining", &passed, &tests);
-
-    // Test changes to the remaining action cards
-    assertTrue(game.numActions, test.numActions, "Actions Remaining", &passed, &tests);
-
-    // Test is outpost was played
-    assertTrue(game.outpostPlayed, test.outpostPlayed, "Outpost Played", &passed, &tests);
-
-    // Test changes to the score
-    assertTrue(scoreFor(CURRENT_PLAYER, &game),
-               scoreFor(CURRENT_PLAYER, &test), "Player Score", &passed, &tests);
-
-    choice1 = 0;
-    choice2 = 2;
-    memcpy(&test, &game, sizeof(struct gameState));
-    cardEffect(steward, choice1, choice2, choice3, &test, HAND_POS, &bonus);
-
-    printf("\n# Testing Current Player Playing %s card with coin gain option...\n\n", TEST_CARD);
-
-    // Test changes to the current players hand
-    assertTrue(game.handCount[CURRENT_PLAYER] - CARDS_PLAYED,
-               test.handCount[CURRENT_PLAYER], "Cards in Hand", &passed, &tests);
-
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[CURRENT_PLAYER],
-               test.deckCount[CURRENT_PLAYER], "Cards in Deck", &passed, &tests);
-
-    // Test changes to the cards played
-    assertTrue(game.playedCardCount + CARDS_PLAYED,
-               test.playedCardCount, "Cards Played", &passed, &tests);
-
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[CURRENT_PLAYER],
-               test.discardCount[CURRENT_PLAYER], "Discard Pile", &passed, &tests);
-
-    // Test changes to the coins remaining
-    assertTrue(game.coins + COIN_GAIN, test.coins, "Coins Remaining", &passed, &tests);
-
-    // Test changes to the remaining buys
-    assertTrue(game.numBuys, test.numBuys, "Buys Remaining", &passed, &tests);
-
-    // Test changes to the remaining action cards
-    assertTrue(game.numActions, test.numActions, "Actions Remaining", &passed, &tests);
-
-    // Test is outpost was played
-    assertTrue(game.outpostPlayed, test.outpostPlayed, "Outpost Played", &passed, &tests);
-
-    // Test changes to the score
-    assertTrue(scoreFor(CURRENT_PLAYER, &game),
-               scoreFor(CURRENT_PLAYER, &test), "Player Score", &passed, &tests);
-
-    choice1 = 3;
-    choice2 = 0;
-    choice3 = 0;
-
-    memcpy(&test, &game, sizeof(struct gameState));
-    cardEffect(steward, choice1, choice2, choice3, &test, HAND_POS, &bonus);
-
-    printf("\n# Testing Current Player Playing %s card with trash card option...\n\n", TEST_CARD);
-
-    // Test changes to the current players hand
-    assertTrue(game.handCount[CURRENT_PLAYER] - CARDS_PLAYED - TRASHED_CARDS,
-               test.handCount[CURRENT_PLAYER], "Cards in Hand", &passed, &tests);
-
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[CURRENT_PLAYER],
-               test.deckCount[CURRENT_PLAYER], "Cards in Deck", &passed, &tests);
-
-    // Test changes to the cards played
-    assertTrue(game.playedCardCount + CARDS_PLAYED + TRASHED_CARDS,
-               test.playedCardCount, "Cards Played", &passed, &tests);
-
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[CURRENT_PLAYER],
-               test.discardCount[CURRENT_PLAYER], "Discard Pile", &passed, &tests);
-
-    // Test changes to the coins remaining
-    assertTrue(game.coins, test.coins, "Coins Remaining", &passed, &tests);
-
-    // Test changes to the remaining buys
-    assertTrue(game.numBuys, test.numBuys, "Buys Remaining", &passed, &tests);
+    assertTrue(game.numBuys + BUY_GAIN, test.numBuys, "Buys Remaining", &passed, &tests);
 
     // Test changes to the remaining action cards
     assertTrue(game.numActions, test.numActions, "Actions Remaining", &passed, &tests);
@@ -215,11 +131,11 @@ int main() {
     printf("\n# Testing Other Player...\n\n");
 
     // Test changes to the current players hand
-    assertTrue(game.handCount[OTHER_PLAYER],
+    assertTrue(game.handCount[OTHER_PLAYER] + OTHER_CARDS_DRAWN,
                test.handCount[OTHER_PLAYER], "Cards in Hand", &passed, &tests);
 
     // Test changes to the current players deck
-    assertTrue(game.deckCount[OTHER_PLAYER],
+    assertTrue(game.deckCount[OTHER_PLAYER] - OTHER_CARDS_DRAWN,
                test.deckCount[OTHER_PLAYER], "Cards in Deck", &passed, &tests);
 
     // Test changes to the discard pile
