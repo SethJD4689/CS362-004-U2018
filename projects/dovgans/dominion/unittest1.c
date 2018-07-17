@@ -83,40 +83,70 @@ int main() {
     memcpy(&test, &game, sizeof(struct gameState));
 
 
-    printf("\n-------------------- Testing Card: %s --------------------\n", TEST_FUNCTION);
+    printf("\n-------------------- Testing Function: %s --------------------\n", TEST_FUNCTION);
 
 
     printf("\n# Testing %s function with full supply piles...\n\n", TEST_FUNCTION);
+    assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
-    // Test changes to the current players hand
-    assertTrue(isGameOver(&game), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
+    test.supplyCount[province] = 0;
 
+    printf("\n# Testing %s function with empty province pile...\n\n", TEST_FUNCTION);
+    assertTrue(isGameOver(&test), GAME_IS_OVER, "Game Status", &passed, &tests);
 
+	memcpy(&test, &game, sizeof(struct gameState));
 
-    printf("\n# Testing %s function will full supply piles...\n\n", TEST_FUNCTION);
+	test.supplyCount[province] = 1;
 
-    // Test changes to the current players hand
-    assertTrue(isGameOver(&game), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
+	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
+	assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
-    printf("\n# Testing %s function will full supply piles...\n\n", TEST_FUNCTION);
+	int supplyCards[17] = {curse, estate, duchy, province, copper, silver,
+						gold, actionCards[0], actionCards[1], actionCards[2],
+						   actionCards[3], actionCards[4], actionCards[5],
+						   actionCards[6], actionCards[7], actionCards[8],
+						actionCards[9]};
 
-    // Test changes to the current players hand
-    assertTrue(isGameOver(&game), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
+	printf("\n# Testing %s function with 3 empty cards in pile...\n\n", TEST_FUNCTION);
 
-    printf("\n# Testing %s function will full supply piles...\n\n", TEST_FUNCTION);
+	for(int i = 0; i < sizeof(supplyCards) / sizeof(int); i++){
 
-    // Test changes to the current players hand
-    assertTrue(isGameOver(&game), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
+		for(int j = i + 1; j < sizeof(supplyCards) / sizeof(int); j++){
 
+			for(int k = j + 1; k < sizeof(supplyCards) / sizeof(int); k++){
 
-    
+				memcpy(&test, &game, sizeof(struct gameState));
+
+				test.supplyCount[supplyCards[i]] = 0;
+				test.supplyCount[supplyCards[j]] = 0;
+				test.supplyCount[supplyCards[k]] = 0;
+
+				char cards[200];
+
+				char card1[MAX_STRING_LENGTH];
+				cardNumToName(supplyCards[i], card1);
+
+				char card2[MAX_STRING_LENGTH];
+				cardNumToName(supplyCards[j], card2);
+
+				char card3[MAX_STRING_LENGTH];
+				cardNumToName(supplyCards[k], card3);
+
+				snprintf(cards, sizeof(cards), "Card Piles - %s, %s, %s are Empty", card1, card2, card3);
+
+				assertTrue(isGameOver(&test), GAME_IS_OVER, cards, &passed, &tests);
+			}
+		}
+	}
+
 
     printf("\n# Summary\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
            tests, passed, (tests - passed));
 
     printf("\n--------------------------------------------------------------\n");
-
 }
+
+
 
 
 
