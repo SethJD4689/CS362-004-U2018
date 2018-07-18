@@ -1,6 +1,6 @@
 /*******************************************************************************
 ** Assignment: CS362 - Assignment 3
-** Filename: cardtest1.c
+** Filename: cardtest3.c
 ** Author: Seth Dovgan
 ** Date: 10 July 2017
 **
@@ -10,51 +10,18 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
+#include "tester.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
 #include <stdlib.h>
 
 #define TEST_CARD "Salvager"
+#define TEST_TYPE "Card"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
 
 #define MAX_STRING_LENGTH 32
-#define TRUE 1
-#define FALSE 0
-
-#ifndef EQ
-#define EQ(A, B) ((A) == (B))
-#endif
-
-
-/*******************************************************************************
-**  Function: assertTrue
-**  Description:
-**
-**  param:
-**	param:
-**
-**	pre:
-**	post:
-**	post:
-*******************************************************************************/
-void assertTrue(int expected, int actual, char *message, int *passed, int *tests) {
-
-    (*tests)++;
-
-    if (EQ(expected, actual)) {
-
-        printf("PASSED: %s = %d, expected = %d\n", message, actual, expected);
-        (*passed)++;
-
-    } else {
-
-        printf("FAILED: %s = %d, expected = %d\n", message, actual, expected);
-    }
-}
 
 /*******************************************************************************
 **  Function:
@@ -79,6 +46,7 @@ int main() {
     const int CARDS_PLAYED = 1;
     const int CARDS_TRASHED = 1;
     const int EXTRA_BUY = 1;
+    const int NO_CHANGE = 0;
 
     int bonus = 0;
     int tests = 0;
@@ -90,151 +58,90 @@ int main() {
     memcpy(&test, &game, sizeof(struct gameState));
     cardEffect(salvager, CHOICE_1, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
+    printTestHeader(TEST_TYPE, TEST_CARD);
 
-    printf("\n-------------------- Testing Card: %s --------------------\n", TEST_CARD);
+    // Check the effects the Salvager card has on the game state for the current player.
+    printf("\n* Testing Current Player Playing %s card using trash option...\n\n", TEST_CARD);
 
+	// Calculate changes to the player's score after trashed card
+	if (game.hand[CURRENT_PLAYER][CHOICE_1] == curse) {
+		cardValue = cardValue - 1;
+	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == estate) {
+		cardValue = cardValue + 1;
+	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == duchy) {
+		cardValue = cardValue + 3;
+	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == province) {
+		cardValue = cardValue + 6;
+	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == great_hall) {
+		cardValue = cardValue + 1;
+	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == gardens) {
+		cardValue = cardValue + (fullDeckCount(CURRENT_PLAYER, 0, &game) / 10);
+	};
 
-    printf("\n# Testing Current Player Playing %s card with trash option...\n\n", TEST_CARD);
+    testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
+                           (- CARDS_PLAYED - CARDS_TRASHED), NO_CHANGE,
+                           CARDS_PLAYED, NO_CHANGE,
+                           getCost(handCard(CHOICE_1, &game)), EXTRA_BUY,
+                           NO_CHANGE, (- cardValue), &passed, &tests);
 
-    // Test changes to the current players hand
-    assertTrue(game.handCount[CURRENT_PLAYER] - CARDS_PLAYED - CARDS_TRASHED,
-               test.handCount[CURRENT_PLAYER], "Cards in Hand", &passed, &tests);
+	// Check the effects the Salvager card has on the game state for the other player.
+	printf("\n* Testing Other Player with Current Player using Trash Option...\n\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[CURRENT_PLAYER],
-               test.deckCount[CURRENT_PLAYER], "Cards in Deck", &passed, &tests);
+	// Verify no victory card piles were effected.
+	printf("\n* Testing Victory Card Piles with Current Player using Trash Option......\n\n");
+	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                     &passed, &tests);
 
-    // Test changes to the cards played
-    assertTrue(game.playedCardCount + CARDS_PLAYED,
-               test.playedCardCount, "Cards Played", &passed, &tests);
+	// Verify no treasure card piles were effected
+	printf("\n* Testing Treasure Card Piles with Current Player using Trash Option......\n\n");
+	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                      &passed, &tests);
 
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[CURRENT_PLAYER],
-               test.discardCount[CURRENT_PLAYER], "Discard Pile", &passed, &tests);
+	// Verify no kingdom card piles were effected
+	printf("\n* Testing Kingdom Card Piles with Current Player using Trash Option......\n\n");
 
-    // Test changes to the coins remaining
-    assertTrue(game.coins + getCost(handCard(CHOICE_1, &game)), test.coins, "Coins Remaining", &passed, &tests);
+	int cardChanges[NUM_K_CARDS];
 
-    // Test changes to the remaining buys
-    assertTrue(game.numBuys + EXTRA_BUY, test.numBuys, "Buys Remaining", &passed, &tests);
+	for(int i = 0; i < NUM_K_CARDS; i++){
+		cardChanges[i] = NO_CHANGE;
+	}
 
-    // Test changes to the remaining action cards
-    assertTrue(game.numActions, test.numActions, "Actions Remaining", &passed, &tests);
+	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
 
-    // Test is outpost was played
-    assertTrue(game.outpostPlayed, test.outpostPlayed, "Outpost Played", &passed, &tests);
-
-    // Test changes to the score
-    if (game.hand[CURRENT_PLAYER][CHOICE_1] == curse) { cardValue = cardValue - 1; }
-    else if (game.hand[CURRENT_PLAYER][CHOICE_1] == estate) { cardValue = cardValue + 1; }
-    else if (game.hand[CURRENT_PLAYER][CHOICE_1] == duchy) { cardValue = cardValue + 3; }
-    else if (game.hand[CURRENT_PLAYER][CHOICE_1] == province) { cardValue = cardValue + 6; }
-    else if (game.hand[CURRENT_PLAYER][CHOICE_1] == great_hall) { cardValue = cardValue + 1; }
-    else if (game.hand[CURRENT_PLAYER][CHOICE_1] == gardens) { cardValue = cardValue + ( fullDeckCount(CURRENT_PLAYER, 0, &game) / 10 ); };
-
-    assertTrue((scoreFor(CURRENT_PLAYER, &game) - cardValue),
-               scoreFor(CURRENT_PLAYER, &test), "Player Score", &passed, &tests);
 
     memcpy(&test, &game, sizeof(struct gameState));
     cardEffect(salvager, CHOICE_2, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
 
-    printf("\n# Testing Current Player Playing %s card without trash option...\n\n", TEST_CARD);
+    printf("\n* Testing Current Player Playing %s card NOT using trash option...\n\n", TEST_CARD);
 
-    // Test changes to the current players hand
-    assertTrue(game.handCount[CURRENT_PLAYER] - CARDS_PLAYED,
-               test.handCount[CURRENT_PLAYER], "Cards in Hand", &passed, &tests);
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
+	                       (- CARDS_PLAYED), NO_CHANGE,
+	                       CARDS_PLAYED, NO_CHANGE, NO_CHANGE, EXTRA_BUY,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[CURRENT_PLAYER],
-               test.deckCount[CURRENT_PLAYER], "Cards in Deck", &passed, &tests);
+	// Check the effects the Salvager card has on the game state for the other player.
+	printf("\n* Testing Other Player with Current Player NOT using Trash Option...\n\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-    // Test changes to the cards played
-    assertTrue(game.playedCardCount + CARDS_PLAYED,
-               test.playedCardCount, "Cards Played", &passed, &tests);
+	// Verify no victory card piles were effected.
+	printf("\n* Testing Victory Card Piles with Current Player NOT using Trash Option......\n\n");
+	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                     &passed, &tests);
 
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[CURRENT_PLAYER],
-               test.discardCount[CURRENT_PLAYER], "Discard Pile", &passed, &tests);
+	// Verify no treasure card piles were effected
+	printf("\n* Testing Treasure Card Piles with Current Player NOT using Trash Option......\n\n");
+	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                      &passed, &tests);
 
-    // Test changes to the coins remaining
-    assertTrue(game.coins, test.coins, "Coins Remaining", &passed, &tests);
+	// Verify no kingdom card piles were effected
+	printf("\n* Testing Kingdom Card Piles with Current Player NOT using Trash Option......\n\n");
+	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
 
-    // Test changes to the remaining buys
-    assertTrue(game.numBuys + EXTRA_BUY, test.numBuys, "Buys Remaining", &passed, &tests);
-
-    // Test changes to the remaining action cards
-    assertTrue(game.numActions, test.numActions, "Actions Remaining", &passed, &tests);
-
-    // Test is outpost was played
-    assertTrue(game.outpostPlayed, test.outpostPlayed, "Outpost Played", &passed, &tests);
-
-    // Test changes to the score
-    assertTrue(scoreFor(CURRENT_PLAYER, &game),
-               scoreFor(CURRENT_PLAYER, &test), "Player Score", &passed, &tests);
-
-
-    printf("\n# Testing Other Player...\n\n");
-
-    // Test changes to the current players hand
-    assertTrue(game.handCount[OTHER_PLAYER],
-               test.handCount[OTHER_PLAYER], "Cards in Hand", &passed, &tests);
-
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[OTHER_PLAYER],
-               test.deckCount[OTHER_PLAYER], "Cards in Deck", &passed, &tests);
-
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[OTHER_PLAYER],
-               test.discardCount[OTHER_PLAYER], "Discard Pile", &passed, &tests);
-
-    assertTrue(scoreFor(OTHER_PLAYER, &game),
-               scoreFor(OTHER_PLAYER, &test), "Player Score", &passed, &tests);
-
-
-    printf("\n# Testing Victory Card Piles...\n\n");
-
-    assertTrue(supplyCount(estate, &game), supplyCount(estate, &test),
-               "Estate Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(duchy, &game), supplyCount(duchy, &test),
-               "Duchy Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(province, &game), supplyCount(province, &test),
-               "Province Cards Remaining", &passed, &tests);
-
-
-    printf("\n# Testing Treasure Card Piles...\n\n");
-
-    assertTrue(supplyCount(copper, &game), supplyCount(copper, &test),
-               "Copper Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(silver, &game), supplyCount(silver, &test),
-               "Silver Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(gold, &game), supplyCount(gold, &test),
-               "Gold Cards Remaining", &passed, &tests);
-
-
-
-    printf("\n# Testing Kingdom Card Piles...\n\n");
-
-    for(int i = 0; i < sizeof(actionCards) / sizeof(int); i++){
-
-        char name[MAX_STRING_LENGTH];
-        cardNumToName(actionCards[i], name);
-
-        strcat(name, " Cards Remaining");
-
-        assertTrue(supplyCount(actionCards[i], &game), supplyCount(actionCards[i], &test),
-                   name, &passed, &tests);
-    }
-
-    printf("\n# Summary\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
-           tests, passed, (tests - passed));
-
-    printf("\n--------------------------------------------------------------\n");
-
+    printTestSummary(passed, tests);
 }
 
 

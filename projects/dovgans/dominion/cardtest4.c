@@ -1,60 +1,25 @@
 /*******************************************************************************
 ** Assignment: CS362 - Assignment 3
-** Filename: cardtest1.c
+** Filename: cardtest4.c
 ** Author: Seth Dovgan
 ** Date: 10 July 2017
 **
-** Description: Tests the Steward Card.
+** Description: Tests the Council Room Card.
 *******************************************************************************/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
+#include "tester.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
 #include <stdlib.h>
 
 #define TEST_CARD "Council Room"
+#define TEST_TYPE "Card"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
-
-#define MAX_STRING_LENGTH 32
-#define TRUE 1
-#define FALSE 0
-
-#ifndef EQ
-#define EQ(A, B) ((A) == (B))
-#endif
-
-
-/*******************************************************************************
-**  Function: assertTrue
-**  Description:
-**
-**  param:
-**	param:
-**
-**	pre:
-**	post:
-**	post:
-*******************************************************************************/
-void assertTrue(int expected, int actual, char *message, int *passed, int *tests) {
-
-    (*tests)++;
-
-    if (EQ(expected, actual)) {
-
-        printf("PASSED: %s = %d, expected = %d\n", message, actual, expected);
-        (*passed)++;
-
-    } else {
-
-        printf("FAILED: %s = %d, expected = %d\n", message, actual, expected);
-    }
-}
 
 /*******************************************************************************
 **  Function:
@@ -69,8 +34,8 @@ int main() {
     struct gameState game, test;
 
     const int SEED = 100;
-    int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
-                           village, minion, feast, embargo, council_room};
+    int actionCards[NUM_K_CARDS] = {smithy, adventurer, salvager, steward, baron,
+                                    village, minion, feast, embargo, outpost};
 
     const int CHOICE = 0;
     const int HAND_POS = 0;
@@ -78,6 +43,7 @@ int main() {
     const int CARDS_PLAYED = 1;
     const int BUY_GAIN = 1;
     const int OTHER_CARDS_DRAWN = 1;
+    const int NO_CHANGE = 0;
 
     int bonus = 0;
     int tests = 0;
@@ -85,110 +51,46 @@ int main() {
 
     // Initialize test game
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
-
-
-    printf("\n-------------------- Testing Card: %s --------------------\n", TEST_CARD);
-
-
-    printf("\n# Testing Current Player Playing %s card...\n\n", TEST_CARD);
-
     memcpy(&test, &game, sizeof(struct gameState));
     cardEffect(council_room, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
-    // Test changes to the current players hand
-    assertTrue(game.handCount[CURRENT_PLAYER] + CARDS_DRAWN - CARDS_PLAYED,
-               test.handCount[CURRENT_PLAYER], "Cards in Hand", &passed, &tests);
+    printTestHeader(TEST_TYPE, TEST_CARD);
 
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[CURRENT_PLAYER] - CARDS_DRAWN,
-               test.deckCount[CURRENT_PLAYER], "Cards in Deck", &passed, &tests);
+    // Check the effects the Smithy card has on the game state for the current player.
+    printf("\n* Testing Current Player Playing %s card...\n\n", TEST_CARD);
+    testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
+                           (CARDS_DRAWN - CARDS_PLAYED),
+                           (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
+                           BUY_GAIN, NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-    // Test changes to the cards played
-    assertTrue(game.playedCardCount + CARDS_PLAYED,
-               test.playedCardCount, "Cards Played", &passed, &tests);
+    // Check the effects the Smithy card has on the game state for the other player.
+    printf("\n* Testing Other Player...\n\n");
+    testOtherPlayerState(&game, &test, OTHER_PLAYER, OTHER_CARDS_DRAWN, (- OTHER_CARDS_DRAWN),
+                         NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[CURRENT_PLAYER],
-               test.discardCount[CURRENT_PLAYER], "Discard Pile", &passed, &tests);
+    // Verify no victory card piles were effected.
+    printf("\n* Testing Victory Card Piles...\n\n");
+    testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+                         &passed, &tests);
 
-    // Test changes to the coins remaining
-    assertTrue(game.coins, test.coins, "Coins Remaining", &passed, &tests);
+    // Verify no treasure card piles were affected
+    printf("\n* Testing Treasure Card Piles...\n\n");
+    testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+                          &passed, &tests);
 
-    // Test changes to the remaining buys
-    assertTrue(game.numBuys + BUY_GAIN, test.numBuys, "Buys Remaining", &passed, &tests);
+    // Verify no kingdom card piles were affected
+    printf("\n* Testing Kingdom Card Piles...\n\n");
 
-    // Test changes to the remaining action cards
-    assertTrue(game.numActions, test.numActions, "Actions Remaining", &passed, &tests);
+    int cardChanges[NUM_K_CARDS];
 
-    // Test is outpost was played
-    assertTrue(game.outpostPlayed, test.outpostPlayed, "Outpost Played", &passed, &tests);
-
-    // Test changes to the score
-    assertTrue(scoreFor(CURRENT_PLAYER, &game),
-               scoreFor(CURRENT_PLAYER, &test), "Player Score", &passed, &tests);
-
-
-    printf("\n# Testing Other Player...\n\n");
-
-    // Test changes to the current players hand
-    assertTrue(game.handCount[OTHER_PLAYER] + OTHER_CARDS_DRAWN,
-               test.handCount[OTHER_PLAYER], "Cards in Hand", &passed, &tests);
-
-    // Test changes to the current players deck
-    assertTrue(game.deckCount[OTHER_PLAYER] - OTHER_CARDS_DRAWN,
-               test.deckCount[OTHER_PLAYER], "Cards in Deck", &passed, &tests);
-
-    // Test changes to the discard pile
-    assertTrue(game.discardCount[OTHER_PLAYER],
-               test.discardCount[OTHER_PLAYER], "Discard Pile", &passed, &tests);
-
-    assertTrue(scoreFor(OTHER_PLAYER, &game),
-               scoreFor(OTHER_PLAYER, &test), "Player Score", &passed, &tests);
-
-
-    printf("\n# Testing Victory Card Piles...\n\n");
-
-    assertTrue(supplyCount(estate, &game), supplyCount(estate, &test),
-               "Estate Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(duchy, &game), supplyCount(duchy, &test),
-               "Duchy Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(province, &game), supplyCount(province, &test),
-               "Province Cards Remaining", &passed, &tests);
-
-
-    printf("\n# Testing Treasure Card Piles...\n\n");
-
-    assertTrue(supplyCount(copper, &game), supplyCount(copper, &test),
-               "Copper Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(silver, &game), supplyCount(silver, &test),
-               "Silver Cards Remaining", &passed, &tests);
-
-    assertTrue(supplyCount(gold, &game), supplyCount(gold, &test),
-               "Gold Cards Remaining", &passed, &tests);
-
-
-
-    printf("\n# Testing Kingdom Card Piles...\n\n");
-
-    for(int i = 0; i < sizeof(actionCards) / sizeof(int); i++){
-
-        char name[MAX_STRING_LENGTH];
-        cardNumToName(actionCards[i], name);
-
-        strcat(name, " Cards Remaining");
-
-        assertTrue(supplyCount(actionCards[i], &game), supplyCount(actionCards[i], &test),
-                   name, &passed, &tests);
+    for(int i = 0; i < NUM_K_CARDS; i++){
+        cardChanges[i] = NO_CHANGE;
     }
 
-    printf("\n# Summary\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
-           tests, passed, (tests - passed));
+    testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
 
-    printf("\n--------------------------------------------------------------\n");
-
+    // Print Summary and Footer
+    printTestSummary(passed, tests);
 }
 
 

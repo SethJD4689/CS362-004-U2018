@@ -10,6 +10,7 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
+#include "tester.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
@@ -30,32 +31,6 @@
 #define EQ(A, B) ((A) == (B))
 #endif
 
-
-/*******************************************************************************
-**  Function: assertTrue
-**  Description:
-**
-**  param:
-**	param:
-**
-**	pre:
-**	post:
-**	post:
-*******************************************************************************/
-void assertTrue(int expected, int actual, char *message, int *passed, int *tests) {
-
-	(*tests)++;
-
-	if (EQ(expected, actual)) {
-
-		printf("PASSED: %s = %d, expected = %d\n", message, actual, expected);
-		(*passed)++;
-
-	} else {
-
-		printf("FAILED: %s = %d, expected = %d\n", message, actual, expected);
-	}
-}
 
 /*******************************************************************************
 **  Function:
@@ -157,7 +132,7 @@ int main() {
 	}
 
 
-	printf("\n# Testing %s function with various cards in hand...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with various cards and bonuses in hand...\n\n", TEST_FUNCTION);
 
 	int supplyCards[17] = {curse, estate, duchy, province, copper, silver,
 	                       gold, actionCards[0], actionCards[1], actionCards[2],

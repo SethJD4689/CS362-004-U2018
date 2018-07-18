@@ -904,6 +904,46 @@ int baronCardEffect(struct gameState *state, const int currentPlayer, const int 
     return 0;
 }
 
+/*******************************************************************************
+**  Function: councilRoomCardEffect
+**  Description: allows the player to draw four cards, increases their buying
+**  power by one and adds a card to each of the other player's hand.
+**
+**  param: gameState *state - state of the game
+**  param: int currentPlayer - current player for the game
+**  param: handPos - position of the card to discard
+**
+**  post: state modified with an additional number of buys for the player.
+**  post: state modified with 4 more cards drawn in their hand.
+**  post: state modified with each other plays drawing a card.
+**  post: state modified with discard pile being altered.
+*******************************************************************************/
+int councilRoomCardEffect(struct gameState *state, const int currentPlayer, int handPos) {
+
+	// Draw four cards
+	for (int i = 0; i < 4; i++) {
+		drawCard(currentPlayer, state);
+	}
+
+	// Increase number of buys
+	state->numBuys++;
+
+	// Each other player draws a card
+	for (int i = 0; i < state->numPlayers; i++) {
+
+		if ( i != currentPlayer ) {
+			drawCard(i, state);
+		}
+	}
+
+	// Discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+
+	return 0;
+}
+
+
+
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int i;
@@ -928,28 +968,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return adventurerCardEffect(state, currentPlayer);
 			
     case council_room:
-      //+4 Cards
-      for (i = 0; i < 4; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //+1 Buy
-      state->numBuys++;
-			
-      //Each other player draws a card
-      for (i = 0; i < state->numPlayers; i++)
-	{
-	  if ( i != currentPlayer )
-	    {
-	      drawCard(i, state);
-	    }
-	}
-			
-      //put played card in played card pile
-      discardCard(handPos, currentPlayer, state, 0);
-			
-      return 0;
+      return councilRoomCardEffect(state, currentPlayer, handPos);
 			
     case feast:
       //gain card with cost up to 5

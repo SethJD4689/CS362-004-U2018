@@ -1,15 +1,16 @@
 /*******************************************************************************
 ** Assignment: CS362 - Assignment 3
-** Filename: cardtest1.c
+** Filename: unittest1.c
 ** Author: Seth Dovgan
 ** Date: 10 July 2017
 **
-** Description: Tests the Smithy Card.
+** Description:
 *******************************************************************************/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
+#include "tester.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
@@ -29,32 +30,6 @@
 #define EQ(A, B) ((A) == (B))
 #endif
 
-
-/*******************************************************************************
-**  Function: assertTrue
-**  Description:
-**
-**  param:
-**	param:
-**
-**	pre:
-**	post:
-**	post:
-*******************************************************************************/
-void assertTrue(int expected, int actual, char *message, int *passed, int *tests) {
-
-    (*tests)++;
-
-    if (EQ(expected, actual)) {
-
-        printf("PASSED: %s = %d, expected = %d\n", message, actual, expected);
-        (*passed)++;
-
-    } else {
-
-        printf("FAILED: %s = %d, expected = %d\n", message, actual, expected);
-    }
-}
 
 /*******************************************************************************
 **  Function:
