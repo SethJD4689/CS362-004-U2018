@@ -1,10 +1,10 @@
 /*******************************************************************************
 ** Assignment: CS362 - Assignment 3
-** Filename: cardtest1.c
+** Filename: unittest2.c
 ** Author: Seth Dovgan
 ** Date: 10 July 2017
 **
-** Description: Tests the Smithy Card.
+** Description: Tests the .
 *******************************************************************************/
 
 #include "dominion.h"
@@ -13,32 +13,19 @@
 #include "tester.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include "rngs.h"
 #include <stdlib.h>
 #include "time.h"
 
 #define TEST_FUNCTION "updateCoins"
+#define TEST_TYPE "Function"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
 
-#define MAX_STRING_LENGTH 32
-#define TRUE 1
-#define FALSE 0
-
-#ifndef EQ
-#define EQ(A, B) ((A) == (B))
-#endif
-
-
 /*******************************************************************************
 **  Function:
 **  Description:
-**
-**	pre:
-**	post:
-**	post:
 *******************************************************************************/
 int main() {
 
@@ -48,173 +35,150 @@ int main() {
 	int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
 	                       village, minion, feast, embargo, outpost};
 
+	const int NO_CHANGE = 0;
+	const int BONUS = 0;
+	const int BONUS_2 = 10;
 	int tests = 0;
 	int passed = 0;
 
 	int coins = 0;
-	int bonus = 0;
 
 	// Initialize test game
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
-	memcpy(&test, &game, sizeof(struct gameState));
 
-
-	printf("\n-------------------- Testing Card: %s --------------------\n", TEST_FUNCTION);
+	printTestHeader(TEST_TYPE, TEST_FUNCTION);
 
 
 	printf("\n# Testing %s function with no coins in hand...\n\n", TEST_FUNCTION);
 
-	for(int i = 0; i < test.handCount[CURRENT_PLAYER]; i++){
-
-		test.hand[CURRENT_PLAYER][i] = estate;
+	for(int i = 0; i < game.handCount[CURRENT_PLAYER]; i++){
+		game.hand[CURRENT_PLAYER][i] = smithy;
 	}
 
-	updateCoins(CURRENT_PLAYER, &test, bonus);
-	assertTrue(test.coins, coins, "Coins in Hand", &passed, &tests);
+	for(int i = 0; i < game.deckCount[CURRENT_PLAYER]; i++){
+		game.deck[CURRENT_PLAYER][i] = smithy;
+	}
+
+	game.coins = 0;
+
+	memcpy(&test, &game, sizeof(struct gameState));
+
+	printf("- Coin Update\n");
+	updateCoins(CURRENT_PLAYER, &test, BONUS);
+	assertTrue(test.coins, game.coins, "Coins in Hand", &passed, &tests);
+
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
 
 	printf("\n# Testing %s function with no cards in hand...\n\n", TEST_FUNCTION);
 
+	game.handCount[CURRENT_PLAYER] = 0;
 	memcpy(&test, &game, sizeof(struct gameState));
 
-	test.handCount[CURRENT_PLAYER] = 0;
-	updateCoins(CURRENT_PLAYER, &test, bonus);
+	updateCoins(CURRENT_PLAYER, &test, BONUS);
+
+	printf("- Coin Update\n");
 	assertTrue(test.coins, coins, "Coins in Hand", &passed, &tests);
 
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-	printf("\n# Testing %s function with various coins in hand...\n\n", TEST_FUNCTION);
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-	const int NUM_TESTS = 25;
 
-	for(int i = 0; i < NUM_TESTS; i++){
+	printf("\n# Testing %s function with combination of coins in hand...\n\n", TEST_FUNCTION);
 
-		memcpy(&test, &game, sizeof(struct gameState));
+	game.coins = 8;
+	game.handCount[CURRENT_PLAYER] = 5;
+	game.hand[CURRENT_PLAYER][0] = copper;
+	game.hand[CURRENT_PLAYER][1] = silver;
+	game.hand[CURRENT_PLAYER][2] = gold;
+	game.hand[CURRENT_PLAYER][3] = copper;
+	game.hand[CURRENT_PLAYER][4] = copper;
 
-		int min = copper;
-		int max = gold;
+	memcpy(&test, &game, sizeof(struct gameState));
 
-		int copperCoins = 0;
-		int silverCoins = 0;
-		int goldCoins = 0;
+	updateCoins(CURRENT_PLAYER, &test, BONUS);
 
-		int totalCoinValue = 0;
+	printf("- Coin Update\n");
+	assertTrue(test.coins, game.coins, "Coins in Hand", &passed, &tests);
 
-		for(int j = 0; j < test.handCount[CURRENT_PLAYER]; j++){
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-			srand((unsigned) time(NULL) + j + i);
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-			int randomNumber = rand() % ((max + 1) - min) + min;
-			test.hand[CURRENT_PLAYER][j] = randomNumber;
 
-			if(randomNumber == copper){
+	printf("\n# Testing %s function with all cards and bonus (%d) in hand...\n\n", TEST_FUNCTION, BONUS);
 
-				totalCoinValue += 1;
-				copperCoins ++;
+	const int ALL_CARDS = 17;
 
-			} else if (randomNumber == silver){
+	int supplyCards[] = {curse, estate, duchy, province, copper, silver,
+					     gold, actionCards[0], actionCards[1], actionCards[2],
+					     actionCards[3], actionCards[4], actionCards[5],
+					     actionCards[6], actionCards[7], actionCards[8],
+					     actionCards[9]};
 
-				totalCoinValue += 2;
-				silverCoins++;
+	game.handCount[CURRENT_PLAYER] = ALL_CARDS;
+	game.coins = 6;
 
-			} else if (randomNumber == gold){
+	for(int i = 0; i < ALL_CARDS; i++){
 
-				totalCoinValue += 3;
-				goldCoins++;
-			}
-		}
-
-		char title[200];
-
-		snprintf(title, sizeof(title), "Coins in Hand (Copper - %d, Silver - %d, Gold - %d)", copperCoins, silverCoins, goldCoins);
-
-		updateCoins(CURRENT_PLAYER, &test, bonus);
-		assertTrue(test.coins, totalCoinValue, title, &passed, &tests);
+		game.hand[CURRENT_PLAYER][i] = supplyCards[i];
 	}
 
+	memcpy(&test, &game, sizeof(struct gameState));
 
-	printf("\n# Testing %s function with various cards and bonuses in hand...\n\n", TEST_FUNCTION);
+	printf("- Coin Update\n");
 
-	int supplyCards[17] = {curse, estate, duchy, province, copper, silver,
-	                       gold, actionCards[0], actionCards[1], actionCards[2],
-	                       actionCards[3], actionCards[4], actionCards[5],
-	                       actionCards[6], actionCards[7], actionCards[8],
-	                       actionCards[9]};
+	updateCoins(CURRENT_PLAYER, &test, BONUS);
+	assertTrue(test.coins, game.coins + BONUS, "Coins in Hand", &passed, &tests);
 
-	for(int i = 0; i < NUM_TESTS; i++){
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-		memcpy(&test, &game, sizeof(struct gameState));
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-		int minC = 0;
-		int maxC = 16;
 
-		int copperCoins = 0;
-		int silverCoins = 0;
-		int goldCoins = 0;
+	printf("\n# Testing %s function with all cards and bonus (%d) in hand...\n\n", TEST_FUNCTION, BONUS_2);
 
-		int totalCoinValue = 0;
+	memcpy(&test, &game, sizeof(struct gameState));
 
-		char title[300];
+	printf("- Coin Update\n");
 
-		strcpy(title, "Cards in Hand (");
+	updateCoins(CURRENT_PLAYER, &test, BONUS_2);
+	assertTrue(test.coins, game.coins + BONUS_2, "Coins in Hand", &passed, &tests);
 
-		for(int j = 0; j < test.handCount[CURRENT_PLAYER]; j++){
+	printf("\n- Current Player Game State\n");
+	game.coins += BONUS_2;
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-			srand((unsigned) time(NULL) + j + i);
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-			int randomNumber = rand() % ((maxC + 1) - minC) + minC;
-			test.hand[CURRENT_PLAYER][j] = supplyCards[randomNumber];
-
-			char card[MAX_STRING_LENGTH];
-			cardNumToName(supplyCards[randomNumber], card);
-
-			if(j != test.handCount[CURRENT_PLAYER] - 1){
-				strcat(title, card);
-				strcat(title, ", ");
-			} else {
-				strcat(title, card);
-			}
-
-			if(randomNumber == copper){
-
-				totalCoinValue += 1;
-				copperCoins ++;
-
-			} else if (randomNumber == silver){
-
-				totalCoinValue += 2;
-				silverCoins++;
-
-			} else if (randomNumber == gold){
-
-				totalCoinValue += 3;
-				goldCoins++;
-			}
-		}
-
-		strcat(title, ")");
-
-		int minB = 0;
-		int maxB = 10;
-
-		int randomBonus = rand() % ((maxB + 1) - minB) + minB;
-
-		char bonusAppend[3];
-
-		strcat(title, "(Bonus = ");
-		sprintf(bonusAppend, "%d", randomBonus);
-		strcat(title, bonusAppend);
-		strcat(title, ")");
-
-		totalCoinValue += randomBonus;
-
-		updateCoins(CURRENT_PLAYER, &test, randomBonus);
-		assertTrue(test.coins, totalCoinValue, title, &passed, &tests);
-	}
-
-	printf("\n# Summary\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
-	       tests, passed, (tests - passed));
-
-	printf("\n--------------------------------------------------------------\n");
+	printTestSummary(passed, tests);
 }
 
 

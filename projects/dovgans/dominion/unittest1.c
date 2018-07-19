@@ -4,40 +4,25 @@
 ** Author: Seth Dovgan
 ** Date: 10 July 2017
 **
-** Description:
+** Description: Tests the isGameOver function.
 *******************************************************************************/
 
 #include "dominion.h"
-#include "dominion_helpers.h"
 #include "interface.h"
 #include "tester.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
 #include <stdlib.h>
 
 #define TEST_FUNCTION "isGameOver"
+#define TEST_TYPE "Function"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
 
-#define MAX_STRING_LENGTH 32
-#define TRUE 1
-#define FALSE 0
-
-#ifndef EQ
-#define EQ(A, B) ((A) == (B))
-#endif
-
-
 /*******************************************************************************
 **  Function:
 **  Description:
-**
-**	pre:
-**	post:
-**	post:
 *******************************************************************************/
 int main() {
 
@@ -52,37 +37,73 @@ int main() {
 
     const int GAME_IS_OVER = 1;
     const int GAME_IS_NOT_OVER = 0;
+    const int NO_CHANGE = 0;
 
     // Initialize test game
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
     memcpy(&test, &game, sizeof(struct gameState));
 
-
-    printf("\n-------------------- Testing Function: %s --------------------\n", TEST_FUNCTION);
+    printTestHeader(TEST_TYPE, TEST_FUNCTION);
 
 
     printf("\n# Testing %s function with full supply piles...\n\n", TEST_FUNCTION);
+
+	printf("- Game Status\n");
     assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
-    test.supplyCount[province] = 0;
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+
+
 
     printf("\n# Testing %s function with empty province pile...\n\n", TEST_FUNCTION);
+
+	test.supplyCount[province] = 0;
+
+	printf("- Game Status\n");
     assertTrue(isGameOver(&test), GAME_IS_OVER, "Game Status", &passed, &tests);
 
-	memcpy(&test, &game, sizeof(struct gameState));
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+
+	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
 
 	test.supplyCount[province] = 1;
 
-	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
+	printf("- Game Status\n");
 	assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
-	int supplyCards[17] = {curse, estate, duchy, province, copper, silver,
-						gold, actionCards[0], actionCards[1], actionCards[2],
-						   actionCards[3], actionCards[4], actionCards[5],
-						   actionCards[6], actionCards[7], actionCards[8],
-						actionCards[9]};
+	printf("\n- Current Player Game State\n");
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
-	printf("\n# Testing %s function with 3 empty cards in pile...\n\n", TEST_FUNCTION);
+	printf("\n- Other Player Game State\n");
+	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
+	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+
+	printf("\n# Testing %s function with every option of 3 empty piles of cards...\n\n", TEST_FUNCTION);
+
+	int supplyCards[] = {curse, estate, duchy, province, copper, silver,
+	                     gold, actionCards[0], actionCards[1], actionCards[2],
+	                     actionCards[3], actionCards[4], actionCards[5],
+	                     actionCards[6], actionCards[7], actionCards[8],
+	                     actionCards[9]};
 
 	for(int i = 0; i < sizeof(supplyCards) / sizeof(int); i++){
 
@@ -114,10 +135,7 @@ int main() {
 		}
 	}
 
-    printf("\n# Summary\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
-           tests, passed, (tests - passed));
-
-    printf("\n--------------------------------------------------------------\n");
+	printTestSummary(passed, tests);
 }
 
 

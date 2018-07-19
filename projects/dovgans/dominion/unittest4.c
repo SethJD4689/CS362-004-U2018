@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include "time.h"
 
-#define TEST_FUNCTION "updateCoins"
+#define TEST_FUNCTION "fullDeckCount"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1

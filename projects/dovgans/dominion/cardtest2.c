@@ -89,7 +89,6 @@ int main() {
 
     testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
 
-
     // Verify both drawn cards where treasure cards.
     printf("\n* Testing Both cards drawn where treasure cards...\n\n");
 
@@ -107,9 +106,48 @@ int main() {
                           || test.hand[CURRENT_PLAYER][j + i] == silver
                           || test.hand[CURRENT_PLAYER][j + i] == gold),
                 name, &passed, &tests);
-
         i++;
     }
+
+	// Check the effects the Adventurer card has on the game state for the
+	// current player with no treasure cards to draw.
+	printf("\n* Testing Current Player Playing %s card with NO treasure cards...\n\n", TEST_CARD);
+
+	memcpy(&test, &game, sizeof(struct gameState));
+
+	int deckScore = 0;
+
+	// Get the deck score since values will be erased
+	for (i = 0; i < test.deckCount[CURRENT_PLAYER]; i++) {
+
+		if (test.deck[CURRENT_PLAYER][i] == curse) {
+			deckScore = deckScore - 1;
+		} else if (test.deck[CURRENT_PLAYER][i] == estate) {
+			deckScore = deckScore + 1;
+		} else if (test.deck[CURRENT_PLAYER][i] == duchy) {
+			deckScore = deckScore + 3;
+		} else if (test.deck[CURRENT_PLAYER][i] == province) {
+			deckScore = deckScore + 6;
+		} else if (test.deck[CURRENT_PLAYER][i] == great_hall) {
+			deckScore = deckScore + 1;
+		} else if (test.deck[CURRENT_PLAYER][i] == gardens) {
+			deckScore = deckScore + ( fullDeckCount(CURRENT_PLAYER, 0, &test) / 10 );
+		};
+	}
+
+	// Modify the players deck to remove any treasure cards.
+	for(int i = 0; i < test.deckCount[CURRENT_PLAYER]; i++){
+		test.deck[CURRENT_PLAYER][i] = smithy;
+	}
+
+	cardEffect(adventurer, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
+
+	const int DISCARD_PILE = 5;
+
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, (-CARDS_PLAYED),
+	                       (-DISCARD_PILE), CARDS_PLAYED, DISCARD_PILE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, (- deckScore),
+	                       &passed, &tests);
 
     // Print Summary and Footer
     printTestSummary(passed, tests);

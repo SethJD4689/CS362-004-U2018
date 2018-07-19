@@ -666,6 +666,11 @@ int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
     // Draw two treasure cards from the players deck.
     while(drawnTreasure < 2) {
 
+	    // If the deck is empty we need to shuffle discard and add to deck
+	    if (state->deckCount[currentPlayer] < 1){
+		    shuffle(currentPlayer, state);
+	    }
+
         // Draw a card and add to player's hand.
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];

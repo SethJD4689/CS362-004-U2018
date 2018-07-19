@@ -76,3 +76,6 @@ projects/dovgans/dominion/dominion.c.gcov
 projects/dovgans/.DS_Store
 projects/.DS_Store
 .DS_Store
+projects/dovgans/.DS_Store
+projects/dovgans/dominion/unittest3.dSYM/Contents/Resources/DWARF/unittest3
+projects/dovgans/dominion/unittest3.dSYM/Contents/Info.plist
