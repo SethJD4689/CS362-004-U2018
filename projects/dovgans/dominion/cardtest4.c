@@ -43,7 +43,6 @@ int main() {
     const int CARDS_PLAYED = 1;
     const int BUY_GAIN = 1;
     const int OTHER_CARDS_DRAWN = 1;
-    const int NO_CHANGE = 0;
 
     int bonus = 0;
     int tests = 0;

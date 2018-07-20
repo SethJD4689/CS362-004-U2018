@@ -37,7 +37,6 @@ int main() {
 
     const int GAME_IS_OVER = 1;
     const int GAME_IS_NOT_OVER = 0;
-    const int NO_CHANGE = 0;
 
     // Initialize test game
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);

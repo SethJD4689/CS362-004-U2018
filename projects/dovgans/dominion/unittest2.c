@@ -35,7 +35,6 @@ int main() {
 	int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
 	                       village, minion, feast, embargo, outpost};
 
-	const int NO_CHANGE = 0;
 	const int BONUS = 0;
 	const int BONUS_2 = 10;
 	int tests = 0;

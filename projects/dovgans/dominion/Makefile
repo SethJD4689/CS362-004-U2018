@@ -54,47 +54,59 @@ unittest4: unittest4.c dominion.o rngs.o interface.o
 
 unittestresults: cardtest1.c cardtest2.c cardtest3.c cardtest4.c unittest1.c unittest2.c unittest3.c unittest4.c dominion.o rngs.o interface.o tester.o
 
-	echo "\n###---------------------------------------------------------------------------------###" > unittestresults.out
-	echo "###                           Coverage Results for Tests                            ###" >> unittestresults.out
-	echo "###---------------------------------------------------------------------------------###\n" >> unittestresults.out
+	echo "\n###--------------------------------------------------------------------------###" > unittestresults.out
+	echo "###                        Coverage Results for Tests                        ###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###\n" >> unittestresults.out
 
 	gcov dominion.o -a -b -f >> unittestresults.out
 
-	echo "###---------------------------------------------------------------------------------###" >> unittestresults.out
-	echo "###                         Results for Running Card Tests                          ###" >> unittestresults.out
-	echo "###---------------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###                      Results for Running Card Tests                      ###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
 
 	gcc -o cardtest1 cardtest1.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./cardtest1 >> unittestresults.out
 
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+
 	gcc -o cardtest2 cardtest2.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./cardtest2 >> unittestresults.out
+
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
 
 	gcc -o cardtest3 cardtest3.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./cardtest3 >> unittestresults.out
 
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+
 	gcc -o cardtest4 cardtest4.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./cardtest4 >> unittestresults.out
 
-	echo "###---------------------------------------------------------------------------------###" >> unittestresults.out
-	echo "###                       Results for Running Function Tests                        ###" >> unittestresults.out
-	echo "###---------------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###                    Results for Running Function Tests                    ###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
 
 	gcc -o unittest1 unittest1.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./unittest1 >> unittestresults.out
 
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+
 	gcc -o unittest2 unittest2.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./unittest2 >> unittestresults.out
+
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
 
 	gcc -o unittest3 unittest3.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./unittest3 >> unittestresults.out
 
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+
 	gcc -o unittest4 unittest4.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 	./unittest4 >> unittestresults.out
 
-	echo "###---------------------------------------------------------------------------------###" >> unittestresults.out
-	echo "###                                  End of File                                    ###" >> unittestresults.out
-	echo "###---------------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###                               End of File                                ###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
 
 runtests: testDrawCard 
 	./testDrawCard &> unittestresult.out

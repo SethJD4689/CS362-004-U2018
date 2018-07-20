@@ -46,7 +46,6 @@ int main() {
     const int CARDS_PLAYED = 1;
     const int CARDS_TRASHED = 1;
     const int EXTRA_BUY = 1;
-    const int NO_CHANGE = 0;
 
     int bonus = 0;
     int tests = 0;

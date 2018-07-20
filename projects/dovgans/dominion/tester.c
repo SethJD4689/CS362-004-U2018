@@ -10,6 +10,8 @@
 
 #define EQ(A, B) ((A) == (B))
 #define NEQ(A, B) ((A) != (B))
+#define NO_CHANGE 0
+
 
 
 /*******************************************************************************
@@ -123,6 +125,55 @@ void testCurrentPlayerState(struct gameState *game, struct gameState *test,
 }
 
 /*******************************************************************************
+**  Function:
+**  Description:
+**
+**  param:
+**	param:
+**
+**	pre:
+**	post:
+**	post:
+*******************************************************************************/
+void testCurrentPlayerNoStateChange(struct gameState *game, struct gameState *test,
+                                    int player, int *passed, int *tests){
+
+	// Test changes to the player's hand
+	assertTrue(game->handCount[player], test->handCount[player],
+	           "Cards in Hand", passed, tests);
+
+	// Test changes to the player's deck
+	assertTrue(game->deckCount[player], test->deckCount[player],
+	           "Cards in Deck", passed, tests);
+
+	// Test changes to the cards played
+	assertTrue(game->playedCardCount, test->playedCardCount,
+	           "Cards Played", passed, tests);
+
+	// Test changes to the discard pile
+	assertTrue(game->discardCount[player], test->discardCount[player],
+	           "Discard Pile", passed, tests);
+
+	// Test changes to the coins remaining
+	assertTrue(game->coins, test->coins, "Coins Remaining", passed, tests);
+
+	// Test changes to the remaining buys
+	assertTrue(game->numBuys, test->numBuys, "Buys Remaining", passed, tests);
+
+	// Test changes to the remaining action cards
+	assertTrue(game->numActions, test->numActions, "Actions Remaining",
+	           passed, tests);
+
+	// Test is outpost was played
+	assertTrue(game->outpostPlayed, test->outpostPlayed, "Outpost Played",
+	           passed, tests);
+
+	// Test changes to the score
+	assertTrue(scoreFor(player, game), scoreFor(player, test), "Player Score",
+	           passed, tests);
+}
+
+/*******************************************************************************
 **  Function: assertGameStateChanges
 **  Description: Tests the game state
 **
@@ -159,15 +210,42 @@ void testOtherPlayerState(struct gameState *game, struct gameState *test,
 }
 
 /*******************************************************************************
-**  Function: assertGameStateChanges
-**  Description: Tests the game state
+**  Function:
+**  Description:
 **
 **  param:
 **	param:
+**  param:
+**	param:
+*******************************************************************************/
+void testOtherPlayerNoStateChange(struct gameState *game, struct gameState *test,
+                                  int player, int *passed, int *tests) {
+
+	// Test changes to the player's hand
+	assertTrue(game->handCount[player], test->handCount[player],
+	           "Cards in Hand", passed, tests);
+
+	// Test changes to the player's deck
+	assertTrue(game->deckCount[player], test->deckCount[player],
+	           "Cards in Deck", passed, tests);
+
+	// Test changes to the discard pile
+	assertTrue(game->discardCount[player], test->discardCount[player],
+	           "Discard Pile", passed, tests);
+
+	// Test changes to the score
+	assertTrue(scoreFor(player, game), scoreFor(player, test),
+	           "Player Score", passed, tests);
+}
+
+/*******************************************************************************
+**  Function:
+**  Description:
 **
-**	pre:
-**	post:
-**	post:
+**  param:
+**	param:
+**  param:
+**	param:
 *******************************************************************************/
 void testKingdomCardPiles(struct gameState *game, struct gameState *test,
 		int actionCards[], int cardChanges[], int *passed, int *tests){
@@ -186,15 +264,38 @@ void testKingdomCardPiles(struct gameState *game, struct gameState *test,
 }
 
 /*******************************************************************************
-**  Function: assertGameStateChanges
-**  Description: Tests the game state
+**  Function:
+**  Description:
 **
 **  param:
 **	param:
+**  param:
+**	param:
+*******************************************************************************/
+void testKingdomCardPilesNoChange(struct gameState *game, struct gameState *test,
+                                  int actionCards[], int *passed, int *tests){
+
+	for(int i = 0; i < NUM_K_CARDS; i++){
+
+		char name[MAX_STRING_LENGTH];
+		cardNumToName(actionCards[i], name);
+
+		strcat(name, " Cards Remaining");
+
+		assertTrue(supplyCount(actionCards[i], game),
+		           supplyCount(actionCards[i], test),
+		           name, passed, tests);
+	}
+}
+
+/*******************************************************************************
+**  Function:
+**  Description:
 **
-**	pre:
-**	post:
-**	post:
+**  param:
+**	param:
+**  param:
+**	param:
 *******************************************************************************/
 void testVictoryCardPiles(struct gameState *game, struct gameState *test,
                           int estateChange, int duchyChange, int provinceChange,
@@ -214,40 +315,95 @@ void testVictoryCardPiles(struct gameState *game, struct gameState *test,
 }
 
 /*******************************************************************************
-**  Function: assertGameStateChanges
-**  Description: Tests the game state
+**  Function:
+**  Description:
 **
 **  param:
 **	param:
+**  param:
+**	param:
+*******************************************************************************/
+void testVictoryCardPilesNoChange(struct gameState *game, struct gameState *test,
+								  int *passed, int *tests){
+
+	assertTrue(supplyCount(estate, game),
+	           supplyCount(estate, test),
+	           "Estate Cards Remaining", passed, tests);
+
+	assertTrue(supplyCount(duchy, game),
+	           supplyCount(duchy, test),
+	           "Duchy Cards Remaining", passed, tests);
+
+	assertTrue(supplyCount(province, game),
+	           supplyCount(province, test),
+	           "Province Cards Remaining", passed, tests);
+}
+
+/*******************************************************************************
+**  Function:
+**  Description:
 **
-**	pre:
-**	post:
-**	post:
+**  param:
+**	param:
+**  param:
+**	param:
 *******************************************************************************/
 void testTreasureCardPiles(struct gameState *game, struct gameState *test,
 		                   int copperChange, int silverChange, int goldChange,
 		                   int *passed, int *tests){
 
-	assertTrue(supplyCount(copper, game) + copperChange,
-	           supplyCount(copper, test),
+	assertTrue(supplyCount(copper, game) + copperChange, supplyCount(copper, test),
 	           "Copper Cards Remaining", passed, tests);
 
-	assertTrue(supplyCount(silver, game) + silverChange,
-	           supplyCount(silver, test),
+	assertTrue(supplyCount(silver, game) + silverChange, supplyCount(silver, test),
 	           "Silver Cards Remaining", passed, tests);
 
-	assertTrue(supplyCount(gold, game) + goldChange,
-	           supplyCount(gold, test),
+	assertTrue(supplyCount(gold, game) + goldChange, supplyCount(gold, test),
 	           "Gold Cards Remaining", passed, tests);
 }
 
+/*******************************************************************************
+**  Function:
+**  Description:
+**
+**  param:
+**	param:
+**  param:
+**	param:
+*******************************************************************************/
+void testTreasureCardPilesNoChange(struct gameState *game, struct gameState *test,
+								   int *passed, int *tests){
+
+	testTreasureCardPiles(game, test, NO_CHANGE, NO_CHANGE, NO_CHANGE, passed,
+	                      tests);
+}
+
+/*******************************************************************************
+**  Function: printTestHeader
+**  Description: Prints a test heading that includes the name and type.
+**
+**  param: char type[] - type of test conducted.
+**	param: char name[] - name of test conducted.
+**
+**	post: Test Summary printed to the console.
+*******************************************************************************/
 void printTestHeader(char type[], char name[]){
 
 	printf("\n>>> Testing %s: %s >>>\n", type, name);
 }
 
+/*******************************************************************************
+**  Function: printTestSummary
+**  Description: Prints a summary of the total tests conducted on a function
+**	including number of passed and failed.
+**
+**  param: int passed - number of tests that passed.
+**	param: int tests - number of total tests conducted.
+**
+**	post: Test Summary printed to the console.
+*******************************************************************************/
 void printTestSummary(int passed, int tests){
 
-	printf("\n>>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, FAILED = %d\n",
-	       tests, passed, (tests - passed));
+	printf("\n>>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, "
+		   "FAILED = %d\n\n", tests, passed, (tests - passed));
 }

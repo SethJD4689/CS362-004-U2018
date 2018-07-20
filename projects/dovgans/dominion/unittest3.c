@@ -73,7 +73,6 @@ int main() {
 	int tests = 0;
 	int passed = 0;
 
-	const int NO_CHANGE = 0;
 	const int NO_SCORE = 0;
 
 	// Initialize test game

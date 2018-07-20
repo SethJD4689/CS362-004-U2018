@@ -13,12 +13,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#define TEST_CARD "Smithy"
-#define TEST_TYPE "Card"
-#define NUM_PLAYERS 2
-#define CURRENT_PLAYER 0
-#define OTHER_PLAYER 1
-#define NUM_K_CARDS 10
+#define CARD "Smithy"
+#define TYPE "Card"
 
 /*******************************************************************************
 **  Function: main
@@ -32,60 +28,50 @@ int main() {
 	int actionCards[NUM_K_CARDS] = {smithy, adventurer, salvager, steward, baron,
 									village, minion, feast, embargo, outpost};
 
-	const int CHOICE = 0;
-	const int HAND_POS = 0;
-	const int CARDS_DRAWN = 3;
-	const int CARDS_PLAYED = 1;
-	const int NO_CHANGE = 0;
+	const int CHOICE = 0;       // Action choice - not used
+	const int HAND_POS = 0;     // Position the Smithy card is in the players hand
+	const int CARDS_DRAWN = 3;  // Number of cards drawn by the Smithy cards
+	const int CARDS_PLAYED = 1; // Smithy card played
 
     int bonus = 0;
 	int tests = 0;
 	int passed = 0;
 
-	// Initialize the game to test
+	// Initialize the game instance for the test
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
-	// Copy test instance
+	// Copy a test instance
 	memcpy(&test, &game, sizeof(struct gameState));
 
+	// Call
 	cardEffect(smithy, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
-	printTestHeader(TEST_TYPE, TEST_CARD);
+	// Print Test Header
+	printTestHeader(CARD, TYPE);
 
 	// Check the effects the Smithy card has on the game state for the current player.
-	printf("\n* Testing Current Player Playing %s card...\n\n", TEST_CARD);
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
-	                       (CARDS_DRAWN - CARDS_PLAYED),
+	printf("\n* Testing Current Player Playing %s card...\n\n", CARD);
+	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, (CARDS_DRAWN - CARDS_PLAYED),
 	                       (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
 	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, &passed, &tests);
 
 	// Check the effects the Smithy card has on the game state for the other player.
 	printf("\n* Testing Other Player...\n\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+	testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
 
 	// Verify no victory card piles were effected.
     printf("\n* Testing Victory Card Piles...\n\n");
-    testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                         &passed, &tests);
+	testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
 
     // Verify no treasure card piles were affected
     printf("\n* Testing Treasure Card Piles...\n\n");
-	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                      &passed, &tests);
+	testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
 
 	// Verify no kingdom card piles were affected
     printf("\n* Testing Kingdom Card Piles...\n\n");
+	testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
-    int cardChanges[NUM_K_CARDS];
-
-	for(int i = 0; i < NUM_K_CARDS; i++){
-		cardChanges[i] = NO_CHANGE;
-	}
-
-	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
-
-	// Print Summary and Footer
+	// Print Test Summary
 	printTestSummary(passed, tests);
 }
 

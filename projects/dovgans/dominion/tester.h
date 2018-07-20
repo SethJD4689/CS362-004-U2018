@@ -10,6 +10,8 @@
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
+#define NO_CHANGE 0
+#define NUM_K_CARDS 10
 
 #define EQ(A, B) ((A) == (B))
 
@@ -21,21 +23,36 @@ void testCurrentPlayerState(struct gameState *game, struct gameState *test,
                             int coins, int buys, int actions, int score,
                             int *passed, int *tests);
 
+void testCurrentPlayerNoStateChange(struct gameState *game, struct gameState *test,
+                                    int player, int *passed, int *tests);
+
 void testOtherPlayerState(struct gameState *game, struct gameState *test,
                           int player, int hand, int deck, int discard,
                           int score, int *passed, int *tests);
+
+void testOtherPlayerNoStateChange(struct gameState *game, struct gameState *test,
+                          int player, int *passed, int *tests);
 
 void testTreasureCardPiles(struct gameState *game, struct gameState *test,
                            int copperChange, int silverChange, int goldChange,
                            int *passed, int *tests);
 
+void testTreasureCardPilesNoChange(struct gameState *game, struct gameState *test,
+		int *passed, int *tests);
+
 void testVictoryCardPiles(struct gameState *game, struct gameState *test,
                           int estateChange, int duchyChange, int provinceChange,
+                          int *passed, int *tests);
+
+void testVictoryCardPilesNoChange(struct gameState *game, struct gameState *test,
                           int *passed, int *tests);
 
 void testKingdomCardPiles(struct gameState *game, struct gameState *test,
                           int actionCards[], int cardChanges[], int *passed,
                           int *tests);
+
+void testKingdomCardPilesNoChange(struct gameState *game, struct gameState *test,
+                          int actionCards[], int *passed, int *tests);
 
 void printTestSummary(int passed, int tests);
 

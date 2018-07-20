@@ -40,7 +40,6 @@ int main() {
     const int HAND_POS = 0;
     const int CARDS_DRAWN = 2;
     const int CARDS_PLAYED = 1;
-    const int NO_CHANGE = 0;
 
     int bonus = 0;
     int tests = 0;
