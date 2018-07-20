@@ -9,12 +9,16 @@
 
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "interface.h"
 #include "tester.h"
 #include <string.h>
 #include <stdio.h>
 
 #define CARD "Smithy"
 #define TYPE "Card"
+#define HAND_POS 4 		// Position the Smithy card is in the players hand
+#define CARDS_DRAWN 3 	// Number of cards drawn by the Smithy card
+#define CARDS_PLAYED 1 	// Smithy card played
 
 /*******************************************************************************
 **  Function: main
@@ -24,27 +28,23 @@ int main() {
 
 	struct gameState game, test;
 
-	const int SEED = 100;
 	int actionCards[NUM_K_CARDS] = {smithy, adventurer, salvager, steward, baron,
 									village, minion, feast, embargo, outpost};
 
-	const int CHOICE = 0;       // Action choice - not used
-	const int HAND_POS = 0;     // Position the Smithy card is in the players hand
-	const int CARDS_DRAWN = 3;  // Number of cards drawn by the Smithy cards
-	const int CARDS_PLAYED = 1; // Smithy card played
-
-    int bonus = 0;
 	int tests = 0;
 	int passed = 0;
 
 	// Initialize the game instance for the test
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
+	// Place Smithy card in hand
+	game.hand[CURRENT_PLAYER][HAND_POS] = smithy;
+
 	// Copy a test instance
 	memcpy(&test, &game, sizeof(struct gameState));
 
-	// Call
-	cardEffect(smithy, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
+	// Call smithy function
+	smithyCardEffect(&test, CURRENT_PLAYER, HAND_POS);
 
 	// Print Test Header
 	printTestHeader(CARD, TYPE);
@@ -52,8 +52,11 @@ int main() {
 	// Check the effects the Smithy card has on the game state for the current player.
 	printf("\n* Testing Current Player Playing %s card...\n\n", CARD);
 	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, (CARDS_DRAWN - CARDS_PLAYED),
-	                       (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, &passed, &tests);
+						   (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
+						   NO_CHANGE, NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+
+	// Check if the card was actually played
+	testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);
 
 	// Check the effects the Smithy card has on the game state for the other player.
 	printf("\n* Testing Other Player...\n\n");

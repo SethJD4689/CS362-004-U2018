@@ -9,20 +9,16 @@
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include "tester.h"
 #include "interface.h"
+#include "tester.h"
 #include <string.h>
 #include <stdio.h>
 
-#define TEST_CARD "Adventurer"
-#define TEST_TYPE "Card"
-#define NUM_PLAYERS 2
-#define CURRENT_PLAYER 0
-#define OTHER_PLAYER 1
-#define NUM_K_CARDS 10
-#define TRUE 1
-#define MAX_STRING_LENGTH 32
-
+#define CARD "Adventurer"
+#define TYPE "Card"
+#define HAND_POS 0 		// Position the Adventurer card is in the players hand
+#define CARDS_DRAWN 2 	// Number of cards drawn by the Adventurer card
+#define CARDS_PLAYED 1 	// Adventurer card played
 
 /*******************************************************************************
 **  Function: main
@@ -32,61 +28,52 @@ int main() {
 
     struct gameState game, test;
 
-    const int SEED = 100;
     int actionCards[NUM_K_CARDS] = {smithy, adventurer, salvager, steward, baron,
                                     village, minion, feast, embargo, outpost};
 
-    const int CHOICE = 0;
-    const int HAND_POS = 0;
-    const int CARDS_DRAWN = 2;
-    const int CARDS_PLAYED = 1;
-
-    int bonus = 0;
     int tests = 0;
     int passed = 0;
 
-    // Initialize the game to test
+    // Initialize the game instance for the test
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
-    // Copy test instance
+    // Place Adventurer card in hand
+    game.hand[CURRENT_PLAYER][HAND_POS] = adventurer;
+
+    // Copy a test instance
     memcpy(&test, &game, sizeof(struct gameState));
 
-    cardEffect(adventurer, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
+    // Call Adventurer function
+    adventurerCardEffect(&test, CURRENT_PLAYER);
 
-    printTestHeader(TEST_TYPE, TEST_CARD);
+    // Print Test Header
+    printTestHeader(TYPE, CARD);
 
     // Check the effects the Adventurer card has on the game state for the current player.
-    printf("\n* Testing Current Player Playing %s card...\n\n", TEST_CARD);
+    printf("\n* Testing Current Player Playing %s card...\n\n", CARD);
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
                            (CARDS_DRAWN - CARDS_PLAYED),
                            (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
-                           NO_CHANGE, NO_CHANGE, NO_CHANGE, &passed, &tests);
+                           NO_CHANGE, NO_CHANGE, NO_CHANGE, adventurer, &passed, &tests);
+
+    // Check if the card was actually played
+    testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);
 
     // Check the effects the Adventurer card has on the game state for the other player.
     printf("\n* Testing Other Player...\n\n");
-    testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-                         NO_CHANGE, NO_CHANGE, &passed, &tests);
+    testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
 
     // Verify no victory card piles were effected.
     printf("\n* Testing Victory Card Piles...\n\n");
-    testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                         &passed, &tests);
+    testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
 
     // Verify no treasure card piles were affected
     printf("\n* Testing Treasure Card Piles...\n\n");
-    testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                          &passed, &tests);
+    testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
 
     // Verify no kingdom card piles were affected
     printf("\n* Testing Kingdom Card Piles...\n\n");
-
-    int cardChanges[NUM_K_CARDS];
-
-    for(int i = 0; i < NUM_K_CARDS; i++){
-        cardChanges[i] = NO_CHANGE;
-    }
-
-    testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
+    testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
     // Verify both drawn cards where treasure cards.
     printf("\n* Testing Both cards drawn where treasure cards...\n\n");
@@ -110,7 +97,7 @@ int main() {
 
 	// Check the effects the Adventurer card has on the game state for the
 	// current player with no treasure cards to draw.
-	printf("\n* Testing Current Player Playing %s card with NO treasure cards...\n\n", TEST_CARD);
+	printf("\n* Testing Current Player Playing %s card with NO treasure cards...\n\n", CARD);
 
 	memcpy(&test, &game, sizeof(struct gameState));
 
@@ -139,13 +126,14 @@ int main() {
 		test.deck[CURRENT_PLAYER][i] = smithy;
 	}
 
-	cardEffect(adventurer, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
+    // Call Adventurer function
+    adventurerCardEffect(&game, CURRENT_PLAYER);
 
 	const int DISCARD_PILE = 5;
 
 	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, (-CARDS_PLAYED),
 	                       (-DISCARD_PILE), CARDS_PLAYED, DISCARD_PILE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, (- deckScore),
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, (- deckScore), adventurer,
 	                       &passed, &tests);
 
     // Print Summary and Footer

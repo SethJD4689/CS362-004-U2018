@@ -79,6 +79,7 @@ int main() {
 	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
 
 
+
 	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
 
 	test.supplyCount[province] = 1;

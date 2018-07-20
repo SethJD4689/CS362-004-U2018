@@ -15,82 +15,73 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TEST_CARD "Council Room"
-#define TEST_TYPE "Card"
-#define NUM_PLAYERS 2
-#define CURRENT_PLAYER 0
-#define OTHER_PLAYER 1
+#define CARD "Council Room"
+#define TYPE "Card"
+#define HAND_POS 4 		    // Position the Council Room card is in the players hand
+#define CARDS_DRAWN 4 	    // Number of cards drawn by the Council Room card
+#define CARDS_PLAYED 1 	    // Council Room card played
+#define BUY_GAIN 1          // Buys gained playing Council Room card
+#define OTHER_CARDS_DRAWN 1 // Cards drawn by other players
+
 
 /*******************************************************************************
-**  Function:
-**  Description:
-**
-**	pre:
-**	post:
-**	post:
+**  Function: main
+**  Description: Tests the Council Room effect on the state of the game.
 *******************************************************************************/
 int main() {
 
     struct gameState game, test;
 
-    const int SEED = 100;
     int actionCards[NUM_K_CARDS] = {smithy, adventurer, salvager, steward, baron,
                                     village, minion, feast, embargo, outpost};
 
-    const int CHOICE = 0;
-    const int HAND_POS = 0;
-    const int CARDS_DRAWN = 4;
-    const int CARDS_PLAYED = 1;
-    const int BUY_GAIN = 1;
-    const int OTHER_CARDS_DRAWN = 1;
-
-    int bonus = 0;
     int tests = 0;
     int passed = 0;
 
-    // Initialize test game
+    // Initialize the game instance for the test
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
+
+    // Place Smithy card in hand
+    game.hand[CURRENT_PLAYER][HAND_POS] = council_room;
+
+    // Copy a test instance
     memcpy(&test, &game, sizeof(struct gameState));
-    cardEffect(council_room, CHOICE, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
-    printTestHeader(TEST_TYPE, TEST_CARD);
+    // Call Council Room function
+    councilRoomCardEffect(&test, CURRENT_PLAYER, HAND_POS);
 
-    // Check the effects the Smithy card has on the game state for the current player.
-    printf("\n* Testing Current Player Playing %s card...\n\n", TEST_CARD);
+    // Print Test Header
+    printTestHeader(CARD, TYPE);
+
+    // Check the effects the Council Room card has on the game state for the current player.
+    printf("\n* Testing Current Player Playing %s card...\n\n", CARD);
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
                            (CARDS_DRAWN - CARDS_PLAYED),
                            (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
-                           BUY_GAIN, NO_CHANGE, NO_CHANGE, &passed, &tests);
+                           BUY_GAIN, NO_CHANGE, NO_CHANGE, council_room, &passed, &tests);
 
-    // Check the effects the Smithy card has on the game state for the other player.
+    // Check if the card was actually played
+    testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);
+
+    // Check the effects the Council Room has on the game state for the other player.
     printf("\n* Testing Other Player...\n\n");
     testOtherPlayerState(&game, &test, OTHER_PLAYER, OTHER_CARDS_DRAWN, (- OTHER_CARDS_DRAWN),
                          NO_CHANGE, NO_CHANGE, &passed, &tests);
 
     // Verify no victory card piles were effected.
     printf("\n* Testing Victory Card Piles...\n\n");
-    testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                         &passed, &tests);
+    testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
 
     // Verify no treasure card piles were affected
     printf("\n* Testing Treasure Card Piles...\n\n");
-    testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                          &passed, &tests);
+    testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
 
     // Verify no kingdom card piles were affected
     printf("\n* Testing Kingdom Card Piles...\n\n");
+    testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
-    int cardChanges[NUM_K_CARDS];
-
-    for(int i = 0; i < NUM_K_CARDS; i++){
-        cardChanges[i] = NO_CHANGE;
-    }
-
-    testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
-
-    // Print Summary and Footer
+    // Print Test Summary
     printTestSummary(passed, tests);
 }
-
 
 

@@ -35,7 +35,6 @@ int main() {
 
     struct gameState game, test;
 
-    const int SEED = 100;
     int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
                            village, minion, feast, embargo, outpost};
 
