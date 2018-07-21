@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define NO_SCORE 0
+
 
 
 /*
@@ -66,14 +68,11 @@ int main() {
 
 	struct gameState game, test;
 
-	const int SEED = 100;
 	int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
 	                       village, minion, feast, embargo, outpost};
 
 	int tests = 0;
 	int passed = 0;
-
-	const int NO_SCORE = 0;
 
 	// Initialize test game
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);

@@ -9,135 +9,156 @@
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include "interface.h"
 #include "tester.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TEST_CARD "Salvager"
-#define TEST_TYPE "Card"
-#define NUM_PLAYERS 2
-#define CURRENT_PLAYER 0
-#define OTHER_PLAYER 1
-
-#define MAX_STRING_LENGTH 32
+#define CARD "Salvager"
+#define TYPE "Card"
+#define NO_TRASH_OPTION 0   // No Card is Trashed Option
+#define HAND_POS 1          // Position the Salavager Card is in the hand
+#define CARDS_PLAYED 1      // Salavager card played
+#define CARDS_TRASHED 1     // Number of Card trashed using Salvager card
+#define EXTRA_BUY 1         // Extra buys granted by Salvager card
 
 /*******************************************************************************
-**  Function:
-**  Description:
-**
-**	pre:
-**	post:
-**	post:
+**  Function: getScoreForCard
+**  Description: Returns the score for a specified card.
+*******************************************************************************/
+int getScoreForCard(struct gameState *game, int player, int card){
+
+    int score = 0;
+
+    if (card == curse) {
+        score = score - 1;
+    } else if (card == estate) {
+        score = score + 1;
+    } else if (card == duchy) {
+        score = score + 3;
+    } else if (card == province) {
+        score = score + 6;
+    } else if (card == great_hall) {
+        score = score + 1;
+    } else if (card == gardens) {
+        score = score + ( fullDeckCount(player, 0, game) / 10 );
+    };
+
+    return score;
+}
+
+/*******************************************************************************
+**  Function: main
+**  Description: Tests the Salvager card effect on the state of the game.
 *******************************************************************************/
 int main() {
 
-    struct gameState game, test;
+    struct gameState game, test, base;
 
     int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
                            village, minion, feast, embargo, outpost};
 
-    const int CHOICE = 0;
-    const int CHOICE_1 = 1;
-    const int CHOICE_2 = 0;
-    const int HAND_POS = 0;
-    const int CARDS_PLAYED = 1;
-    const int CARDS_TRASHED = 1;
-    const int EXTRA_BUY = 1;
-
-    int bonus = 0;
     int tests = 0;
     int passed = 0;
-    int cardValue = 0;
 
-    // Initialize test game
-    initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
+    // Initialize the game instance for the test
+    initializeGame(NUM_PLAYERS, actionCards, SEED, &base);
+
+    // Print Test Header
+    printTestHeader(TYPE, CARD);
+
+    memcpy(&game, &base, sizeof(struct gameState));
+
+    // Test trashing each card in the players hand
+    for(int trashPos = 0; trashPos < game.handCount[CURRENT_PLAYER]; trashPos++){
+
+        int salvagerPos;
+        int previousCard;
+
+        // Make sure the trash card is not the salvager card
+        if(trashPos < game.handCount[CURRENT_PLAYER] - 1){
+
+            salvagerPos = trashPos + 1;
+            previousCard = game.hand[CURRENT_PLAYER][salvagerPos];
+            game.hand[CURRENT_PLAYER][salvagerPos] = salvager;
+
+        } else {
+
+            salvagerPos = trashPos - 1;
+            previousCard = game.hand[CURRENT_PLAYER][salvagerPos];
+            game.hand[CURRENT_PLAYER][salvagerPos] = salvager;
+        }
+
+        // Copy a test instance
+        memcpy(&test, &game, sizeof(struct gameState));
+
+        // Check the effects the Salvager card has on the game state for the current player.
+        printf("\n* Testing Current Player Playing %s card using trash option for card %d...\n\n", CARD, trashPos);
+
+        // Call Salvager function
+        salvagerCardEffect(&test, CURRENT_PLAYER, salvagerPos, trashPos);
+
+        testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
+                               (- CARDS_PLAYED - CARDS_TRASHED), NO_CHANGE,
+                               CARDS_PLAYED, NO_CHANGE,
+                               getCost(handCard(trashPos, &game)), EXTRA_BUY,
+                               NO_CHANGE, (- getScoreForCard(&game, CURRENT_PLAYER, game.hand[CURRENT_PLAYER][trashPos])),
+                               salvager, &passed, &tests);
+
+        // Check if the card was actually played
+        testCardPlayed(&game, &test, CURRENT_PLAYER, salvagerPos, &passed, &tests);
+
+        // Check the effects the Smithy card has on the game state for the other player.
+        printf("\n* Testing Other Player...\n\n");
+        testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
+
+        // Verify no victory card piles were effected.
+        printf("\n* Testing Victory Card Piles...\n\n");
+        testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
+
+        // Verify no treasure card piles were affected
+        printf("\n* Testing Treasure Card Piles...\n\n");
+        testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
+
+        // Verify no kingdom card piles were affected
+        printf("\n* Testing Kingdom Card Piles...\n\n");
+        testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
+
+        memcpy(&game, &base, sizeof(struct gameState));
+    }
+
+    printf("\n* Testing Current Player Playing %s card NOT using trash option...\n\n", CARD);
+
+    // Copy a test instance
     memcpy(&test, &game, sizeof(struct gameState));
-    cardEffect(salvager, CHOICE_1, CHOICE, CHOICE, &test, HAND_POS, &bonus);
 
-    printTestHeader(TEST_TYPE, TEST_CARD);
-
-    // Check the effects the Salvager card has on the game state for the current player.
-    printf("\n* Testing Current Player Playing %s card using trash option...\n\n", TEST_CARD);
-
-	// Calculate changes to the player's score after trashed card
-	if (game.hand[CURRENT_PLAYER][CHOICE_1] == curse) {
-		cardValue = cardValue - 1;
-	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == estate) {
-		cardValue = cardValue + 1;
-	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == duchy) {
-		cardValue = cardValue + 3;
-	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == province) {
-		cardValue = cardValue + 6;
-	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == great_hall) {
-		cardValue = cardValue + 1;
-	} else if (game.hand[CURRENT_PLAYER][CHOICE_1] == gardens) {
-		cardValue = cardValue + (fullDeckCount(CURRENT_PLAYER, 0, &game) / 10);
-	};
-
-    testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
-                           (- CARDS_PLAYED - CARDS_TRASHED), NO_CHANGE,
-                           CARDS_PLAYED, NO_CHANGE,
-                           getCost(handCard(CHOICE_1, &game)), EXTRA_BUY,
-                           NO_CHANGE, (- cardValue), &passed, &tests);
-
-	// Check the effects the Salvager card has on the game state for the other player.
-	printf("\n* Testing Other Player with Current Player using Trash Option...\n\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
-
-	// Verify no victory card piles were effected.
-	printf("\n* Testing Victory Card Piles with Current Player using Trash Option......\n\n");
-	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                     &passed, &tests);
-
-	// Verify no treasure card piles were effected
-	printf("\n* Testing Treasure Card Piles with Current Player using Trash Option......\n\n");
-	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                      &passed, &tests);
-
-	// Verify no kingdom card piles were effected
-	printf("\n* Testing Kingdom Card Piles with Current Player using Trash Option......\n\n");
-
-	int cardChanges[NUM_K_CARDS];
-
-	for(int i = 0; i < NUM_K_CARDS; i++){
-		cardChanges[i] = NO_CHANGE;
-	}
-
-	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
-
-
-    memcpy(&test, &game, sizeof(struct gameState));
-    cardEffect(salvager, CHOICE_2, CHOICE, CHOICE, &test, HAND_POS, &bonus);
-
-
-    printf("\n* Testing Current Player Playing %s card NOT using trash option...\n\n", TEST_CARD);
+    // Call Salvager function
+    salvagerCardEffect(&test, CURRENT_PLAYER, HAND_POS, NO_TRASH_OPTION);
 
 	testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
 	                       (- CARDS_PLAYED), NO_CHANGE,
 	                       CARDS_PLAYED, NO_CHANGE, NO_CHANGE, EXTRA_BUY,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+	                       NO_CHANGE, NO_CHANGE, salvager, &passed, &tests);
 
-	// Check the effects the Salvager card has on the game state for the other player.
-	printf("\n* Testing Other Player with Current Player NOT using Trash Option...\n\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+    // Check if the card was actually played
+    testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);
 
-	// Verify no victory card piles were effected.
-	printf("\n* Testing Victory Card Piles with Current Player NOT using Trash Option......\n\n");
-	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                     &passed, &tests);
+    // Check the effects the Smithy card has on the game state for the other player.
+    printf("\n* Testing Other Player...\n\n");
+    testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
 
-	// Verify no treasure card piles were effected
-	printf("\n* Testing Treasure Card Piles with Current Player NOT using Trash Option......\n\n");
-	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                      &passed, &tests);
+    // Verify no victory card piles were effected.
+    printf("\n* Testing Victory Card Piles...\n\n");
+    testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
 
-	// Verify no kingdom card piles were effected
-	printf("\n* Testing Kingdom Card Piles with Current Player NOT using Trash Option......\n\n");
-	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
+    // Verify no treasure card piles were affected
+    printf("\n* Testing Treasure Card Piles...\n\n");
+    testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
+
+    // Verify no kingdom card piles were affected
+    printf("\n* Testing Kingdom Card Piles...\n\n");
+    testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
+
 
     printTestSummary(passed, tests);
 }

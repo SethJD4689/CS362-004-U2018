@@ -199,7 +199,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 }
 
 int shuffle(int player, struct gameState *state) {
- 
 
   int newDeck[MAX_DECK];
   int newDeckPos = 0;
@@ -207,7 +206,8 @@ int shuffle(int player, struct gameState *state) {
   int i;
 
   if (state->deckCount[player] < 1)
-    return -1;
+      return -1;
+
   qsort ((void*)(state->deck[player]), state->deckCount[player], sizeof(int), compare); 
   /* SORT CARDS IN DECK TO ENSURE DETERMINISM! */
 
@@ -557,7 +557,7 @@ int drawCard(int player, struct gameState *state)
     deckCounter = state->deckCount[player];//Create a holder for the deck count
 
     if (deckCounter == 0)
-      return -1;
+        return -1;
 
     state->hand[player][count] = state->deck[player][deckCounter - 1];//Add card to hand
     state->deckCount[player]--;
@@ -668,7 +668,7 @@ int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
 
 	    // If the deck is empty we need to shuffle discard and add to deck
 	    if (state->deckCount[currentPlayer] < 1){
-		    shuffle(currentPlayer, state);
+            shuffle(currentPlayer, state);
 	    }
 
         // Draw a card and add to player's hand.
@@ -738,7 +738,7 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
 **  param: gameState *state - state of the game
 **  param: int currentPlayer - current player for the game
 **  param: int handPos - position of salvager card
-**  param: choice1 - player choice for card to trash
+**  param: choice1 - player card position choice for card to trash
 **
 **  post: state modified with an additional number of buys for the player.
 **  post: state modified with additional coins based on the trashed card selection

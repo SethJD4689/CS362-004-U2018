@@ -9,7 +9,6 @@
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include "interface.h"
 #include "tester.h"
 #include <string.h>
 #include <stdio.h>
@@ -22,7 +21,6 @@
 #define CARDS_PLAYED 1 	    // Council Room card played
 #define BUY_GAIN 1          // Buys gained playing Council Room card
 #define OTHER_CARDS_DRAWN 1 // Cards drawn by other players
-
 
 /*******************************************************************************
 **  Function: main
@@ -41,7 +39,7 @@ int main() {
     // Initialize the game instance for the test
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
-    // Place Smithy card in hand
+    // Place Council Room card in hand
     game.hand[CURRENT_PLAYER][HAND_POS] = council_room;
 
     // Copy a test instance

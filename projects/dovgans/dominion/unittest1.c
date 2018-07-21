@@ -14,89 +14,107 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TEST_FUNCTION "isGameOver"
-#define TEST_TYPE "Function"
-#define NUM_PLAYERS 2
-#define CURRENT_PLAYER 0
-#define OTHER_PLAYER 1
+#define FUNCTION "isGameOver"
+#define TYPE "Function"
+#define GAME_IS_OVER 1
+#define GAME_IS_NOT_OVER 0
 
 /*******************************************************************************
-**  Function:
-**  Description:
+**  Function: main
+**  Description: Tests the isGameOver function.
 *******************************************************************************/
 int main() {
 
     struct gameState game, test;
 
-    const int SEED = 100;
     int actionCards[10] = {smithy, adventurer, salvager, steward, baron,
                            village, minion, feast, embargo, outpost};
 
     int tests = 0;
     int passed = 0;
 
-    const int GAME_IS_OVER = 1;
-    const int GAME_IS_NOT_OVER = 0;
+	// Initialize the game instance for the test
+	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
-    // Initialize test game
-    initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
-    memcpy(&test, &game, sizeof(struct gameState));
+	// Copy a test instance
+	memcpy(&test, &game, sizeof(struct gameState));
 
-    printTestHeader(TEST_TYPE, TEST_FUNCTION);
+	// Print Test Header
+    printTestHeader(TYPE, FUNCTION);
 
-
+	// Tests if game status is not over when all supply piles are full
     printf("\n# Testing %s function with full supply piles...\n\n", TEST_FUNCTION);
 
 	printf("- Game Status\n");
     assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
 	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+	testCurrentPlayerNoStateChange(&game, &test, CURRENT_PLAYER, &passed, &tests);
 
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+	printf("\n* Testing Other Player...\n\n");
+	testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
+
+	printf("\n* Testing Victory Card Piles...\n\n");
+	testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
+
+	printf("\n* Testing Treasure Card Piles...\n\n");
+	testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
+
+	printf("\n* Testing Kingdom Card Piles...\n\n");
+	testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
 
-
-
+	// Tests if game status is over when providence pile is empty
     printf("\n# Testing %s function with empty province pile...\n\n", TEST_FUNCTION);
 
-	test.supplyCount[province] = 0;
+	test.supplyCount[province] = 0;	// Set test condition
 
 	printf("- Game Status\n");
     assertTrue(isGameOver(&test), GAME_IS_OVER, "Game Status", &passed, &tests);
 
 	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+	testCurrentPlayerNoStateChange(&game, &test, CURRENT_PLAYER, &passed, &tests);
 
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+	printf("\n* Testing Other Player...\n\n");
+	testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
+
+	printf("\n* Testing Victory Card Piles...\n\n");
+	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, (-game.supplyCount[province]),
+						 &passed, &tests);
+
+	printf("\n* Testing Treasure Card Piles...\n\n");
+	testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
+
+	printf("\n* Testing Kingdom Card Piles...\n\n");
+	testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
 
-
+	// Tests if game status is not over with 1 remaining province card
 	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
 
-	test.supplyCount[province] = 1;
+	test.supplyCount[province] = 1;	// Set test condition
 
 	printf("- Game Status\n");
 	assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
 
 	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+	testCurrentPlayerNoStateChange(&game, &test, CURRENT_PLAYER, &passed, &tests);
 
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+	printf("\n* Testing Other Player...\n\n");
+	testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
+
+	printf("\n* Testing Victory Card Piles...\n\n");
+	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, (- game.supplyCount[province] + 1),
+						 &passed, &tests);
+
+	printf("\n* Testing Treasure Card Piles...\n\n");
+	testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
+
+	printf("\n* Testing Kingdom Card Piles...\n\n");
+	testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
 
+	// Tests every combination of 3 empty card pile
 	printf("\n# Testing %s function with every option of 3 empty piles of cards...\n\n", TEST_FUNCTION);
 
 	int supplyCards[] = {curse, estate, duchy, province, copper, silver,
@@ -128,13 +146,15 @@ int main() {
 				char card3[MAX_STRING_LENGTH];
 				cardNumToName(supplyCards[k], card3);
 
-				snprintf(cards, sizeof(cards), "Card Piles - %s, %s, %s are Empty", card1, card2, card3);
+				snprintf(cards, sizeof(cards), "Card Piles - %s, %s, %s are Empty",
+						 card1, card2, card3);
 
 				assertTrue(isGameOver(&test), GAME_IS_OVER, cards, &passed, &tests);
 			}
 		}
 	}
 
+	// Print Test Summary
 	printTestSummary(passed, tests);
 }
 
