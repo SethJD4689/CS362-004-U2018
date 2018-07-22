@@ -199,7 +199,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 }
 
 int shuffle(int player, struct gameState *state) {
- 
 
   int newDeck[MAX_DECK];
   int newDeckPos = 0;
@@ -207,7 +206,8 @@ int shuffle(int player, struct gameState *state) {
   int i;
 
   if (state->deckCount[player] < 1)
-    return -1;
+      return -1;
+
   qsort ((void*)(state->deck[player]), state->deckCount[player], sizeof(int), compare); 
   /* SORT CARDS IN DECK TO ENSURE DETERMINISM! */
 
@@ -557,7 +557,7 @@ int drawCard(int player, struct gameState *state)
     deckCounter = state->deckCount[player];//Create a holder for the deck count
 
     if (deckCounter == 0)
-      return -1;
+        return -1;
 
     state->hand[player][count] = state->deck[player][deckCounter - 1];//Add card to hand
     state->deckCount[player]--;
@@ -654,7 +654,7 @@ int getCost(int cardNumber)
 **
 **  post: state modified with additional treasure cards added to player's hand.
 **  post: state modified with adventurer card removed from player's hand.
-**  post: state modfied with deck and discard pile being altered from drawing cards.
+**  post: state modified with deck and discard pile being altered from drawing cards.
 *******************************************************************************/
 int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
 
@@ -666,13 +666,18 @@ int adventurerCardEffect(struct gameState *state, const int currentPlayer) {
     // Draw two treasure cards from the players deck.
     while(drawnTreasure < 2) {
 
+	    // If the deck is empty we need to shuffle discard and add to deck
+	    if (state->deckCount[currentPlayer] < 1){
+            shuffle(currentPlayer, state);
+	    }
+
         // Draw a card and add to player's hand.
         drawCard(currentPlayer, state);
-        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
+        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
 
         // Check if the drawn card is a treasure card. If the card is a treasure
         // card, keep track of the number of treasure cards drawn.
-        if (cardDrawn == silver || cardDrawn == gold){
+        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
 
             drawnTreasure++;
 
@@ -733,7 +738,7 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
 **  param: gameState *state - state of the game
 **  param: int currentPlayer - current player for the game
 **  param: int handPos - position of salvager card
-**  param: choice1 - player choice for card to trash
+**  param: choice1 - player card position choice for card to trash
 **
 **  post: state modified with an additional number of buys for the player.
 **  post: state modified with additional coins based on the trashed card selection
@@ -799,8 +804,8 @@ int stewardCardEffect(struct gameState *state, const int currentPlayer,
     // Trash two cards in the players hand if the player chooses this option.
     } else {
 
-        discardCard(choice2, currentPlayer, state, 0);
-        discardCard(choice3, currentPlayer, state, 0);
+        discardCard(choice2, currentPlayer, state, 1);
+        discardCard(choice3, currentPlayer, state, 1);
     }
 
     // Discard card
@@ -904,6 +909,46 @@ int baronCardEffect(struct gameState *state, const int currentPlayer, const int 
     return 0;
 }
 
+/*******************************************************************************
+**  Function: councilRoomCardEffect
+**  Description: allows the player to draw four cards, increases their buying
+**  power by one and adds a card to each of the other player's hand.
+**
+**  param: gameState *state - state of the game
+**  param: int currentPlayer - current player for the game
+**  param: handPos - position of the card to discard
+**
+**  post: state modified with an additional number of buys for the player.
+**  post: state modified with 4 more cards drawn in their hand.
+**  post: state modified with each other plays drawing a card.
+**  post: state modified with discard pile being altered.
+*******************************************************************************/
+int councilRoomCardEffect(struct gameState *state, const int currentPlayer, int handPos) {
+
+	// Draw four cards
+	for (int i = 0; i < 4; i++) {
+		drawCard(currentPlayer, state);
+	}
+
+	// Increase number of buys
+	state->numBuys++;
+
+	// Each other player draws a card
+	for (int i = 0; i < state->numPlayers; i++) {
+
+		if ( i != currentPlayer ) {
+			drawCard(i, state);
+		}
+	}
+
+	// Discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+
+	return 0;
+}
+
+
+
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int i;
@@ -928,28 +973,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return adventurerCardEffect(state, currentPlayer);
 			
     case council_room:
-      //+4 Cards
-      for (i = 0; i < 4; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //+1 Buy
-      state->numBuys++;
-			
-      //Each other player draws a card
-      for (i = 0; i < state->numPlayers; i++)
-	{
-	  if ( i != currentPlayer )
-	    {
-	      drawCard(i, state);
-	    }
-	}
-			
-      //put played card in played card pile
-      discardCard(handPos, currentPlayer, state, 0);
-			
-      return 0;
+      return councilRoomCardEffect(state, currentPlayer, handPos);
 			
     case feast:
       //gain card with cost up to 5
