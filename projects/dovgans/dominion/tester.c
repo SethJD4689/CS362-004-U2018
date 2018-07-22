@@ -181,19 +181,19 @@ void testCardPlayed(struct gameState *game, struct gameState *test, int player,
 
 			printf("PASSED: Card Played = %s, expected = %s\n", aName, eName);
 
-			passed++;
+			(*passed)++;
 
 		} else {
 
 			printf("FAILED: Card Played = %s, expected = %s\n", aName, eName);
 		}
 
-		tests++;
+		(*tests)++;
 
 	} else {
 
 		printf("FAILED: Card Played = none, expected = %s\n", eName);
-		tests++;
+		(*tests)++;
 	}
 }
 

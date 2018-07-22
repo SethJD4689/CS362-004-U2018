@@ -16,49 +16,38 @@
 #include <stdlib.h>
 
 #define NO_SCORE 0
+#define CURSE (-1)
+#define ESTATE 1
+#define DUCHY 3
+#define PROVINCE 6
+#define GREAT_HALL 1
 
+/*******************************************************************************
+**  Function:
+**  Description:
+*******************************************************************************/
+void testScoreForState(struct gameState *game, struct gameState *test,
+					   int actionCards[], int player, int score, int *passed,
+					   int *tests){
 
+	printf("* Score For\n");
+	assertTrue(scoreFor(player, test), score, "Player Score", passed, tests);
 
-/*
-int scoreFor (int player, struct gameState *state) {
+	printf("\n* Current Player Game State\n");
+	testCurrentPlayerNoStateChange(game, test, player, passed, tests);
 
-	int i;
-	int score = 0;
-	//score from hand
-	for (i = 0; i < state->handCount[player]; i++)
-	{
-		if (state->hand[player][i] == curse) { score = score - 1; };
-		if (state->hand[player][i] == estate) { score = score + 1; };
-		if (state->hand[player][i] == duchy) { score = score + 3; };
-		if (state->hand[player][i] == province) { score = score + 6; };
-		if (state->hand[player][i] == great_hall) { score = score + 1; };
-		if (state->hand[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
-	}
+	printf("\n* Testing Other Player...\n\n");
+	testOtherPlayerNoStateChange(game, test, OTHER_PLAYER, passed, tests);
 
-	//score from discard
-	for (i = 0; i < state->discardCount[player]; i++)
-	{
-		if (state->discard[player][i] == curse) { score = score - 1; };
-		if (state->discard[player][i] == estate) { score = score + 1; };
-		if (state->discard[player][i] == duchy) { score = score + 3; };
-		if (state->discard[player][i] == province) { score = score + 6; };
-		if (state->discard[player][i] == great_hall) { score = score + 1; };
-		if (state->discard[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
-	}
+	printf("\n* Testing Victory Card Piles...\n\n");
+	testVictoryCardPilesNoChange(game, test, passed, tests);
 
-	//score from deck
-	for (i = 0; i < state->deckCount[player]; i++)
-	{
-		if (state->deck[player][i] == curse) { score = score - 1; };
-		if (state->deck[player][i] == estate) { score = score + 1; };
-		if (state->deck[player][i] == duchy) { score = score + 3; };
-		if (state->deck[player][i] == province) { score = score + 6; };
-		if (state->deck[player][i] == great_hall) { score = score + 1; };
-		if (state->deck[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
-	}
+	printf("\n* Testing Treasure Card Piles...\n\n");
+	testTreasureCardPilesNoChange(game, test, passed, tests);
 
-	return score;
-}*/
+	printf("\n* Testing Kingdom Card Piles...\n\n");
+	testKingdomCardPilesNoChange(game, test, actionCards, passed, tests);
+}
 
 /*******************************************************************************
 **  Function:
@@ -73,12 +62,12 @@ int main() {
 
 	int tests = 0;
 	int passed = 0;
+	int score;
 
 	// Initialize test game
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
 	printTestHeader(TEST_TYPE, TEST_FUNCTION);
-
 
 	printf("\n# Testing %s function with no hand, deck or discard...\n\n", TEST_FUNCTION);
 
@@ -88,150 +77,140 @@ int main() {
 
 	memcpy(&test, &game, sizeof(struct gameState));
 
-	int score = 0;
-
-	printf("- Score For\n");
-	assertTrue(scoreFor(CURRENT_PLAYER, &test), score, "Player Score", &passed, &tests);
-
-	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
-
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
-
-	// Verify no victory card piles were effected.
-	printf("\n* Testing Victory Card Piles...\n\n");
-	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                     &passed, &tests);
-
-	// Verify no treasure card piles were affected
-	printf("\n* Testing Treasure Card Piles...\n\n");
-	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                      &passed, &tests);
-
-	// Verify no kingdom card piles were affected
-	printf("\n* Testing Kingdom Card Piles...\n\n");
-
-	int cardChanges[NUM_K_CARDS];
-
-	for(int i = 0; i < NUM_K_CARDS; i++){
-		cardChanges[i] = NO_CHANGE;
-	}
-
-	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
+	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, NO_SCORE, &passed,
+	&tests);
 
 
-	printf("\n# Testing %s function with score...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with score in deck, hand and discard...\n\n", TEST_FUNCTION);
 
-	game.handCount[CURRENT_PLAYER] = 0;
-	game.discardCount[CURRENT_PLAYER] = 0;
-	game.deckCount[CURRENT_PLAYER] = 0;
+	score = 0;
+
+	game.handCount[CURRENT_PLAYER] = 6;
+	game.hand[CURRENT_PLAYER][0] = curse;
+	game.hand[CURRENT_PLAYER][1] = estate;
+	game.hand[CURRENT_PLAYER][2] = duchy;
+	game.hand[CURRENT_PLAYER][3] = province;
+	game.hand[CURRENT_PLAYER][4] = great_hall;
+	game.hand[CURRENT_PLAYER][5] = gardens;
+
+	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
+			+ fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
+
+	game.discardCount[CURRENT_PLAYER] = 1;
+	game.discard[CURRENT_PLAYER][0] = estate;
+
+	score += ESTATE;
+
+	game.deckCount[CURRENT_PLAYER] = 6;
+	game.deck[CURRENT_PLAYER][0] = curse;
+	game.deck[CURRENT_PLAYER][1] = estate;
+	game.deck[CURRENT_PLAYER][2] = duchy;
+	game.deck[CURRENT_PLAYER][3] = province;
+	game.deck[CURRENT_PLAYER][4] = great_hall;
+	game.deck[CURRENT_PLAYER][5] = gardens;
+
+	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
+	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
 
 	memcpy(&test, &game, sizeof(struct gameState));
 
-	printf("- Score For\n");
-	assertTrue(scoreFor(CURRENT_PLAYER, &test), score, "Player Score", &passed, &tests);
+	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
+	                  &tests);
 
-	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+	printf("\n# Testing %s function with score cards in hand only...\n\n", TEST_FUNCTION);
 
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+	score = 0;
 
-	// Verify no victory card piles were effected.
-	printf("\n* Testing Victory Card Piles...\n\n");
-	testVictoryCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                     &passed, &tests);
+	game.handCount[CURRENT_PLAYER] = 6;
+	game.hand[CURRENT_PLAYER][0] = curse;
+	game.hand[CURRENT_PLAYER][1] = estate;
+	game.hand[CURRENT_PLAYER][2] = duchy;
+	game.hand[CURRENT_PLAYER][3] = province;
+	game.hand[CURRENT_PLAYER][4] = great_hall;
+	game.hand[CURRENT_PLAYER][5] = gardens;
 
-	// Verify no treasure card piles were affected
-	printf("\n* Testing Treasure Card Piles...\n\n");
-	testTreasureCardPiles(&game, &test, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                      &passed, &tests);
+	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
+	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
 
-	// Verify no kingdom card piles were affected
-	printf("\n* Testing Kingdom Card Piles...\n\n");
+	game.discardCount[CURRENT_PLAYER] = 1;
+	game.discard[CURRENT_PLAYER][0] = smithy;
 
-	testKingdomCardPiles(&game, &test, actionCards, cardChanges, &passed, &tests);
+	game.deckCount[CURRENT_PLAYER] = 6;
+	game.deck[CURRENT_PLAYER][0] = adventurer;
+	game.deck[CURRENT_PLAYER][1] = minion;
+	game.deck[CURRENT_PLAYER][2] = feast;
+	game.deck[CURRENT_PLAYER][3] = embargo;
+	game.deck[CURRENT_PLAYER][4] = outpost;
+	game.deck[CURRENT_PLAYER][5] = village;
 
-	/*
-	printf("\n# Testing %s function with empty province pile...\n\n", TEST_FUNCTION);
+	memcpy(&test, &game, sizeof(struct gameState));
 
-	test.supplyCount[province] = 0;
+	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
+	                  &tests);
 
-	printf("- Game Status\n");
-	assertTrue(isGameOver(&test), GAME_IS_OVER, "Game Status", &passed, &tests);
+	printf("\n# Testing %s function with score cards in deck only...\n\n", TEST_FUNCTION);
 
-	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+	score = 0;
 
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
+	game.handCount[CURRENT_PLAYER] = 6;
+	game.hand[CURRENT_PLAYER][0] = adventurer;
+	game.hand[CURRENT_PLAYER][1] = minion;
+	game.hand[CURRENT_PLAYER][2] = feast;
+	game.hand[CURRENT_PLAYER][3] = embargo;
+	game.hand[CURRENT_PLAYER][4] = outpost;
+	game.hand[CURRENT_PLAYER][5] = village;
+
+	game.discardCount[CURRENT_PLAYER] = 1;
+	game.discard[CURRENT_PLAYER][0] = smithy;
+
+	game.deckCount[CURRENT_PLAYER] = 6;
+	game.deck[CURRENT_PLAYER][0] = curse;
+	game.deck[CURRENT_PLAYER][1] = estate;
+	game.deck[CURRENT_PLAYER][2] = duchy;
+	game.deck[CURRENT_PLAYER][3] = province;
+	game.deck[CURRENT_PLAYER][4] = great_hall;
+	game.deck[CURRENT_PLAYER][5] = gardens;
+
+	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
+	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
+
+	memcpy(&test, &game, sizeof(struct gameState));
+
+	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
+	                  &tests);
+
+	printf("\n# Testing %s function with score cards in discard only...\n\n", TEST_FUNCTION);
+
+	score = 0;
+
+	game.handCount[CURRENT_PLAYER] = 6;
+	game.hand[CURRENT_PLAYER][0] = minion;
+	game.hand[CURRENT_PLAYER][1] = minion;
+	game.hand[CURRENT_PLAYER][2] = feast;
+	game.hand[CURRENT_PLAYER][3] = embargo;
+	game.hand[CURRENT_PLAYER][4] = outpost;
+	game.hand[CURRENT_PLAYER][5] = village;
+
+	game.discardCount[CURRENT_PLAYER] = 1;
+	game.discard[CURRENT_PLAYER][0] = province;
+
+	game.deckCount[CURRENT_PLAYER] = 6;
+	game.deck[CURRENT_PLAYER][0] = smithy;
+	game.deck[CURRENT_PLAYER][1] = adventurer;
+	game.deck[CURRENT_PLAYER][2] = smithy;
+	game.deck[CURRENT_PLAYER][3] = village;
+	game.deck[CURRENT_PLAYER][4] = outpost;
+	game.deck[CURRENT_PLAYER][5] = feast;
+
+	score += PROVINCE;
+
+	memcpy(&test, &game, sizeof(struct gameState));
+
+	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
+	                  &tests);
 
 
-	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
-
-	test.supplyCount[province] = 1;
-
-	printf("- Game Status\n");
-	assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
-
-	printf("\n- Current Player Game State\n");
-	testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
-
-	printf("\n- Other Player Game State\n");
-	testOtherPlayerState(&game, &test, OTHER_PLAYER, NO_CHANGE, NO_CHANGE,
-	                     NO_CHANGE, NO_CHANGE, &passed, &tests);
-
-
-	printf("\n# Testing %s function with every option of 3 empty piles of cards...\n\n", TEST_FUNCTION);
-
-	int supplyCards[] = {curse, estate, duchy, province, copper, silver,
-	                     gold, actionCards[0], actionCards[1], actionCards[2],
-	                     actionCards[3], actionCards[4], actionCards[5],
-	                     actionCards[6], actionCards[7], actionCards[8],
-	                     actionCards[9]};
-
-	for(int i = 0; i < sizeof(supplyCards) / sizeof(int); i++){
-
-		for(int j = i + 1; j < sizeof(supplyCards) / sizeof(int); j++){
-
-			for(int k = j + 1; k < sizeof(supplyCards) / sizeof(int); k++){
-
-				memcpy(&test, &game, sizeof(struct gameState));
-
-				test.supplyCount[supplyCards[i]] = 0;
-				test.supplyCount[supplyCards[j]] = 0;
-				test.supplyCount[supplyCards[k]] = 0;
-
-				char cards[200];
-
-				char card1[MAX_STRING_LENGTH];
-				cardNumToName(supplyCards[i], card1);
-
-				char card2[MAX_STRING_LENGTH];
-				cardNumToName(supplyCards[j], card2);
-
-				char card3[MAX_STRING_LENGTH];
-				cardNumToName(supplyCards[k], card3);
-
-				snprintf(cards, sizeof(cards), "Card Piles - %s, %s, %s are Empty", card1, card2, card3);
-
-				assertTrue(isGameOver(&test), GAME_IS_OVER, cards, &passed, &tests);
-			}
-		}
-	}*/
-
+	// Print the test summary
 	printTestSummary(passed, tests);
 }
 
