@@ -181,7 +181,6 @@ int main() {
 	// current player with no treasure cards to draw.
 	printf("\n* Testing Current Player Playing %s card with NO treasure cards...\n\n", CARD);
 
-	int deckScore = 0;
     const int DISCARD_PILE = 5;
 
     game.deckCount[CURRENT_PLAYER] = 5;

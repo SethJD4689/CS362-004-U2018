@@ -15,42 +15,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define FUNCTION "fullDeckCount"
+#define TYPE "Function"
 #define NO_CARD 0
 #define SUPPLY_CARD_COUNT 17
-
-/*
-int fullDeckCount(int player, int card, struct gameState *state) {
-	int i;
-	int count = 0;
-
-	for (i = 0; i < state->deckCount[player]; i++)
-	{
-		if (state->deck[player][i] == card) count++;
-	}
-
-	for (i = 0; i < state->handCount[player]; i++)
-	{
-		if (state->hand[player][i] == card) count++;
-	}
-
-	for (i = 0; i < state->discardCount[player]; i++)
-	{
-		if (state->discard[player][i] == card) count++;
-	}
-
-	return count;
-}*/
+#define CARD_IN_ALL 3
 
 /*******************************************************************************
-**  Function:
-**  Description:
+**  Function: testFullDeckCountForState
+**  Description: tests for changes in the game state
 *******************************************************************************/
 void testFullDeckCountForState(struct gameState *game, struct gameState *test,
                                int actionCards[], int player, int *passed,
                                int *tests){
-
-	//printf("* Card Deck Count\n");
-	//assertTrue(fullDeckCount(player, card, test), deckCount, "Count of Card in Player's Deck:", passed, tests);
 
 	printf("\n* Current Player Game State\n");
 	testCurrentPlayerNoStateChange(game, test, player, passed, tests);
@@ -68,21 +45,9 @@ void testFullDeckCountForState(struct gameState *game, struct gameState *test,
 	testKingdomCardPilesNoChange(game, test, actionCards, passed, tests);
 }
 
-int removeCardFromHand(){
-	
-}
-
-int removeCardFromDeck(){
-
-}
-
-int removeCardFromDiscard(){
-
-}
-
 /*******************************************************************************
-**  Function:
-**  Description:
+**  Function: main
+**  Description: tests the fullDeckCount function
 *******************************************************************************/
 int main() {
 
@@ -99,26 +64,27 @@ int main() {
 
 	int tests = 0;
 	int passed = 0;
-	int score;
 
-	// Initialize test game
+    // Initialize the game instance for the test
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
-	printTestHeader(TEST_TYPE, TEST_FUNCTION);
-
-	game.handCount[CURRENT_PLAYER] = 0;
-	game.handCount[OTHER_PLAYER] = 0;
-	game.discardCount[CURRENT_PLAYER] = 0;
-	game.discardCount[OTHER_PLAYER] = 0;
-	game.deckCount[CURRENT_PLAYER] = 0;
-	game.deckCount[OTHER_PLAYER] = 0;
-
-
-	memcpy(&test, &game, sizeof(struct gameState));
+    // Print Test Header
+	printTestHeader(TYPE, FUNCTION);
 
 	// Test all cards with no card in hand, deck or discards
 	printf("\n# Testing %s function with no cards in hand, deck or discard...\n\n", TEST_FUNCTION);
 
+	// Set test conditions
+    game.handCount[CURRENT_PLAYER] = 0;
+    game.handCount[OTHER_PLAYER] = 0;
+    game.discardCount[CURRENT_PLAYER] = 0;
+    game.discardCount[OTHER_PLAYER] = 0;
+    game.deckCount[CURRENT_PLAYER] = 0;
+    game.deckCount[OTHER_PLAYER] = 0;
+
+    memcpy(&test, &game, sizeof(struct gameState));
+
+    // Get the count of each card in the game for the player's
 	for(int i = 0; i < SUPPLY_CARD_COUNT; i++){
 
 		char title[100];
@@ -128,21 +94,25 @@ int main() {
 
 		snprintf(title, sizeof(title), "Count of %s card in player's deck", name);
 
-		assertTrue(fullDeckCount(CURRENT_PLAYER, supplyCards[i], &test), NO_CARD,
+		assertTrue(NO_CARD, fullDeckCount(CURRENT_PLAYER, supplyCards[i], &test),
 		           title, &passed, &tests);
 
-		snprintf(title, sizeof(title), "Count of %s card in other player's deck", name);
+		snprintf(title, sizeof(title), "Count of %s card in other player's deck",
+                 name);
 
-		assertTrue(fullDeckCount(OTHER_PLAYER, supplyCards[i], &test), NO_CARD,
+		assertTrue(NO_CARD, fullDeckCount(OTHER_PLAYER, supplyCards[i], &test),
 		           title, &passed, &tests);
 	}
 
-	testFullDeckCountForState(&game, &test, actionCards, CURRENT_PLAYER, &passed, &tests);
+	// Test if the game state was unaltered
+	testFullDeckCountForState(&game, &test, actionCards, CURRENT_PLAYER,
+                              &passed, &tests);
+
 
 	// Test all cards with no card in hand, deck or discards
 	printf("\n# Testing %s function with card not in hand, deck or discard...\n\n", TEST_FUNCTION);
 
-
+    // Set # of cards for the players
 	game.handCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT;
 	game.handCount[OTHER_PLAYER] = SUPPLY_CARD_COUNT;
 	game.discardCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT;
@@ -150,6 +120,7 @@ int main() {
 	game.deckCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT;
 	game.deckCount[OTHER_PLAYER] = SUPPLY_CARD_COUNT;
 
+	// Fill the player's hand with cards
 	for(int i = 0; i < SUPPLY_CARD_COUNT; i++){
 
 		game.hand[CURRENT_PLAYER][i] = supplyCards[i];
@@ -162,13 +133,13 @@ int main() {
 		game.deck[OTHER_PLAYER][i] = supplyCards[i];
 	}
 
-	printHand(CURRENT_PLAYER, &game);
-
+	// Check if the card doesn't exists in the deck
 	for(int i = 0; i < SUPPLY_CARD_COUNT; i++){
 
 		int tempHandPos = 0;
 		int tempCard = 0;
 
+		// Set card specific test condition by removing the card from the hand
 		for(int j = 0; j < SUPPLY_CARD_COUNT; j++){
 
 			if(game.hand[CURRENT_PLAYER][j] == game.hand[CURRENT_PLAYER][i]){
@@ -176,30 +147,13 @@ int main() {
 				tempHandPos = j;
 				tempCard = game.hand[CURRENT_PLAYER][j];
 
-				if(j == SUPPLY_CARD_COUNT - 1){
+                game.hand[CURRENT_PLAYER][j] = sea_hag;
+                game.discard[CURRENT_PLAYER][j] = sea_hag;
+                game.deck[CURRENT_PLAYER][j] = sea_hag;
 
-					game.hand[CURRENT_PLAYER][j] = game.hand[CURRENT_PLAYER][j - 1];
-					game.discard[CURRENT_PLAYER][j] = game.discard[CURRENT_PLAYER][j - 1];
-					game.deck[CURRENT_PLAYER][j] = game.deck[CURRENT_PLAYER][j - 1];
-
-					game.hand[OTHER_PLAYER][j] = game.hand[OTHER_PLAYER][j - 1];
-					game.discard[OTHER_PLAYER][j] = game.discard[OTHER_PLAYER][j - 1];
-					game.deck[OTHER_PLAYER][j] = game.deck[OTHER_PLAYER][j - 1];
-
-					printf("If - %d\n", j);
-
-				} else {
-
-					game.hand[CURRENT_PLAYER][j] = game.hand[CURRENT_PLAYER][j + 1];
-					game.discard[CURRENT_PLAYER][j] = game.discard[CURRENT_PLAYER][j + 1];
-					game.deck[CURRENT_PLAYER][j] = game.deck[CURRENT_PLAYER][j + 1];
-
-					game.hand[OTHER_PLAYER][j] = game.hand[OTHER_PLAYER][j + 1];
-					game.discard[OTHER_PLAYER][j] = game.discard[OTHER_PLAYER][j + 1];
-					game.deck[OTHER_PLAYER][j] = game.deck[OTHER_PLAYER][j + 1];
-
-					printf("Else - %d\n", j);
-				}
+                game.hand[OTHER_PLAYER][j] = sea_hag;
+                game.discard[OTHER_PLAYER][j] = sea_hag;
+                game.deck[OTHER_PLAYER][j] = sea_hag;
 			}
 		}
 
@@ -208,8 +162,6 @@ int main() {
 		char name[MAX_STRING_LENGTH];
 		cardNumToName(supplyCards[i], name);
 
-		printHand(CURRENT_PLAYER, &game);
-
 		memcpy(&test, &game, sizeof(struct gameState));
 
 		snprintf(title, sizeof(title), "Count of %s card in player's deck", name);
@@ -217,11 +169,13 @@ int main() {
 		assertTrue(NO_CARD, fullDeckCount(CURRENT_PLAYER, supplyCards[i], &test),
 		           title, &passed, &tests);
 
-		snprintf(title, sizeof(title), "Count of %s card in other player's deck", name);
+		snprintf(title, sizeof(title), "Count of %s card in other player's deck",
+                 name);
 
 		assertTrue(NO_CARD, fullDeckCount(OTHER_PLAYER, supplyCards[i], &test),
 		           title, &passed, &tests);
 
+		// Put the removed card back into the player's hand before starting the next test
 		game.hand[CURRENT_PLAYER][tempHandPos] = tempCard;
 		game.discard[CURRENT_PLAYER][tempHandPos] = tempCard;
 		game.deck[CURRENT_PLAYER][tempHandPos] = tempCard;
@@ -229,156 +183,111 @@ int main() {
 		game.hand[OTHER_PLAYER][tempHandPos] = tempCard;
 		game.discard[OTHER_PLAYER][tempHandPos] = tempCard;
 		game.deck[OTHER_PLAYER][tempHandPos] = tempCard;
+
+        memcpy(&test, &game, sizeof(struct gameState));
 	}
 
-
-	/*
-	 * No card in hand, deck or discard
-	 * Card not in hand;
-	 * Card in only in hand
-	 * Card in only in deck
-	 * Card in only in discard
-	 * Card in hand, deck and discard
-	 * Multiple cards in hand, deck and discard
-	 */
+    // Test if the game state was unaltered
+    testFullDeckCountForState(&game, &test, actionCards, CURRENT_PLAYER, &passed,
+                              &tests);
 
 
+    // Test all cards with card in hand, deck and discards
+    printf("\n# Testing %s function with card in hand, deck and discard...\n\n", TEST_FUNCTION);
+
+    // Test for each card in the deck
+    for(int i = 0; i < SUPPLY_CARD_COUNT; i++){
+
+        char title[100];
+
+        char name[MAX_STRING_LENGTH];
+        cardNumToName(supplyCards[i], name);
+
+        snprintf(title, sizeof(title), "Count of %s card in player's deck", name);
+
+        assertTrue(CARD_IN_ALL, fullDeckCount(CURRENT_PLAYER, supplyCards[i], &test),
+                   title, &passed, &tests);
+
+        snprintf(title, sizeof(title), "Count of %s card in other player's deck",
+                 name);
+
+        assertTrue(CARD_IN_ALL, fullDeckCount(OTHER_PLAYER, supplyCards[i], &test),
+                   title, &passed, &tests);
+    }
+
+    // Test if the game state was unaltered
+    testFullDeckCountForState(&game, &test, actionCards, CURRENT_PLAYER,
+                              &passed, &tests);
 
 
-	/*
-	printf("\n# Testing %s function with score in deck, hand and discard...\n\n", TEST_FUNCTION);
+    // Test all cards with multiple cards in hand, deck and discards
+    printf("\n# Testing %s function with multiple cards in hand, deck and discard...\n\n", TEST_FUNCTION);
 
-	score = 0;
+    // Set # of cards for the players
+    game.handCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT * 2;
+    game.handCount[OTHER_PLAYER] = SUPPLY_CARD_COUNT * 2;
+    game.discardCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT * 2;
+    game.discardCount[OTHER_PLAYER] = SUPPLY_CARD_COUNT * 2;
+    game.deckCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT * 2;
+    game.deckCount[OTHER_PLAYER] = SUPPLY_CARD_COUNT * 2;
 
-	game.handCount[CURRENT_PLAYER] = 6;
-	game.hand[CURRENT_PLAYER][0] = curse;
-	game.hand[CURRENT_PLAYER][1] = estate;
-	game.hand[CURRENT_PLAYER][2] = duchy;
-	game.hand[CURRENT_PLAYER][3] = province;
-	game.hand[CURRENT_PLAYER][4] = great_hall;
-	game.hand[CURRENT_PLAYER][5] = gardens;
+    // Fill the player's decks with 2 cards each from the supply pile
+    for(int i = 0; i < (SUPPLY_CARD_COUNT * 2); i++){
 
-	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
-	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
+        if(i < SUPPLY_CARD_COUNT){
 
-	game.discardCount[CURRENT_PLAYER] = 1;
-	game.discard[CURRENT_PLAYER][0] = estate;
+            game.hand[CURRENT_PLAYER][i] = supplyCards[i];
+            game.hand[OTHER_PLAYER][i] = supplyCards[i];
 
-	score += ESTATE;
+            game.discard[CURRENT_PLAYER][i] = supplyCards[i];
+            game.discard[OTHER_PLAYER][i] = supplyCards[i];
 
-	game.deckCount[CURRENT_PLAYER] = 6;
-	game.deck[CURRENT_PLAYER][0] = curse;
-	game.deck[CURRENT_PLAYER][1] = estate;
-	game.deck[CURRENT_PLAYER][2] = duchy;
-	game.deck[CURRENT_PLAYER][3] = province;
-	game.deck[CURRENT_PLAYER][4] = great_hall;
-	game.deck[CURRENT_PLAYER][5] = gardens;
+            game.deck[CURRENT_PLAYER][i] = supplyCards[i];
+            game.deck[OTHER_PLAYER][i] = supplyCards[i];
 
-	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
-	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
+        } else {
 
-	memcpy(&test, &game, sizeof(struct gameState));
+            game.hand[CURRENT_PLAYER][i] = supplyCards[i - SUPPLY_CARD_COUNT];
+            game.hand[OTHER_PLAYER][i] = supplyCards[i - SUPPLY_CARD_COUNT];
 
-	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
-	                  &tests);
+            game.discard[CURRENT_PLAYER][i] = supplyCards[i - SUPPLY_CARD_COUNT];
+            game.discard[OTHER_PLAYER][i] = supplyCards[i - SUPPLY_CARD_COUNT];
 
-	printf("\n# Testing %s function with score cards in hand only...\n\n", TEST_FUNCTION);
+            game.deck[CURRENT_PLAYER][i] = supplyCards[i - SUPPLY_CARD_COUNT];
+            game.deck[OTHER_PLAYER][i] = supplyCards[i - SUPPLY_CARD_COUNT];
+        }
+    }
 
-	score = 0;
+    memcpy(&test, &game, sizeof(struct gameState));
 
-	game.handCount[CURRENT_PLAYER] = 6;
-	game.hand[CURRENT_PLAYER][0] = curse;
-	game.hand[CURRENT_PLAYER][1] = estate;
-	game.hand[CURRENT_PLAYER][2] = duchy;
-	game.hand[CURRENT_PLAYER][3] = province;
-	game.hand[CURRENT_PLAYER][4] = great_hall;
-	game.hand[CURRENT_PLAYER][5] = gardens;
+    // Test for each card in the deck
+    for(int i = 0; i < SUPPLY_CARD_COUNT; i++){
 
-	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
-	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
+        char title[100];
 
-	game.discardCount[CURRENT_PLAYER] = 1;
-	game.discard[CURRENT_PLAYER][0] = smithy;
+        char name[MAX_STRING_LENGTH];
+        cardNumToName(supplyCards[i], name);
 
-	game.deckCount[CURRENT_PLAYER] = 6;
-	game.deck[CURRENT_PLAYER][0] = adventurer;
-	game.deck[CURRENT_PLAYER][1] = minion;
-	game.deck[CURRENT_PLAYER][2] = feast;
-	game.deck[CURRENT_PLAYER][3] = embargo;
-	game.deck[CURRENT_PLAYER][4] = outpost;
-	game.deck[CURRENT_PLAYER][5] = village;
+        snprintf(title, sizeof(title), "Count of %s card in player's deck",
+                 name);
 
-	memcpy(&test, &game, sizeof(struct gameState));
+        assertTrue(CARD_IN_ALL * 2, fullDeckCount(CURRENT_PLAYER, supplyCards[i], &test),
+                   title, &passed, &tests);
 
-	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
-	                  &tests);
+        snprintf(title, sizeof(title), "Count of %s card in other player's deck",
+                 name);
 
-	printf("\n# Testing %s function with score cards in deck only...\n\n", TEST_FUNCTION);
+        assertTrue(CARD_IN_ALL * 2, fullDeckCount(OTHER_PLAYER, supplyCards[i], &test),
+                   title, &passed, &tests);
+    }
 
-	score = 0;
+    // Test if the game state was unaltered
+    testFullDeckCountForState(&game, &test, actionCards, CURRENT_PLAYER,
+                              &passed, &tests);
 
-	game.handCount[CURRENT_PLAYER] = 6;
-	game.hand[CURRENT_PLAYER][0] = adventurer;
-	game.hand[CURRENT_PLAYER][1] = minion;
-	game.hand[CURRENT_PLAYER][2] = feast;
-	game.hand[CURRENT_PLAYER][3] = embargo;
-	game.hand[CURRENT_PLAYER][4] = outpost;
-	game.hand[CURRENT_PLAYER][5] = village;
-
-	game.discardCount[CURRENT_PLAYER] = 1;
-	game.discard[CURRENT_PLAYER][0] = smithy;
-
-	game.deckCount[CURRENT_PLAYER] = 6;
-	game.deck[CURRENT_PLAYER][0] = curse;
-	game.deck[CURRENT_PLAYER][1] = estate;
-	game.deck[CURRENT_PLAYER][2] = duchy;
-	game.deck[CURRENT_PLAYER][3] = province;
-	game.deck[CURRENT_PLAYER][4] = great_hall;
-	game.deck[CURRENT_PLAYER][5] = gardens;
-
-	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
-	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
-
-	memcpy(&test, &game, sizeof(struct gameState));
-
-	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
-	                  &tests);
-
-	printf("\n# Testing %s function with score cards in discard only...\n\n", TEST_FUNCTION);
-
-	score = 0;
-
-	game.handCount[CURRENT_PLAYER] = 6;
-	game.hand[CURRENT_PLAYER][0] = minion;
-	game.hand[CURRENT_PLAYER][1] = minion;
-	game.hand[CURRENT_PLAYER][2] = feast;
-	game.hand[CURRENT_PLAYER][3] = embargo;
-	game.hand[CURRENT_PLAYER][4] = outpost;
-	game.hand[CURRENT_PLAYER][5] = village;
-
-	game.discardCount[CURRENT_PLAYER] = 1;
-	game.discard[CURRENT_PLAYER][0] = province;
-
-	game.deckCount[CURRENT_PLAYER] = 6;
-	game.deck[CURRENT_PLAYER][0] = smithy;
-	game.deck[CURRENT_PLAYER][1] = adventurer;
-	game.deck[CURRENT_PLAYER][2] = smithy;
-	game.deck[CURRENT_PLAYER][3] = village;
-	game.deck[CURRENT_PLAYER][4] = outpost;
-	game.deck[CURRENT_PLAYER][5] = feast;
-
-	score += PROVINCE;
-
-	memcpy(&test, &game, sizeof(struct gameState));
-
-	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
-	                  &tests);
-
-	*/
 
 	// Print the test summary
 	printTestSummary(passed, tests);
-
 }
 
 

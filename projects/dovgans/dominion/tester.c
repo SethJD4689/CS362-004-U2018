@@ -70,14 +70,14 @@ void compareCards(int game[][MAX_DECK], int gameCount, int test[][MAX_DECK],
 
 		if (EQ(game[player][i], test[player][i])) {
 
-			printf("PASSED: %s Card %d - %s, expected = %s\n", name, i,
+			printf("- PASSED: %s Card %d - %s, expected = %s\n", name, i,
 				   card2, card1);
 
 			(*passed)++;
 
 		} else {
 
-			printf("FAILED: %s Card %d - %s, expected = %s\n", name, i,
+			printf("- FAILED: %s Card %d - %s, expected = %s\n", name, i,
 				   card2, card1);
 		}
 

@@ -16,11 +16,11 @@
 
 #define CARD "Salvager"
 #define TYPE "Card"
-#define NO_TRASH_OPTION 0   // No Card is Trashed Option
-#define HAND_POS 1          // Position the Salavager Card is in the hand
+#define NO_TRASH_OPTION -1   // No Card is Trashed Option
 #define CARDS_PLAYED 1      // Salavager card played
 #define CARDS_TRASHED 1     // Number of Card trashed using Salvager card
 #define EXTRA_BUY 1         // Extra buys granted by Salvager card
+#define HAND_POS 0
 
 /*******************************************************************************
 **  Function: getScoreForCard
@@ -128,6 +128,10 @@ int main() {
     }
 
     printf("\n* Testing Current Player Playing %s card NOT using trash option...\n\n", CARD);
+
+    // Setup test condition
+    game.handCount[CURRENT_PLAYER] = 1;
+    game.hand[CURRENT_PLAYER][HAND_POS] = salvager;
 
     // Copy a test instance
     memcpy(&test, &game, sizeof(struct gameState));

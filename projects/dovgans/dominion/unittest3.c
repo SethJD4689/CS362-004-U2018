@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define FUNCTION "scoreFor"
+#define TYPE "Function"
 #define NO_SCORE 0
 #define CURSE (-1)
 #define ESTATE 1
@@ -23,8 +25,8 @@
 #define GREAT_HALL 1
 
 /*******************************************************************************
-**  Function:
-**  Description:
+**  Function: testScoreForState
+**  Description: tests the player's score and for changes in the game state
 *******************************************************************************/
 void testScoreForState(struct gameState *game, struct gameState *test,
 					   int actionCards[], int player, int score, int *passed,
@@ -50,8 +52,8 @@ void testScoreForState(struct gameState *game, struct gameState *test,
 }
 
 /*******************************************************************************
-**  Function:
-**  Description:
+**  Function: main
+**  Description: tests the scoreFor function
 *******************************************************************************/
 int main() {
 
@@ -64,13 +66,15 @@ int main() {
 	int passed = 0;
 	int score;
 
-	// Initialize test game
+    // Initialize the game instance for the test
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
 
-	printTestHeader(TEST_TYPE, TEST_FUNCTION);
+    // Print Test Header
+	printTestHeader(TYPE, FUNCTION);
 
 	printf("\n# Testing %s function with no hand, deck or discard...\n\n", TEST_FUNCTION);
 
+	// Set test conditions
 	game.handCount[CURRENT_PLAYER] = 0;
 	game.discardCount[CURRENT_PLAYER] = 0;
 	game.deckCount[CURRENT_PLAYER] = 0;
@@ -83,8 +87,9 @@ int main() {
 
 	printf("\n# Testing %s function with score in deck, hand and discard...\n\n", TEST_FUNCTION);
 
-	score = 0;
+	score = 0; // reset the player's test score
 
+	// Add test values in player's hand
 	game.handCount[CURRENT_PLAYER] = 6;
 	game.hand[CURRENT_PLAYER][0] = curse;
 	game.hand[CURRENT_PLAYER][1] = estate;
@@ -96,11 +101,13 @@ int main() {
 	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
 			+ fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
 
+    // Add test values in player's discard
 	game.discardCount[CURRENT_PLAYER] = 1;
 	game.discard[CURRENT_PLAYER][0] = estate;
 
 	score += ESTATE;
 
+    // Add test values in player's deck
 	game.deckCount[CURRENT_PLAYER] = 6;
 	game.deck[CURRENT_PLAYER][0] = curse;
 	game.deck[CURRENT_PLAYER][1] = estate;
@@ -114,13 +121,15 @@ int main() {
 
 	memcpy(&test, &game, sizeof(struct gameState));
 
+	// Test the score and the game state change
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 
 	printf("\n# Testing %s function with score cards in hand only...\n\n", TEST_FUNCTION);
 
-	score = 0;
+	score = 0; // reset the player's test score
 
+    // Add test values in player's hand
 	game.handCount[CURRENT_PLAYER] = 6;
 	game.hand[CURRENT_PLAYER][0] = curse;
 	game.hand[CURRENT_PLAYER][1] = estate;
@@ -132,9 +141,11 @@ int main() {
 	score += CURSE + ESTATE + DUCHY + PROVINCE + GREAT_HALL
 	         + fullDeckCount(CURRENT_PLAYER, 0, &game) / 10;
 
+	// Set non-score cards in discard
 	game.discardCount[CURRENT_PLAYER] = 1;
 	game.discard[CURRENT_PLAYER][0] = smithy;
 
+    // Set non-score cards in deck
 	game.deckCount[CURRENT_PLAYER] = 6;
 	game.deck[CURRENT_PLAYER][0] = adventurer;
 	game.deck[CURRENT_PLAYER][1] = minion;
@@ -145,13 +156,15 @@ int main() {
 
 	memcpy(&test, &game, sizeof(struct gameState));
 
+    // Test the score and the game state change
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 
 	printf("\n# Testing %s function with score cards in deck only...\n\n", TEST_FUNCTION);
 
-	score = 0;
+	score = 0; // reset the player's test score
 
+    // Set non-score cards in hand
 	game.handCount[CURRENT_PLAYER] = 6;
 	game.hand[CURRENT_PLAYER][0] = adventurer;
 	game.hand[CURRENT_PLAYER][1] = minion;
@@ -160,9 +173,11 @@ int main() {
 	game.hand[CURRENT_PLAYER][4] = outpost;
 	game.hand[CURRENT_PLAYER][5] = village;
 
+    // Set non-score cards in discard
 	game.discardCount[CURRENT_PLAYER] = 1;
 	game.discard[CURRENT_PLAYER][0] = smithy;
 
+    // Set score cards in deck
 	game.deckCount[CURRENT_PLAYER] = 6;
 	game.deck[CURRENT_PLAYER][0] = curse;
 	game.deck[CURRENT_PLAYER][1] = estate;
@@ -176,13 +191,15 @@ int main() {
 
 	memcpy(&test, &game, sizeof(struct gameState));
 
+    // Test the score and the game state change
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 
 	printf("\n# Testing %s function with score cards in discard only...\n\n", TEST_FUNCTION);
 
-	score = 0;
+	score = 0; // reset the player's test score
 
+    // Set non-score cards in hand
 	game.handCount[CURRENT_PLAYER] = 6;
 	game.hand[CURRENT_PLAYER][0] = minion;
 	game.hand[CURRENT_PLAYER][1] = minion;
@@ -191,9 +208,13 @@ int main() {
 	game.hand[CURRENT_PLAYER][4] = outpost;
 	game.hand[CURRENT_PLAYER][5] = village;
 
+    // Set score cards in discard
 	game.discardCount[CURRENT_PLAYER] = 1;
 	game.discard[CURRENT_PLAYER][0] = province;
 
+    score += PROVINCE;
+
+    // Set non-score cards in deck
 	game.deckCount[CURRENT_PLAYER] = 6;
 	game.deck[CURRENT_PLAYER][0] = smithy;
 	game.deck[CURRENT_PLAYER][1] = adventurer;
@@ -202,10 +223,9 @@ int main() {
 	game.deck[CURRENT_PLAYER][4] = outpost;
 	game.deck[CURRENT_PLAYER][5] = feast;
 
-	score += PROVINCE;
-
 	memcpy(&test, &game, sizeof(struct gameState));
 
+    // Test the score and the game state change
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 

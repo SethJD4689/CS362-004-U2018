@@ -441,7 +441,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->deckCount[player]; i++)
+  for (i = 0; i < state->discardCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -718,13 +718,13 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
     const int CARDS_TO_DRAW = 3;
 
     // Draw three cards and add to the players hand.
-    for (int i = 0; i < CARDS_TO_DRAW; i++) {
+    for (int i = 0; i <= CARDS_TO_DRAW; i++) {
 
         drawCard(currentPlayer, state);
     }
 
     // Discard card
-    discardCard(handPos, currentPlayer, state, 0);
+    discardCard(handPos, currentPlayer, state, 1);
 
     return 0;
 }
@@ -758,7 +758,7 @@ int salvagerCardEffect(struct gameState *state, const int currentPlayer,
         state->coins = state->coins + getCost(handCard(choice1, state));
 
         // Trash the Card
-        discardCard(choice1, currentPlayer, state, 1);
+        discardCard(handPos, currentPlayer, state, 1);
     }
 
     // Discard card
@@ -804,8 +804,8 @@ int stewardCardEffect(struct gameState *state, const int currentPlayer,
     // Trash two cards in the players hand if the player chooses this option.
     } else {
 
-        discardCard(choice2, currentPlayer, state, 0);
-        discardCard(choice3, currentPlayer, state, 0);
+        discardCard(choice2, currentPlayer, state, 1);
+        discardCard(choice3, currentPlayer, state, 1);
     }
 
     // Discard card

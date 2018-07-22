@@ -173,7 +173,8 @@ int main() {
 
 	printf("- Coin Update\n");
 	updateCoins(CURRENT_PLAYER, &test, LOWER_LIMIT_BONUS);
-	assertTrue(test.coins, game.coins + LOWER_LIMIT_BONUS, "Coins in Hand", &passed, &tests);
+	assertTrue(test.coins, game.coins + LOWER_LIMIT_BONUS, "Coins in Hand",
+               &passed, &tests);
 
     printf("\n- Current Player Game State\n");
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
@@ -200,7 +201,8 @@ int main() {
 
     printf("- Coin Update\n");
     updateCoins(CURRENT_PLAYER, &test, UPPER_LIMIT_BONUS);
-    assertTrue(test.coins, game.coins + UPPER_LIMIT_BONUS, "Coins in Hand", &passed, &tests);
+    assertTrue(test.coins, game.coins + UPPER_LIMIT_BONUS, "Coins in Hand",
+               &passed, &tests);
 
     printf("\n- Current Player Game State\n");
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
