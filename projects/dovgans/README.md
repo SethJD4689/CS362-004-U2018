@@ -7,16 +7,17 @@ Adventurer Card Effect
 -	A condition statement needs to be included with the results of drawCard. If no card is drawn, the player’s hand count still gets decremented creating an endless loop and making the player’s hand count below zero.
 -	The adventurer card is never discarded. A discardCard function call should be included in the in this function.
 
-Salvager
+Salvager Card Effect
 
 -	Trash Card option will not let the player trash the first card in their hand. A condition statement should be included making choice1 >= 0 to trash a card. 
 -	The trashed card option is trashing the players played card versus the card they want to trash. In the trash choice conditional statement, the discard function needs to be called with choice1 and not handPos.
 -	In the event the player doesn’t have any cards to trash, the game state gets altered unexpectedly.
 
-Smithy
+Smithy Card Effect
+
 -	Calling smithy card effect is drawing 4 cards instead of three. The conditional statement needs to be changed to < 3 versus <= 3.
 -	The Smithy card is not being placed in the played pile of cards. This is because the card is being trashed instead being placed in the played pile. The discard function call should have a 0 in place of a 1 so the card is played and not trashed.
 
-scoreFor
+scoreFor Function
 
 -	In the scoreFor function, the loop uses discardCount for the conditional termination versus deckCount.
