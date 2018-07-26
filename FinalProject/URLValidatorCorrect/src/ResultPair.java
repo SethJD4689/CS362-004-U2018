@@ -29,4 +29,12 @@
          this.item = item;
          this.valid = valid;  //Weather the individual part of url is valid.
       }
+
+      public String getItem(){
+          return item;
+      }
+
+      public boolean getValid(){
+          return valid;
+      }
    }

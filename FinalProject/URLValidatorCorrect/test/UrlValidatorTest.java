@@ -25,14 +25,15 @@ import junit.framework.TestCase;
 public class UrlValidatorTest extends TestCase {
 
    private final boolean printStatus = false;
-   private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
+   private final boolean printIndex = true;//print index that indicates current scheme,host,port,path, query test were using.
 
    public UrlValidatorTest(String testName) {
       super(testName);
    }
 
    @Override
-protected void setUp() {
+   protected void setUp() {
+
       for (int index = 0; index < testPartsIndex.length - 1; index++) {
          testPartsIndex[index] = 0;
       }
@@ -50,6 +51,7 @@ protected void setUp() {
    }
 
    public void testIsValidScheme() {
+
       if (printStatus) {
          System.out.print("\n testIsValidScheme() ");
       }
@@ -81,6 +83,10 @@ protected void setUp() {
     * @param testObjects Used to create a url.
     */
    public void testIsValid(Object[] testObjects, long allowAllSchemes) {
+
+      int count = 0;
+      int trueCount = 0;
+      int falseCount = 0;
 	      UrlValidator urlVal = new UrlValidator(null, null, allowAllSchemes);
 	      //UrlValidator urlVal = new UrlValidator(null, allowAllSchemes);
       assertTrue(urlVal.isValid("http://www.google.com"));
@@ -100,13 +106,31 @@ protected void setUp() {
             expected &= part[index].valid;
          }
          String url = testBuffer.toString();
+         count ++;
          boolean result = urlVal.isValid(url);
-         if(result == true)
-        	 System.out.println(url);
+         if(result == true) {
+
+            /*
+            for(int i = 0; i < testPartsIndex.length; i++){
+               System.out.print(testPartsIndex[i] + " ");
+            }
+            //System.out.println(url);
+            trueCount++;*/
+         } else {
+
+            /*
+            for(int i = 0; i < testPartsIndex.length; i++){
+               System.out.print(testPartsIndex[i] + " ");
+            }
+            //System.out.println(url);
+            falseCount++;*/
+         }
+
+         System.out.println();
          assertEquals(url, expected, result);
          if (printStatus) {
             if (printIndex) {
-               System.out.print(testPartsIndextoString());
+               //System.out.print(testPartsIndextoString());
             } else {
                if (result == expected) {
                   System.out.print('.');
@@ -124,6 +148,10 @@ protected void setUp() {
       if (printStatus) {
          System.out.println();
       }
+
+      System.out.println("Total Tests: " + count);
+      System.out.println("PASSSED: " + trueCount);
+      System.out.println("FAILED: " + falseCount);
    }
 
    public void testValidator202() {
@@ -139,27 +167,68 @@ protected void setUp() {
    }
 
    static boolean incrementTestPartsIndex(int[] testPartsIndex, Object[] testParts) {
+
+
       boolean carry = true;  //add 1 to lowest order part.
+
       boolean maxIndex = true;
+
+      // Loop through the testParts index backwards
       for (int testPartsIndexIndex = testPartsIndex.length - 1; testPartsIndexIndex >= 0; --testPartsIndexIndex) {
-         int index = testPartsIndex[testPartsIndexIndex];
-         ResultPair[] part = (ResultPair[]) testParts[testPartsIndexIndex];
+
+         System.out.println("for(TPII = " + testPartsIndexIndex + ")");
+
+         int index = testPartsIndex[testPartsIndexIndex];                        // Get the value at last index
+
+         System.out.println("\tindex = TPII[" + testPartsIndexIndex + "] = " + index);
+         ResultPair[] part = (ResultPair[]) testParts[testPartsIndexIndex];      // Get the results pair at the last index
+
          if (carry) {
+
+            System.out.println("\tif (carry = " + carry + ")");
+
             if (index < part.length - 1) {
+
+               System.out.println("\t\tif (" + index + " < " + (part.length - 1) + ")");
                index++;
-               testPartsIndex[testPartsIndexIndex] = index;
+               System.out.println("\t\t\tindex = " + index);                               // Increment the last value if its not at the end index
+               testPartsIndex[testPartsIndexIndex] = index;                      // Assign index to the
+               System.out.println("\t\t\tTPI[" + testPartsIndexIndex + "] = " +  index);
                carry = false;
+
             } else {
+
+               System.out.println("\t\telse (" + index + " >= " + (part.length - 1));
+
                testPartsIndex[testPartsIndexIndex] = 0;
                carry = true;
             }
+         } else {
+            System.out.println("\telse carry = " + carry);
          }
+
          maxIndex &= (index == (part.length - 1));
+
+         System.out.println("maxi &= (" + index + " == (" + (part.length - 1) + "))");
+
+         System.out.println();
       }
 
 
+      System.out.println("maxI = " + maxIndex);
+      System.out.println("return = " + (!maxIndex));
+
+      for(int i = 0; i < testPartsIndex.length; i++){
+
+         System.out.print(testPartsIndex[i] + " ");
+      }
+
+      System.out.println();
+
       return (!maxIndex);
    }
+
+
 
    private String testPartsIndextoString() {
        StringBuilder carryMsg = new StringBuilder("{");
@@ -199,7 +268,7 @@ protected void setUp() {
     * all of which must be individually valid for the entire URL to be considered
     * valid.
     */
-   ResultPair[] testUrlScheme = {new ResultPair("http://", true),
+   ResultPair[] testUrlScheme = {new ResultPair("", true),
                                new ResultPair("ftp://", true),
                                new ResultPair("h3t://", true),
                                new ResultPair("3ht://", false),
@@ -248,6 +317,7 @@ protected void setUp() {
                           new ResultPair("/test1//file", false)
    };
    //Test allow2slash, noFragment
+   /*
    ResultPair[] testUrlPathOptions = {new ResultPair("/test1", true),
                                     new ResultPair("/t123", true),
                                     new ResultPair("/$23", true),
@@ -263,7 +333,7 @@ protected void setUp() {
                                     new ResultPair("/..//file", false),
                                     new ResultPair("/test1//file", true),
                                     new ResultPair("/#/file", false)
-   };
+   };*/
 
    ResultPair[] testUrlQuery = {new ResultPair("?action=view", true),
                               new ResultPair("?action=edit&mode=up", true),
@@ -271,7 +341,7 @@ protected void setUp() {
    };
 
    Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
-   Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
+   //Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
    int[] testPartsIndex = {0, 0, 0, 0, 0};
 
    //---------------- Test data for individual url parts ----------------
