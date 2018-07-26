@@ -66,4 +66,6 @@ void printTestSummary(int passed, int tests);
 
 void printTestHeader(char type[], char name[]);
 
+void generateRandomGameState();
+
 #endif //_TESTER_H

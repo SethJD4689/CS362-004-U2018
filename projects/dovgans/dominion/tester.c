@@ -9,6 +9,8 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
@@ -497,3 +499,38 @@ void printTestSummary(int passed, int tests){
 	printf("\n>>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, "
 		   "FAILED = %d\n\n", tests, passed, (tests - passed));
 }
+
+void generateRandomGameState(struct gameState *game, struct gameState *test){
+
+	int numberOfPlayers = (rand() % MAX_PLAYERS) + 1; // 1 - 4 players
+
+	int kingdomCards[] = {adventurer, council_room, feast, gardens, mine,
+					      remodel, smithy, village, baron, great_hall, minion,
+					      steward, tribute, ambassador, cutpurse, embargo,
+					      outpost, salvager, sea_hag, treasure_map};
+	
+
+}
+
+/*
+struct gameState {
+	int numPlayers; //number of players
+	int supplyCount[treasure_map+1];  //this is the amount of a specific type of card given a specific number.
+	int embargoTokens[treasure_map+1];
+	int outpostPlayed;
+	int outpostTurn;
+	int whoseTurn;
+	int phase;*/
+	//int numActions; /* Starts at 1 each turn */
+	//int coins; /* Use as you see fit! */
+	//int numBuys; /* Starts at 1 each turn */
+	//int hand[MAX_PLAYERS][MAX_HAND];
+	//int handCount[MAX_PLAYERS];
+	//int deck[MAX_PLAYERS][MAX_DECK];
+	//int deckCount[MAX_PLAYERS];
+	//int discard[MAX_PLAYERS][MAX_DECK];
+	//int discardCount[MAX_PLAYERS];
+	//int playedCards[MAX_DECK];
+	//int playedCardCount;
+//};
+

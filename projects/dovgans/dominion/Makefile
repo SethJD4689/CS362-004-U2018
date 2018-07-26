@@ -51,6 +51,15 @@ unittest3: unittest3.c dominion.o rngs.o interface.o tester.o
 unittest4: unittest4.c dominion.o rngs.o interface.o tester.o
 	gcc -o unittest4 -g  unittest4.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 
+randomtestcard1: randomtestcard1.c dominion.o rngs.o interface.o tester.o
+	gcc -o randomtestcard1 -g  randomtestcard1.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+
+randomtestcard2: randomtestcard2.c dominion.o rngs.o interface.o tester.o
+	gcc -o randomtestcard2 -g  randomtestcard2.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+
+randomtestadventurer: randomtestadventurer.c dominion.o rngs.o interface.o tester.o
+	gcc -o randomtestadventurer -g  randomtestadventurer.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+
 unittestresults: cardtest1.c cardtest2.c cardtest3.c cardtest4.c unittest1.c unittest2.c unittest3.c unittest4.c dominion.o rngs.o interface.o tester.o
 
 	echo "\n###--------------------------------------------------------------------------###" > unittestresults.out
