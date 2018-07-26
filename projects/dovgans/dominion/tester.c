@@ -18,6 +18,10 @@
 #define EQ(A, B) ((A) == (B))
 #define NO_CHANGE 0
 #define NUM_PLAYERS 2
+#define MAX_PLAYERS 4
+#define MIN_PLAYERS 2
+#define SEED 100
+#define NUM_A_CARDS 20
 
 /*******************************************************************************
 **  Function: assertTrue
@@ -500,17 +504,99 @@ void printTestSummary(int passed, int tests){
 		   "FAILED = %d\n\n", tests, passed, (tests - passed));
 }
 
-void generateRandomGameState(struct gameState *game, struct gameState *test){
+int* generateRandomActionCards(){
 
-	int numberOfPlayers = (rand() % MAX_PLAYERS) + 1; // 1 - 4 players
+	int actionCards[NUM_A_CARDS] = {adventurer, council_room, feast, gardens, mine,
+						 remodel, smithy, village, baron, great_hall, minion,
+						 steward, tribute, ambassador, cutpurse, embargo,
+						 outpost, salvager, sea_hag, treasure_map};
 
-	int kingdomCards[] = {adventurer, council_room, feast, gardens, mine,
-					      remodel, smithy, village, baron, great_hall, minion,
-					      steward, tribute, ambassador, cutpurse, embargo,
-					      outpost, salvager, sea_hag, treasure_map};
-	
+	int* cards = malloc(10 * sizeof(int));
+
+	for(int i = 0; i < NUM_K_CARDS; i++){
+		cards[i] = actionCards[rand() % NUM_A_CARDS];
+	}
+
+	return cards;
+}
+
+void generateRandomGameState(struct gameState *game){
+
+	int numberOfPlayers = rand() % (MAX_PLAYERS - MIN_PLAYERS) + MIN_PLAYERS;
+	game->whoseTurn = rand() % (numberOfPlayers - 1);
+
+	printf("# of Players: %d\n", numberOfPlayers);
+    printf("Who's turn: %d\n", game->whoseTurn);
+
+	int *cards = generateRandomActionCards();
+
+	// Initialize the game instance for the test
+	initializeGame(numberOfPlayers, cards, SEED, game);
+
+    printf("Hand Count: %d\n", game->handCount[game->whoseTurn]);
 
 }
+
+
+
+/*
+int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
+				  int k8, int k9, int k10) {
+	int* k = malloc(10 * sizeof(int));
+	k[0] = k1;
+	k[1] = k2;
+	k[2] = k3;
+	k[3] = k4;
+	k[4] = k5;
+	k[5] = k6;
+	k[6] = k7;
+	k[7] = k8;
+	k[8] = k9;
+	k[9] = k10;
+	return k;
+}*/
+
+void generateRandomHand(struct gameState *game, int player, int max, int actionCards[]){
+
+	game->handCount[player] = max;
+
+	for(int i = 0; i < max; i++){
+
+		game->hand[player][i] = actionCards[rand() % max];
+	}
+}
+
+
+void generateRandomDeck(struct gameState *game, int player, int max, int actionCards[]){
+
+	game->deckCount[player] = max;
+
+	for(int i = 0; i < max; i++){
+
+		game->deck[player][i] = actionCards[rand() % max];
+	}
+}
+
+void generateRandomDiscard(struct gameState *game, int player, int max, int actionCards[]){
+
+	game->discardCount[player] = max;
+
+	for(int i = 0; i < max; i++){
+
+		game->discard[player][i] = actionCards[rand() % max];
+	}
+}
+
+void generateRandomPlayedCards(struct gameState *game, int max, int actionCards[]){
+
+	game->playedCardCount = max;
+
+	for(int i = 0; i < max; i++){
+
+		game->playedCards[i] = actionCards[rand() % max];
+	}
+}
+
 
 /*
 struct gameState {

@@ -16,6 +16,7 @@
 #define MAX_STRING_LENGTH 32
 
 
+
 #define EQ(A, B) ((A) == (B))
 
 void assertTrue(int expected, int actual, char *message, int *passed, int *tests);
@@ -67,5 +68,8 @@ void printTestSummary(int passed, int tests);
 void printTestHeader(char type[], char name[]);
 
 void generateRandomGameState();
+
+int* generateRandomActionCards(int cards[]);
+
 
 #endif //_TESTER_H
