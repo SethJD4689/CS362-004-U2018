@@ -512,30 +512,178 @@ int* generateRandomActionCards(){
 						 outpost, salvager, sea_hag, treasure_map};
 
 	int* cards = malloc(10 * sizeof(int));
+	int i = 0;
 
-	for(int i = 0; i < NUM_K_CARDS; i++){
-		cards[i] = actionCards[rand() % NUM_A_CARDS];
+	while(i < NUM_K_CARDS){
+
+		int randomCardIndex = rand() % NUM_A_CARDS;
+
+		if(actionCards[randomCardIndex] != -1){
+
+			cards[i] = actionCards[randomCardIndex];
+			actionCards[randomCardIndex] = -1;
+			i++;
+		}
 	}
 
 	return cards;
 }
 
+int getTotalCardsInSupply(struct gameState *game){
+
+	int count = 0;
+
+	for(int i = 0; i <= game->supplyCount[treasure_map]; i++){
+
+		count = count + game->supplyCount[i];
+	}
+
+	return count;
+
+}
+
 void generateRandomGameState(struct gameState *game){
 
+	int allCards[] = {curse, estate, duchy, province, copper, silver, gold,
+				      adventurer, council_room, feast, gardens, mine,
+	                  remodel, smithy, village, baron, great_hall, minion,
+	                  steward, tribute, ambassador, cutpurse, embargo,
+	                  outpost, salvager, sea_hag, treasure_map};
+
+	game = newGame();
+
+	// Generate random # of players
 	int numberOfPlayers = rand() % (MAX_PLAYERS - MIN_PLAYERS) + MIN_PLAYERS;
-	game->whoseTurn = rand() % (numberOfPlayers - 1);
 
-	printf("# of Players: %d\n", numberOfPlayers);
-    printf("Who's turn: %d\n", game->whoseTurn);
+	printf("# of players%d\n", numberOfPlayers);
 
+	// Generate random action cards
 	int *cards = generateRandomActionCards();
 
 	// Initialize the game instance for the test
 	initializeGame(numberOfPlayers, cards, SEED, game);
 
-    printf("Hand Count: %d\n", game->handCount[game->whoseTurn]);
+	// Randomly select the first player
+	game->whoseTurn = rand() % numberOfPlayers;
 
+	int deck = 0;
+
+	// Get a count for all cards in the game
+	for(int i = 0; i < 27; i++){
+
+		int supply = supplyCount(allCards[i], game);
+
+		if(supply >= 0){
+			deck += supply;
+		}
+	}
+
+	deck += numberOfPlayers * 10;   // add the cards in the players hand
+
+	int remainingDeck = deck;
+
+	// Randomly assign deck counts
+	// Randomly assign decks
+	// Randomly assign discard for selected player
+	// Randomly assign hands for selected player
+	// All must be less than deck
+
+	for(int i = 0; i < 5000; i++){
+
+		if(remainingDeck <= 0 || remainingDeck >= deck){
+			printf("Remaining Deck: %d\n", remainingDeck);
+		}
+
+		remainingDeck = rand() % (deck + 1);
+	}
+
+	// Randomly assign deck counts
+	for(int i = 0; i < numberOfPlayers; i++){
+
+		remainingDeck -= rand() % (remainingDeck + 1);
+		game->deckCount[i] = remainingDeck;
+	}
+
+	//for(int i = 0; )
+
+
+
+
+	//printf("Remaining Deck: %d\n", remainingDeck);
+
+	//game->deckCount[game->whoseTurn] = remainingDeck;
+
+	// Set the other player's deck hand and discard
+			/*
+	for(int i = 0; i < numberOfPlayers; i++){
+
+		int temp = rand() % (remainingDeck + 1);
+		game->deckCount[i] = temp;
+		remainingDeck -= temp;
+		//printf("Remaining Deck: %d\n", remainingDeck);
+
+		game->handCount[i] = 0;
+		game->discardCount[i] = 0;
+	}
+
+	int totalCardCount = 0;
+
+	for(int i = 0; i < numberOfPlayers; i++){
+
+		totalCardCount += game->deckCount[i];
+	}
+
+	if(totalCardCount <= 0 || totalCardCount < MAX_HAND){
+		printf("Total Card Count: %d\n", totalCardCount);
+	}*/
+
+	//int totalDeck =
+	/*
+	for(int i = 0; i < game->numPlayers; i++){
+
+		printf("Player %d deckCount = %d\n", i, game->deckCount[i]);
+		printf("Player %d handCount = %d\n", i, game->handCount[i]);
+		printf("Player %d discardCount = %d\n", i, game->discardCount[i]);
+	}*/
+
+
+
+	//printf("Supply Count = %d\n", getTotalCardsInSupply(game));
+
+	/*
+	game->handCount[game->whoseTurn] = rand() % game->deckCount[game->whoseTurn];
+
+	//Moved draw cards to here, only drawing at the start of a turn
+	for (int i = 0; i < game->handCount[game->whoseTurn]; i++){
+		drawCard(game->whoseTurn, game);
+	}
+
+	updateCoins(game->whoseTurn, game, 0);*/
 }
+
+
+/*
+int fullDeckCount(int player, int card, struct gameState *state) {
+	int i;
+	int count = 0;
+
+	for (i = 0; i < state->deckCount[player]; i++)
+	{
+		if (state->deck[player][i] == card) count++;
+	}
+
+	for (i = 0; i < state->handCount[player]; i++)
+	{
+		if (state->hand[player][i] == card) count++;
+	}
+
+	for (i = 0; i < state->discardCount[player]; i++)
+	{
+		if (state->discard[player][i] == card) count++;
+	}
+
+	return count;
+}*/
 
 
 
@@ -556,7 +704,8 @@ int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
 	return k;
 }*/
 
-void generateRandomHand(struct gameState *game, int player, int max, int actionCards[]){
+
+int generateRandomHand(struct gameState *game, int player, int max, const int actionCards[]){
 
 	game->handCount[player] = max;
 
@@ -567,17 +716,28 @@ void generateRandomHand(struct gameState *game, int player, int max, int actionC
 }
 
 
-void generateRandomDeck(struct gameState *game, int player, int max, int actionCards[]){
+int generateRandomDecks(struct gameState *game, int max, const int actionCards[]){
 
-	game->deckCount[player] = max;
 
-	for(int i = 0; i < max; i++){
+	int remainingDeck = max;
 
-		game->deck[player][i] = actionCards[rand() % max];
+	// Assign random
+	for(int i = 0; i < game->numPlayers; i++){
+
+		int numberOfCards = rand() % (remainingDeck + 1);
+
+		remainingDeck -= numberOfCards;
+		game->deckCount[i] = numberOfCards;
 	}
+
+	for(int i = 0; i < game->numPlayers; i++){
+
+	}
+
+	return remainingDeck;
 }
 
-void generateRandomDiscard(struct gameState *game, int player, int max, int actionCards[]){
+void generateRandomDiscards(struct gameState *game, int player, int max, const int actionCards[]){
 
 	game->discardCount[player] = max;
 

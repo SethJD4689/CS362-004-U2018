@@ -37,6 +37,7 @@ int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
 int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 		   struct gameState *state) {
 
+	printf("initializeGame\n");
   int i;
   int j;
   int it;			
@@ -441,7 +442,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -718,13 +719,13 @@ int smithyCardEffect(struct gameState *state, const int currentPlayer,
     const int CARDS_TO_DRAW = 3;
 
     // Draw three cards and add to the players hand.
-    for (int i = 0; i <= CARDS_TO_DRAW; i++) {
+    for (int i = 0; i < CARDS_TO_DRAW; i++) {
 
         drawCard(currentPlayer, state);
     }
 
     // Discard card
-    discardCard(handPos, currentPlayer, state, 1);
+    discardCard(handPos, currentPlayer, state, 0);
 
     return 0;
 }

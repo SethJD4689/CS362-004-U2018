@@ -5,8 +5,6 @@
 #ifndef _TESTER_H
 #define _TESTER_H
 
-#define TEST_FUNCTION "scoreFor"
-#define TEST_TYPE "Function"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
@@ -14,9 +12,6 @@
 #define NUM_K_CARDS 10
 #define SEED 100
 #define MAX_STRING_LENGTH 32
-
-
-
 #define EQ(A, B) ((A) == (B))
 
 void assertTrue(int expected, int actual, char *message, int *passed, int *tests);
@@ -67,9 +62,9 @@ void printTestSummary(int passed, int tests);
 
 void printTestHeader(char type[], char name[]);
 
-void generateRandomGameState();
+void generateRandomGameState(struct gameState *game);
 
-int* generateRandomActionCards(int cards[]);
+int* generateRandomActionCards();
 
 
 #endif //_TESTER_H

@@ -37,15 +37,18 @@ int main() {
 
 	int tests = 0;
 	int passed = 0;
-	int randomTests = 10;
+	int randomTests = 1;
 
 	// Print Test Header
 	printTestHeader(CARD, TYPE);
 
 	while(randomTests > 0){
 
-		generateRandomGameState(game);
+		//struct gameState game, test;
 
+		generateRandomGameState(&game);
+
+		/*
 		int selectedPlayer = game.whoseTurn;
 		int handPos = rand() % game.handCount[selectedPlayer];
 
@@ -89,7 +92,7 @@ int main() {
 		// Verify no kingdom card piles were affected
 		printf("\n* Testing Kingdom Card Piles...\n\n");
 		//testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
-
+		*/
 		randomTests--;
 	}
 
