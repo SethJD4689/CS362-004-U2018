@@ -19,9 +19,10 @@
 
 #define CARD "Smithy"
 #define TYPE "Card"
-#define NUM_OF_TESTS 10
 #define CARDS_DRAWN 3 	// Number of cards drawn by the Smithy card
 #define CARDS_PLAYED 1 	// Smithy card played
+#define NO_CARDS = 0
+#define NUM_OF_TESTS 100000
 
 
 /*******************************************************************************
@@ -37,23 +38,16 @@ int main() {
 
 	int tests = 0;
 	int passed = 0;
-	int randomTests = 1;
+	int handPos;
+	long randomTests = NUM_OF_TESTS;
 
 	// Print Test Header
 	printTestHeader(CARD, TYPE);
 
 	while(randomTests > 0){
 
-		//struct gameState game, test;
-
-		generateRandomGameState(&game);
-
-		/*
+		int *actionCards = generateRandomGameState(&game, smithy, &handPos);
 		int selectedPlayer = game.whoseTurn;
-		int handPos = rand() % game.handCount[selectedPlayer];
-
-		// Place Smithy card in hand
-		game.hand[selectedPlayer][handPos] = smithy;
 
 		// Copy a test instance
 		memcpy(&test, &game, sizeof(struct gameState));
@@ -64,18 +58,56 @@ int main() {
 		// Check the effects the Smithy card has on the game state for player.
 		printf("\n* Testing Player %d Playing %s card...\n\n", selectedPlayer, CARD);
 
-		testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
-							   (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
-							   NO_CHANGE, NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+		printf("Smithy Card Hand Position: %d\n", handPos);
+
+		int deckCount = game.deckCount[selectedPlayer];
+		int discardCount = game.discardCount[selectedPlayer];
+
+		// Calculate expected outcomes for various deck and discard counts
+		// Deck has less than the amount of cards to draw
+		if(deckCount < CARDS_DRAWN && discardCount >= CARDS_DRAWN){
+
+			testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
+								   (discardCount - CARDS_DRAWN), CARDS_PLAYED,
+								   (-discardCount), NO_CHANGE, NO_CHANGE,
+								   NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+
+		// Deck and discard have less than the amount of cards to draw
+		// but combined they both do
+		} else if(deckCount < CARDS_DRAWN && discardCount < CARDS_DRAWN
+		   && (deckCount + discardCount) >= CARDS_DRAWN){
+
+			testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
+								   (discardCount - CARDS_DRAWN), CARDS_PLAYED,
+								   (-discardCount), NO_CHANGE, NO_CHANGE,
+								   NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+
+		// Deck and discard have less than the amount of cards to draw
+		// and combined they still do not have enough
+		} else if(deckCount < CARDS_DRAWN && discardCount < CARDS_DRAWN
+				  && (deckCount + discardCount) < CARDS_DRAWN){
+
+			testCurrentPlayerState(&game, &test, selectedPlayer, ((deckCount + discardCount) - CARDS_PLAYED),
+								   (-deckCount), CARDS_PLAYED, (-discardCount),
+								   NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+								   smithy, &passed, &tests);
+
+		} else { // Deck has enough cards to draw.
+
+			testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
+								   (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE,
+								   NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+								   smithy, &passed, &tests);
+		}
 
 		// Check if the card was actually played
 		testCardPlayed(&game, &test, selectedPlayer, handPos, &passed, &tests);
 
+		// Check the effects the Smithy card has on the game state for a non current player
 		for(int i = 0; i < test.numPlayers; i++){
 
 			if(i != selectedPlayer){
 
-				// Check the effects the Smithy card has on the game state for a non current player
 				printf("\n* Testing Player %d...\n\n", i);
 				testOtherPlayerNoStateChange(&game, &test, i, &passed, &tests);
 			}
@@ -91,8 +123,8 @@ int main() {
 
 		// Verify no kingdom card piles were affected
 		printf("\n* Testing Kingdom Card Piles...\n\n");
-		//testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
-		*/
+		testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
+
 		randomTests--;
 	}
 

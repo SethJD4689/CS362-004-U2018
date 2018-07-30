@@ -37,7 +37,6 @@ int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
 int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 		   struct gameState *state) {
 
-	printf("initializeGame\n");
   int i;
   int j;
   int it;			
@@ -526,8 +525,9 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state) {
 int drawCard(int player, struct gameState *state)
 {	int count;
   int deckCounter;
+
   if (state->deckCount[player] <= 0){//Deck is empty
-    
+
     //Step 1 Shuffle the discard pile back into a deck
     int i;
     //Move discard to deck
@@ -545,12 +545,12 @@ int drawCard(int player, struct gameState *state)
     if (DEBUG){//Debug statements
       printf("Deck count now: %d\n", state->deckCount[player]);
     }
-    
+
     state->discardCount[player] = 0;
 
     //Step 2 Draw Card
     count = state->handCount[player];//Get current player's hand count
-    
+
     if (DEBUG){//Debug statements
       printf("Current hand count: %d\n", count);
     }
@@ -753,13 +753,13 @@ int salvagerCardEffect(struct gameState *state, const int currentPlayer,
     state->numBuys++;
 
     // Trash a card if the player chooses this option to gain its value
-    if(choice1){
+    if(choice1 >= 0){
 
         // Gain the value/coins equal to the trashed card
         state->coins = state->coins + getCost(handCard(choice1, state));
 
         // Trash the Card
-        discardCard(handPos, currentPlayer, state, 1);
+        discardCard(choice1, currentPlayer, state, 1);
     }
 
     // Discard card

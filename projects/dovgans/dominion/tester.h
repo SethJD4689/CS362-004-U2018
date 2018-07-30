@@ -62,7 +62,7 @@ void printTestSummary(int passed, int tests);
 
 void printTestHeader(char type[], char name[]);
 
-void generateRandomGameState(struct gameState *game);
+int* generateRandomGameState(struct gameState *game, int playedCard, int *handPos);
 
 int* generateRandomActionCards();
 
