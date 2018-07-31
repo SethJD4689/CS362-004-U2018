@@ -51,15 +51,6 @@ unittest3: unittest3.c dominion.o rngs.o interface.o tester.o
 unittest4: unittest4.c dominion.o rngs.o interface.o tester.o
 	gcc -o unittest4 -g  unittest4.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
 
-randomtestcard1: randomtestcard1.c dominion.o rngs.o interface.o tester.o
-	gcc -o randomtestcard1 -g  randomtestcard1.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
-
-randomtestcard2: randomtestcard2.c dominion.o rngs.o interface.o tester.o
-	gcc -o randomtestcard2 -g  randomtestcard2.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
-
-randomtestadventurer: randomtestadventurer.c dominion.o rngs.o interface.o tester.o
-	gcc -o randomtestadventurer -g  randomtestadventurer.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
-
 unittestresults: cardtest1.c cardtest2.c cardtest3.c cardtest4.c unittest1.c unittest2.c unittest3.c unittest4.c dominion.o rngs.o interface.o tester.o
 
 	echo "\n###--------------------------------------------------------------------------###" > unittestresults.out
@@ -116,6 +107,84 @@ unittestresults: cardtest1.c cardtest2.c cardtest3.c cardtest4.c unittest1.c uni
 	echo "###                               End of File                                ###" >> unittestresults.out
 	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
 
+randomtestcardresults: randomtestcard1.c randomtestcard2.c randomtestadventurer.c dominion.o rngs.o interface.o tester.o
+
+	echo "\n###--------------------------------------------------------------------------###" > randomunittestresults.out
+	echo "###                        Coverage Results for Tests                        ###" >> randomunittestresults.out
+	echo "###--------------------------------------------------------------------------###\n" >> randomunittestresults.out
+
+	gcov dominion.o -a -b -f >> randomunittestresults.out
+
+	echo "###--------------------------------------------------------------------------###" >> randomunittestresults.out
+	echo "###                      Results for Random Card Test 1                      ###" >> randomunittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> randomunittestresults.out
+
+	gcc -o randomtestcard1 randomtestcard1.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+	./randomtestcard1 >> randomunittestresults.out
+
+	echo "###--------------------------------------------------------------------------###" >> randomunittestresults.out
+	echo "###                      Results for Random Card Test 2                      ###" >> randomunittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> randomunittestresults.out
+
+	gcc -o randomtestcard2 randomtestcard2.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+	./randomtestcard2 >> randomunittestresults.out
+
+	echo "###--------------------------------------------------------------------------###" >> randomunittestresults.out
+	echo "###                    Results for Random Adventurer Test                    ###" >> randomunittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> randomunittestresults.out
+
+	gcc -o randomtestadventurer randomtestadventurer.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+	./randomtestadventurer >> randomunittestresults.out
+
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+	echo "###                               End of File                                ###" >> unittestresults.out
+	echo "###--------------------------------------------------------------------------###" >> unittestresults.out
+
+randomtestcard1: randomtestcard1.c dominion.o rngs.o interface.o tester.o
+
+	echo "\n###--------------------------------------------------------------------------###" > randomtestcard1.out
+	echo "###   Coverage Results for Tests" >> randomtestcard1.out
+	echo "###--------------------------------------------------------------------------###\n" >> randomtestcard1.out
+
+	gcov dominion.o -a -b -f >> randomtestcard1.out
+
+	gcc -o randomtestcard1 randomtestcard1.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+	./randomtestcard1 >> randomtestcard1.out
+
+	echo "###--------------------------------------------------------------------------###" >> randomtestcard1.out
+	echo "###   End of File" >> randomtestcard1.out
+	echo "###--------------------------------------------------------------------------###" >> randomtestcard1.out
+
+randomtestcard2: randomtestcard2.c dominion.o rngs.o interface.o tester.o
+
+	echo "\n###--------------------------------------------------------------------------###" > randomtestcard2.out
+	echo "###   Coverage Results for Tests" >> randomtestcard2.out
+	echo "###--------------------------------------------------------------------------###\n" >> randomtestcard2.out
+
+	gcov dominion.o -a -b -f >> randomtestcard2.out
+
+	gcc -o randomtestcard2 randomtestcard2.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+	./randomtestcard2 >> randomtestcard2.out
+
+	echo "###--------------------------------------------------------------------------###" >> randomtestcard2.out
+	echo "###                               End of File                                ###" >> randomtestcard2.out
+	echo "###--------------------------------------------------------------------------###" >> randomtestcard2.out
+
+randomtestadventurer: randomtestadventurer.c dominion.o rngs.o interface.o tester.o
+
+	echo "\n###--------------------------------------------------------------------------###" > randomtestadventurer.out
+	echo "###   Coverage Results for Tests" >> randomtestadventurer.out
+	echo "###--------------------------------------------------------------------------###\n" >> randomtestadventurer.out
+
+	gcov dominion.o -a -b -f >> randomtestadventurer.out
+
+	gcc -o randomtestadventurer randomtestadventurer.c dominion.o rngs.o interface.o tester.o $(CFLAGS)
+	./randomtestadventurer >> randomtestadventurer.out
+
+	echo "###--------------------------------------------------------------------------###" >> randomtestadventurer.out
+	echo "###                               End of File                                ###" >> randomtestadventurer.out
+	echo "###--------------------------------------------------------------------------###" >> randomtestadventurer.out
+
 runtests: testDrawCard 
 	./testDrawCard &> unittestresult.out
 	gcov dominion.c >> unittestresult.out
@@ -127,4 +196,4 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe randomtestadventurer randomtestcard1 randomtestcard2  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe

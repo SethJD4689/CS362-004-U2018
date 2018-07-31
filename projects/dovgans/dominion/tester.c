@@ -25,6 +25,7 @@
 #define SEED 100
 #define NUM_A_CARDS 20
 #define NUM_ALL_CARDS 27
+#define LIMIT_PRINT 0
 
 /*******************************************************************************
 **  Function: assertTrue
@@ -43,7 +44,9 @@ void assertTrue(int expected, int actual, char *message, int *passed, int *tests
 
 	if (EQ(expected, actual)) {
 
-		printf("PASSED: %s = %d, expected = %d\n", message, actual, expected);
+		if(LIMIT_PRINT){
+			printf("PASSED: %s = %d, expected = %d\n", message, actual, expected);
+		}
 		(*passed)++;
 
 	} else {
@@ -79,14 +82,16 @@ void compareCards(int game[][MAX_DECK], int gameCount, int test[][MAX_DECK],
 
 		if (EQ(game[player][i], test[player][i])) {
 
-			printf("- PASSED: %s Card %d - %s, expected = %s\n", name, i,
-				   card2, card1);
+			if(LIMIT_PRINT){
+				printf("   - PASSED: %s Card %d - %s, expected = %s\n", name, i,
+				       card2, card1);
+			}
 
 			(*passed)++;
 
 		} else {
 
-			printf("- FAILED: %s Card %d - %s, expected = %s\n", name, i,
+			printf("   - FAILED: %s Card %d - %s, expected = %s\n", name, i,
 				   card2, card1);
 		}
 
@@ -118,46 +123,57 @@ void testCurrentPlayerState(struct gameState *game, struct gameState *test,
                             int discard, int coins, int buys, int actions,
                             int score, int *passed, int *tests) {
 
+	char title[100];
+
 	// Test changes to the player's hand
+	sprintf(title, "Current Player %d - Cards in Hand", player);
 	assertTrue(game->handCount[player] + hand,
 	           test->handCount[player],
-	           "Cards in Hand", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the player's deck
+	sprintf(title, "Current Player %d - Cards in Deck", player);
 	assertTrue(game->deckCount[player] + deck,
 	           test->deckCount[player],
-	           "Cards in Deck", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the cards played
+	sprintf(title, "Current Player %d - Cards Played", player);
 	assertTrue(game->playedCardCount + played,
 	           test->playedCardCount,
-	           "Cards Played", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the discard pile
+	sprintf(title, "Current Player %d - Discard Pile", player);
 	assertTrue(game->discardCount[player] + discard,
 	           test->discardCount[player],
-	           "Discard Pile", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the coins remaining
+	sprintf(title, "Current Player %d - Coins Remaining", player);
 	assertTrue(game->coins + coins, test->coins,
-	           "Coins Remaining", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the remaining buys
+	sprintf(title, "Current Player %d - Buys Remaining", player);
 	assertTrue(game->numBuys + buys, test->numBuys,
-	           "Buys Remaining", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the remaining action cards
+	sprintf(title, "Current Player %d - Actions Remaining", player);
 	assertTrue(game->numActions + actions, test->numActions,
-	           "Actions Remaining", passed, tests);
+	           title, passed, tests);
 
 	// Test is outpost was played
+	sprintf(title, "Current Player %d - Outpost Played", player);
 	assertTrue(game->outpostPlayed, test->outpostPlayed,
-	           "Outpost Played", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the score
+	sprintf(title, "Current Player %d - Score", player);
 	assertTrue(scoreFor(player, game) + score,
 	           scoreFor(player, test),
-	           "Player Score", passed, tests);
+	           title, passed, tests);
 }
 
 /*******************************************************************************
@@ -184,36 +200,45 @@ void testCurrentPlayerStateModified(struct gameState *game, struct gameState *te
                                     int buys, int actions, int score,
                                     int *passed, int *tests) {
 
+	char title[100];
+
 	// Test changes to the player's hand
+	sprintf(title, "Current Player %d - Cards in Hand", player);
 	assertTrue(game->handCount[player] + hand,
 	           test->handCount[player],
-	           "Cards in Hand", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the cards played
+	sprintf(title, "Current Player %d - Cards Played", player);
 	assertTrue(game->playedCardCount + played,
 	           test->playedCardCount,
-	           "Cards Played", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the coins remaining
+	sprintf(title, "Current Player %d - Coins Remaining", player);
 	assertTrue(game->coins + coins, test->coins,
-	           "Coins Remaining", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the remaining buys
+	sprintf(title, "Current Player %d - Buys Remaining", player);
 	assertTrue(game->numBuys + buys, test->numBuys,
-	           "Buys Remaining", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the remaining action cards
+	sprintf(title, "Current Player %d - Actions Remaining", player);
 	assertTrue(game->numActions + actions, test->numActions,
-	           "Actions Remaining", passed, tests);
+	           title, passed, tests);
 
 	// Test is outpost was played
+	sprintf(title, "Current Player %d - Outpost Played", player);
 	assertTrue(game->outpostPlayed, test->outpostPlayed,
-	           "Outpost Played", passed, tests);
+	           title, passed, tests);
 
 	// Test changes to the score
+	sprintf(title, "Current Player %d - Score", player);
 	assertTrue(scoreFor(player, game) + score,
 	           scoreFor(player, test),
-	           "Player Score", passed, tests);
+	           title, passed, tests);
 }
 
 /*******************************************************************************
@@ -243,20 +268,22 @@ void testCardPlayed(struct gameState *game, struct gameState *test, int player,
 		if (game->hand[player][handPos]
 			== test->playedCards[test->playedCardCount - 1]) {
 
-			printf("PASSED: Card Played = %s, expected = %s\n", aName, eName);
+			if(LIMIT_PRINT){
+				printf("PASSED: Current Player %d - Card Played = %s, expected = %s\n", player, aName, eName);
+			}
 
 			(*passed)++;
 
 		} else {
 
-			printf("FAILED: Card Played = %s, expected = %s\n", aName, eName);
+			printf("FAILED: Current Player %d - Card Played = %s, expected = %s\n", player, aName, eName);
 		}
 
 		(*tests)++;
 
 	} else {
 
-		printf("FAILED: Card Played = none, expected = %s\n", eName);
+		printf("FAILED: Current Player %d - Card Played = none, expected = %s\n", player, eName);
 		(*tests)++;
 	}
 }
@@ -275,51 +302,9 @@ void testCardPlayed(struct gameState *game, struct gameState *test, int player,
 void testCurrentPlayerNoStateChange(struct gameState *game, struct gameState *test,
                                     int player, int *passed, int *tests){
 
-	// Test changes to the player's hand
-	assertTrue(game->handCount[player], test->handCount[player],
-			   "Cards in Hand", passed, tests);
-
-	// Compare each card in player's hand
-	compareCards(game->hand, game->handCount[player], test->hand,
-				 test->handCount[player], player, "Hand", passed, tests);
-
-	// Test changes to the player's deck
-	assertTrue(game->deckCount[player], test->deckCount[player],
-			   "Cards in Deck", passed, tests);
-
-	// Compare each card in player's deck
-	compareCards(game->deck, game->deckCount[player], test->deck,
-				 test->deckCount[player], player, "Deck", passed, tests);
-
-	// Test changes to the cards played
-	assertTrue(game->playedCardCount, test->playedCardCount,
-			   "Cards Played", passed, tests);
-
-	// Test changes to the discard pile
-	assertTrue(game->discardCount[player], test->discardCount[player],
-			   "Discard Pile", passed, tests);
-
-	// Compare each card in player's discard
-	compareCards(game->discard, game->discardCount[player], test->discard,
-				 test->discardCount[player], player, "Discard", passed, tests);
-
-	// Test changes to the coins remaining
-	assertTrue(game->coins, test->coins, "Coins Remaining", passed, tests);
-
-	// Test changes to the remaining buys
-	assertTrue(game->numBuys, test->numBuys, "Buys Remaining", passed, tests);
-
-	// Test changes to the remaining action cards
-	assertTrue(game->numActions, test->numActions, "Actions Remaining",
-			   passed, tests);
-
-	// Test is outpost was played
-	assertTrue(game->outpostPlayed, test->outpostPlayed,
-			   "Outpost Played", passed, tests);
-
-	// Test changes to the score
-	assertTrue(scoreFor(player, game), scoreFor(player, test), "Player Score",
-			   passed, tests);
+	testCurrentPlayerState(game, test, player, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
+	                       passed, tests);
 }
 
 /*******************************************************************************
@@ -341,37 +326,46 @@ void testOtherPlayerState(struct gameState *game, struct gameState *test,
 		                  int player, int hand, int deck, int discard,
 		                  int score, int *passed, int *tests) {
 
+	char title[100];
+
 	// Test changes to the player's hand
+	sprintf(title, "Player %d Cards in Hand", player);
 	assertTrue(game->handCount[player] + hand,
 	           test->handCount[player],
-	           "Cards in Hand", passed, tests);
+	           title, passed, tests);
 
 	// Compare each card in player's hand
+	sprintf(title, "Player %d Hand", player);
 	compareCards(game->hand, game->handCount[player], test->hand,
-				 test->handCount[player], player, "Hand", passed, tests);
+				 test->handCount[player], player, title, passed, tests);
 
 	// Test changes to the player's deck
+	sprintf(title, "Player %d Cards in Deck", player);
 	assertTrue(game->deckCount[player] + deck,
 	           test->deckCount[player],
-	           "Cards in Deck", passed, tests);
+	           title, passed, tests);
 
 	// Compare each card in player's deck
+	sprintf(title, "Player %d Deck", player);
 	compareCards(game->deck, game->deckCount[player], test->deck,
-				 test->deckCount[player], player, "Deck", passed, tests);
+				 test->deckCount[player], player, title, passed, tests);
 
 	// Test changes to the discard pile
+	sprintf(title, "Player %d Cards in Discard Pile", player);
 	assertTrue(game->discardCount[player] + discard,
 	           test->discardCount[player],
-	           "Discard Pile", passed, tests);
+	           title, passed, tests);
 
 	// Compare each card in player's discard
+	sprintf(title, "Player %d Discard", player);
 	compareCards(game->discard, game->discardCount[player], test->discard,
-				 test->discardCount[player], player, "Discard", passed, tests);
+				 test->discardCount[player], player, title, passed, tests);
 
 	// Test changes to the score
+	sprintf(title, "Player %d Score", player);
 	assertTrue(scoreFor(player, game) + score,
 	           scoreFor(player, test),
-	           "Player Score", passed, tests);
+	           title, passed, tests);
 }
 
 /*******************************************************************************
@@ -545,7 +539,19 @@ void testTreasureCardPilesNoChange(struct gameState *game, struct gameState *tes
 *******************************************************************************/
 void printTestHeader(char type[], char name[]){
 
-	printf("\n>>> Testing %s: %s >>>\n", type, name);
+	if(LIMIT_PRINT){
+		printf("###------------------------------------------------------------"
+		 "--------------###\n");
+		printf("###    Testing %s: %s \n", type, name);
+		printf("###------------------------------------------------------------"
+		 "--------------###\n");
+	} else {
+		printf("###------------------------------------------------------------"
+		 "--------------###\n");
+		printf("###   Testing %s: %s (Showing Fail Results Only)\n", type, name);
+		printf("###------------------------------------------------------------"
+		 "--------------###\n\n");
+	}
 }
 
 /*******************************************************************************
@@ -558,8 +564,12 @@ void printTestHeader(char type[], char name[]){
 *******************************************************************************/
 void printTestSummary(int passed, int tests){
 
-	printf("\n>>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, "
-		   "FAILED = %d\n\n", tests, passed, (tests - passed));
+	if(passed == tests && !LIMIT_PRINT){
+		printf("\nAll Tests Passed\n");
+	}
+
+	printf(">>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, "
+	       "FAILED = %d\n\n", tests, passed, (tests - passed));
 }
 
 
@@ -570,17 +580,17 @@ void printTestSummary(int passed, int tests){
 **
 **  return:	randomly selected action cards
 *******************************************************************************/
-int* generateRandomActionCards(){
+int* generateRandomActionCards(int playedCard){
 
 	int actionCards[NUM_A_CARDS] = {adventurer, council_room, feast, gardens, mine,
 									remodel, smithy, village, baron, great_hall, minion,
 									steward, tribute, ambassador, cutpurse, embargo,
 									outpost, salvager, sea_hag, treasure_map};
 
-	int* cards = malloc(10 * sizeof(int));
+	int* cards = malloc(NUM_A_CARDS * sizeof(int));
 	int i = 0;
 
-	while(i < NUM_K_CARDS){
+	while(i < NUM_A_CARDS - 1){
 
 		int randomCardIndex = rand() % NUM_A_CARDS;
 
@@ -591,6 +601,8 @@ int* generateRandomActionCards(){
 			i++;
 		}
 	}
+
+	cards[i] = playedCard;
 
 	return cards;
 }
@@ -704,7 +716,7 @@ int* generateRandomGameState(struct gameState *game, int playedCard, int *handPo
 	int numberOfPlayers = rand() % (MAX_PLAYERS - 1) + MIN_PLAYERS;
 
 	// Generate random action cards
-	int *cards = generateRandomActionCards();
+	int *cards = generateRandomActionCards(playedCard);
 
 	// Initialize the game instance for the test
 	initializeGame(numberOfPlayers, cards, SEED, game);

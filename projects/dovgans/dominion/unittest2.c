@@ -179,7 +179,7 @@ int main() {
     printf("\n- Current Player Game State\n");
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
                            NO_CHANGE, NO_CHANGE, NO_CHANGE, LOWER_LIMIT_BONUS,
-                           NO_CHANGE, NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+                           NO_CHANGE, NO_CHANGE, NO_CHANGE, &passed, &tests);
 
     printf("\n* Testing Other Player...\n\n");
     testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);
@@ -207,7 +207,7 @@ int main() {
     printf("\n- Current Player Game State\n");
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, NO_CHANGE,
                            NO_CHANGE, NO_CHANGE, NO_CHANGE, UPPER_LIMIT_BONUS,
-                           NO_CHANGE, NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+                           NO_CHANGE, NO_CHANGE, NO_CHANGE, &passed, &tests);
 
     printf("\n* Testing Other Player...\n\n");
     testOtherPlayerNoStateChange(&game, &test, OTHER_PLAYER, &passed, &tests);

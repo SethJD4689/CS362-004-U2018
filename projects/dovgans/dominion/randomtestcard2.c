@@ -23,7 +23,6 @@
 #define BUY_GAIN 1          // Buys gained playing Council Room card
 #define OTHER_CARDS_DRAWN 1 // Cards drawn by other players
 #define EMPTY_DECK 0
-#define NUM_OF_TESTS 100000
 
 /*******************************************************************************
 **  Function: main
@@ -38,6 +37,8 @@ int main() {
 
     int tests = 0;
     int passed = 0;
+	int testCase;
+	int passedCaseTests;
     int handPos;
     long randomTests = NUM_OF_TESTS;
 
@@ -46,24 +47,17 @@ int main() {
 
     while(randomTests > 0){
 
+	    testCase = tests;
+	    passedCaseTests = passed;
+
         int *actionCards = generateRandomGameState(&game, council_room, &handPos);
         int selectedPlayer = game.whoseTurn;
-
-        printf("\n* Preconditions for Player %d Playing %s card...\n\n", selectedPlayer, CARD);
-        printf("Hand Count: %d\n", game.handCount[selectedPlayer]);
-        printf("Deck Count: %d\n", game.deckCount[selectedPlayer]);
-        printf("Discard Count: %d\n", game.discardCount[selectedPlayer]);
 
         // Copy a test instance
         memcpy(&test, &game, sizeof(struct gameState));
 
         // Call Council Room function
         councilRoomCardEffect(&test, selectedPlayer, handPos);
-
-        // Check the effects the Council Room card has on the game state for player.
-        printf("\n* Testing Player %d Playing %s card...\n\n", selectedPlayer, CARD);
-
-        printf("Council Room Card Hand Position: %d\n", handPos);
 
         int deckCount = game.deckCount[selectedPlayer];
         int discardCount = game.discardCount[selectedPlayer];
@@ -108,12 +102,11 @@ int main() {
         // Check if the card was actually played
         testCardPlayed(&game, &test, selectedPlayer, handPos, &passed, &tests);
 
-        // Check the effects the Council Room card has on the game state for a non current player
+        // Check the effects the Council Room card has on the game state for
+	    // non current players
         for(int i = 0; i < test.numPlayers; i++){
 
             if(i != selectedPlayer){
-
-                printf("\n* Testing Player %d...\n\n", i);
 
                 deckCount = game.deckCount[i];
                 discardCount = game.discardCount[i];
@@ -154,22 +147,32 @@ int main() {
         }
 
         // Verify no victory card piles were effected.
-        printf("\n* Testing Victory Card Piles...\n\n");
         testVictoryCardPilesNoChange(&game, &test, &passed, &tests);
 
         // Verify no treasure card piles were affected
-        printf("\n* Testing Treasure Card Piles...\n\n");
         testTreasureCardPilesNoChange(&game, &test, &passed, &tests);
 
         // Verify no kingdom card piles were affected
-        printf("\n* Testing Kingdom Card Piles...\n\n");
         testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
+
+	    if((testCase - passedCaseTests) != (tests - passed)){
+
+		    printf("\n* Preconditions for Player %d Playing %s card...\n\n",
+		           selectedPlayer, CARD);
+		    printf("Council Room Card Hand Position: %d\n", handPos);
+		    printf("Hand Count: %d\n", game.handCount[selectedPlayer]);
+		    printf("Deck Count: %d\n", game.deckCount[selectedPlayer]);
+		    printf("Discard Count: %d\n", game.discardCount[selectedPlayer]);
+		    printf("\n#--------------------------------------------------------"
+			 "----------------------#\n\n");
+	    }
 
         randomTests--;
     }
 
     // Print Test Summary
     printTestSummary(passed, tests);
+
 }
 
 

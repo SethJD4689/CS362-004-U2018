@@ -1,7 +1,3 @@
-//
-// Created by Seth Dovgan on 7/17/18.
-//
-
 #ifndef _TESTER_H
 #define _TESTER_H
 
@@ -13,6 +9,7 @@
 #define SEED 100
 #define MAX_STRING_LENGTH 32
 #define EQ(A, B) ((A) == (B))
+#define NUM_OF_TESTS 100
 
 void assertTrue(int expected, int actual, char *message, int *passed, int *tests);
 
@@ -69,7 +66,6 @@ void printTestHeader(char type[], char name[]);
 
 int* generateRandomGameState(struct gameState *game, int playedCard, int *handPos);
 
-int* generateRandomActionCards();
-
+int* generateRandomActionCards(int playedCard);
 
 #endif //_TESTER_H
