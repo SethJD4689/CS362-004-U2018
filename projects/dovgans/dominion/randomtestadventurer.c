@@ -23,6 +23,69 @@
 #define NUM_OF_TESTS 100000
 
 /*******************************************************************************
+**  Function: randomlyAssignDiscards
+**  Description: Randomly assigns cards in each of the player's deck.
+**
+**  param:	struct gameState *game - game state to randomly assign decks to
+**	param:  int allCards[] - all possible cards in the game
+**	param:	int totalCards - number of cards in the game
+**
+**  return:	total number of cards assigned to all the players
+*******************************************************************************/
+int getNumberOfTreasureCardsInDeck(int deck[][MAX_DECK], const int deckCount[],
+                                   int player){
+
+    int treasureCardCount = 0;
+
+    for(int i = 0; i < deckCount[player]; i++){
+
+        if(deck[player][i] == copper || deck[player][i] == silver
+           || deck[player][i] == gold){
+
+            treasureCardCount++;
+        }
+    }
+
+    return treasureCardCount;
+}
+
+/*******************************************************************************
+**  Function: testDrawnTreasureCards
+**  Description: Tests if treasure cards are drawn
+*******************************************************************************/
+void testDrawnTreasureCards(struct gameState test, int player, int *passed,
+                            int *tests, int cardsDrawn){
+
+    // Verify both drawn cards were treasure cards.
+    printf("\n* Testing both cards drawn were treasure cards...\n\n");
+
+    int count = cardsDrawn;
+
+    while(count > 0){
+
+        if(test.handCount[player] >= count){
+
+            int cardPosition = test.handCount[player] - count;
+            char name[MAX_STRING_LENGTH];
+            cardNumToName(test.hand[player][cardPosition], name);
+
+            strcat(name, " Card Drawn");
+
+            assertTrue(TRUE, (test.hand[player][cardPosition] == copper
+                              || test.hand[player][cardPosition] == silver
+                              || test.hand[player][cardPosition] == gold),
+                       name, passed, tests);
+
+        } else {
+            assertTrue(FALSE, TRUE, "No treasure card", passed, tests);
+        }
+
+        count--;
+    }
+}
+
+
+/*******************************************************************************
 **  Function: main
 **  Description: Tests the Adventurer card effect on the state of the game with
 **  random testing.
@@ -45,56 +108,74 @@ int main() {
 
         int *actionCards = generateRandomGameState(&game, smithy, &handPos);
         int selectedPlayer = game.whoseTurn;
+	    int deckCount = getNumberOfTreasureCardsInDeck(game.deck, game.deckCount, selectedPlayer);
+	    int discardCount = getNumberOfTreasureCardsInDeck(game.discard, game.discardCount, selectedPlayer);
 
-        // Copy a test instance
-        memcpy(&test, &game, sizeof(struct gameState));
+	    printf("\n* Preconditions for Player %d Playing %s card...\n\n", selectedPlayer, CARD);
+	    printf("Hand Count: %d\n", game.handCount[selectedPlayer]);
+	    printf("Deck Count: %d\n", game.deckCount[selectedPlayer]);
+	    printf("Discard Count: %d\n", game.discardCount[selectedPlayer]);
+	    printf("Treasurer Cards in Deck: %d\n", deckCount);
+	    printf("Treasurer Cards in Discard: %d\n", discardCount);
+
+	    // Copy a test instance
+	    memcpy(&test, &game, sizeof(struct gameState));
 
         // Call smithy function
-        smithyCardEffect(&test, selectedPlayer, handPos);
+        adventurerCardEffect(&test, selectedPlayer);
 
-        // Check the effects the Smithy card has on the game state for player.
+        // Check the effects the Adventurer card has on the game state for player.
         printf("\n* Testing Player %d Playing %s card...\n\n", selectedPlayer, CARD);
 
-        printf("Smithy Card Hand Position: %d\n", handPos);
-
-        int deckCount = game.deckCount[selectedPlayer];
-        int discardCount = game.discardCount[selectedPlayer];
+        printf("Adventurer Card Hand Position: %d\n", handPos);
 
         // Calculate expected outcomes for various deck and discard counts
-        // Deck has less than the amount of cards to draw
+        // Deck has less than the amount of cards treasure cards to draw
         if(deckCount < CARDS_DRAWN && discardCount >= CARDS_DRAWN){
 
-            testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
-                                   (discardCount - CARDS_DRAWN), CARDS_PLAYED,
-                                   (-discardCount), NO_CHANGE, NO_CHANGE,
-                                   NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+	        testCurrentPlayerStateModified(&game, &test, selectedPlayer,
+	                                       (CARDS_DRAWN - CARDS_PLAYED),
+	                                       CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
+	                                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+            testDrawnTreasureCards(test, selectedPlayer, &passed, &tests,
+                                   CARDS_DRAWN);
 
             // Deck and discard have less than the amount of cards to draw
             // but combined they both do
         } else if(deckCount < CARDS_DRAWN && discardCount < CARDS_DRAWN
                   && (deckCount + discardCount) >= CARDS_DRAWN){
 
-            testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
-                                   (discardCount - CARDS_DRAWN), CARDS_PLAYED,
-                                   (-discardCount), NO_CHANGE, NO_CHANGE,
-                                   NO_CHANGE, NO_CHANGE, smithy, &passed, &tests);
+	        testCurrentPlayerStateModified(&game, &test, selectedPlayer,
+	                                       (CARDS_DRAWN - CARDS_PLAYED),
+	                                       CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
+	                                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+            testDrawnTreasureCards(test, selectedPlayer, &passed, &tests,
+                                   CARDS_DRAWN);
 
             // Deck and discard have less than the amount of cards to draw
             // and combined they still do not have enough
         } else if(deckCount < CARDS_DRAWN && discardCount < CARDS_DRAWN
                   && (deckCount + discardCount) < CARDS_DRAWN){
 
-            testCurrentPlayerState(&game, &test, selectedPlayer, ((deckCount + discardCount) - CARDS_PLAYED),
-                                   (-deckCount), CARDS_PLAYED, (-discardCount),
-                                   NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                                   smithy, &passed, &tests);
+	        testCurrentPlayerStateModified(&game, &test, selectedPlayer,
+	                                       (deckCount + discardCount - CARDS_PLAYED),
+	                                       CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
+	                                       NO_CHANGE, NO_CHANGE, &passed, &tests);
+
+            testDrawnTreasureCards(test, selectedPlayer, &passed, &tests,
+                                   (deckCount + discardCount));
 
         } else { // Deck has enough cards to draw.
 
             testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
                                    (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE,
                                    NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                                   smithy, &passed, &tests);
+                                   &passed, &tests);
+
+            testDrawnTreasureCards(test, selectedPlayer, &passed, &tests,
+                                   CARDS_DRAWN);
         }
 
         // Check if the card was actually played

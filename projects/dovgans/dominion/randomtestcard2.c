@@ -18,12 +18,12 @@
 
 #define CARD "Council Room"
 #define TYPE "Card"
-#define NUM_OF_TESTS 100000
 #define CARDS_DRAWN 4 	    // Number of cards drawn by the Council Room card
 #define CARDS_PLAYED 1 	    // Council Room card played
 #define BUY_GAIN 1          // Buys gained playing Council Room card
 #define OTHER_CARDS_DRAWN 1 // Cards drawn by other players
 #define EMPTY_DECK 0
+#define NUM_OF_TESTS 100000
 
 /*******************************************************************************
 **  Function: main
@@ -49,6 +49,11 @@ int main() {
         int *actionCards = generateRandomGameState(&game, council_room, &handPos);
         int selectedPlayer = game.whoseTurn;
 
+        printf("\n* Preconditions for Player %d Playing %s card...\n\n", selectedPlayer, CARD);
+        printf("Hand Count: %d\n", game.handCount[selectedPlayer]);
+        printf("Deck Count: %d\n", game.deckCount[selectedPlayer]);
+        printf("Discard Count: %d\n", game.discardCount[selectedPlayer]);
+
         // Copy a test instance
         memcpy(&test, &game, sizeof(struct gameState));
 
@@ -70,7 +75,7 @@ int main() {
             testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
                                    (discardCount - CARDS_DRAWN), CARDS_PLAYED,
                                    (-discardCount), NO_CHANGE, BUY_GAIN,
-                                   NO_CHANGE, NO_CHANGE, council_room, &passed, &tests);
+                                   NO_CHANGE, NO_CHANGE, &passed, &tests);
 
         // Deck and discard have less than the amount of cards to draw
         // but combined they both do
@@ -80,7 +85,7 @@ int main() {
             testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
                                    (discardCount - CARDS_DRAWN), CARDS_PLAYED,
                                    (-discardCount), NO_CHANGE, BUY_GAIN,
-                                   NO_CHANGE, NO_CHANGE, council_room, &passed, &tests);
+                                   NO_CHANGE, NO_CHANGE, &passed, &tests);
 
         // Deck and discard have less than the amount of cards to draw
         // and combined they still do not have enough
@@ -90,14 +95,14 @@ int main() {
             testCurrentPlayerState(&game, &test, selectedPlayer, ((deckCount + discardCount) - CARDS_PLAYED),
                                    (-deckCount), CARDS_PLAYED, (-discardCount),
                                    NO_CHANGE, BUY_GAIN, NO_CHANGE, NO_CHANGE,
-                                   council_room, &passed, &tests);
+                                   &passed, &tests);
 
         } else { // Deck has enough cards to draw.
 
             testCurrentPlayerState(&game, &test, selectedPlayer, (CARDS_DRAWN - CARDS_PLAYED),
                                    (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE,
                                    NO_CHANGE, BUY_GAIN, NO_CHANGE, NO_CHANGE,
-                                   council_room, &passed, &tests);
+                                   &passed, &tests);
         }
 
         // Check if the card was actually played

@@ -72,7 +72,7 @@ int main() {
     // Print Test Header
 	printTestHeader(TYPE, FUNCTION);
 
-	printf("\n# Testing %s function with no hand, deck or discard...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with no hand, deck or discard...\n\n", FUNCTION);
 
 	// Set test conditions
 	game.handCount[CURRENT_PLAYER] = 0;
@@ -85,7 +85,7 @@ int main() {
 	&tests);
 
 
-	printf("\n# Testing %s function with score in deck, hand and discard...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with score in deck, hand and discard...\n\n", FUNCTION);
 
 	score = 0; // reset the player's test score
 
@@ -125,7 +125,7 @@ int main() {
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 
-	printf("\n# Testing %s function with score cards in hand only...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with score cards in hand only...\n\n", FUNCTION);
 
 	score = 0; // reset the player's test score
 
@@ -160,7 +160,7 @@ int main() {
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 
-	printf("\n# Testing %s function with score cards in deck only...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with score cards in deck only...\n\n", FUNCTION);
 
 	score = 0; // reset the player's test score
 
@@ -195,7 +195,7 @@ int main() {
 	testScoreForState(&game, &test, actionCards, CURRENT_PLAYER, score, &passed,
 	                  &tests);
 
-	printf("\n# Testing %s function with score cards in discard only...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with score cards in discard only...\n\n", FUNCTION);
 
 	score = 0; // reset the player's test score
 

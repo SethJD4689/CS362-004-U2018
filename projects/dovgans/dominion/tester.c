@@ -116,7 +116,7 @@ void compareCards(int game[][MAX_DECK], int gameCount, int test[][MAX_DECK],
 void testCurrentPlayerState(struct gameState *game, struct gameState *test,
                             int player, int hand, int deck, int played,
                             int discard, int coins, int buys, int actions,
-                            int score, int card, int *passed, int *tests) {
+                            int score, int *passed, int *tests) {
 
 	// Test changes to the player's hand
 	assertTrue(game->handCount[player] + hand,
@@ -137,6 +137,62 @@ void testCurrentPlayerState(struct gameState *game, struct gameState *test,
 	assertTrue(game->discardCount[player] + discard,
 	           test->discardCount[player],
 	           "Discard Pile", passed, tests);
+
+	// Test changes to the coins remaining
+	assertTrue(game->coins + coins, test->coins,
+	           "Coins Remaining", passed, tests);
+
+	// Test changes to the remaining buys
+	assertTrue(game->numBuys + buys, test->numBuys,
+	           "Buys Remaining", passed, tests);
+
+	// Test changes to the remaining action cards
+	assertTrue(game->numActions + actions, test->numActions,
+	           "Actions Remaining", passed, tests);
+
+	// Test is outpost was played
+	assertTrue(game->outpostPlayed, test->outpostPlayed,
+	           "Outpost Played", passed, tests);
+
+	// Test changes to the score
+	assertTrue(scoreFor(player, game) + score,
+	           scoreFor(player, test),
+	           "Player Score", passed, tests);
+}
+
+/*******************************************************************************
+**  Function: testCurrentPlayerState
+**  Description: tests the game state changes occurred with the current player
+** 	in the game.
+**
+**  param: struct gameState *game - game state to compare against
+**	param: struct gameState *test - game state to compare with
+**	param: int player - player used in testing
+**	param: int hand - changes to the player's hand count
+**	param: int deck - changes to the player's deck count
+**	param: int played - changes to the player's played card count
+**	param: int discard - changes to the player's discard count
+**	param: int coins - changes to the player's coins
+**	param: int buys - changes to the player's number of buys
+**	param: int actions - changes to the player's number of actions
+**	param: int score - changes to the players score
+**  param: int *passed - tracks passed tests
+**	param: int *tests - tracks tests conducted
+*******************************************************************************/
+void testCurrentPlayerStateModified(struct gameState *game, struct gameState *test,
+									int player, int hand, int played, int coins,
+                                    int buys, int actions, int score,
+                                    int *passed, int *tests) {
+
+	// Test changes to the player's hand
+	assertTrue(game->handCount[player] + hand,
+	           test->handCount[player],
+	           "Cards in Hand", passed, tests);
+
+	// Test changes to the cards played
+	assertTrue(game->playedCardCount + played,
+	           test->playedCardCount,
+	           "Cards Played", passed, tests);
 
 	// Test changes to the coins remaining
 	assertTrue(game->coins + coins, test->coins,

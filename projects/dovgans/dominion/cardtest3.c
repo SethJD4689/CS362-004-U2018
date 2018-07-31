@@ -103,7 +103,7 @@ int main() {
                                CARDS_PLAYED, NO_CHANGE,
                                getCost(handCard(trashPos, &game)), EXTRA_BUY,
                                NO_CHANGE, (- getScoreForCard(&game, CURRENT_PLAYER, game.hand[CURRENT_PLAYER][trashPos])),
-                               salvager, &passed, &tests);
+                               &passed, &tests);
 
         // Check if the card was actually played
         testCardPlayed(&game, &test, CURRENT_PLAYER, salvagerPos, &passed, &tests);
@@ -142,7 +142,7 @@ int main() {
 	testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
 	                       (- CARDS_PLAYED), NO_CHANGE,
 	                       CARDS_PLAYED, NO_CHANGE, NO_CHANGE, EXTRA_BUY,
-	                       NO_CHANGE, NO_CHANGE, salvager, &passed, &tests);
+	                       NO_CHANGE, NO_CHANGE, &passed, &tests);
 
     // Check if the card was actually played
     testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);

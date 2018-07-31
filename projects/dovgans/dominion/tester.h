@@ -19,13 +19,18 @@ void assertTrue(int expected, int actual, char *message, int *passed, int *tests
 void testCurrentPlayerState(struct gameState *game, struct gameState *test,
 							int player, int hand, int deck, int played,
 							int discard, int coins, int buys, int actions,
-							int score, int card, int *passed, int *tests);
+							int score, int *passed, int *tests);
 
 void testCardPlayed(struct gameState *game, struct gameState *test, int player,
 					int handPos, int *passed, int *tests);
 
 void testCurrentPlayerNoStateChange(struct gameState *game, struct gameState *test,
                                     int player, int *passed, int *tests);
+
+void testCurrentPlayerStateModified(struct gameState *game, struct gameState *test,
+                                    int player, int hand, int played, int coins,
+                                    int buys, int actions, int score,
+                                    int *passed, int *tests);
 
 void testOtherPlayerState(struct gameState *game, struct gameState *test,
                           int player, int hand, int deck, int discard,
