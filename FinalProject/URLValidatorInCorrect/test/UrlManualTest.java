@@ -1,20 +1,7 @@
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 public class UrlManualTest {
-
-    private UrlValidator validator;
-
-    @Before
-    public void setUp() {
-
-        validator = new UrlValidator(null, null,
-                UrlValidator.ALLOW_ALL_SCHEMES);
-    }
-
 
     @Test
     public void goodURL1() {
@@ -23,6 +10,15 @@ public class UrlManualTest {
         assertTrue(urlVal.isValid("http://www.google.com"));
     }
     @Test
+<<<<<<< HEAD
+    public void goodURL1() {
+        UrlValidator urlVal = new UrlValidator(null, null,
+                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
+        assertTrue(urlVal.isValid("http://www.google.com"));
+    }
+    @Test
+=======
+>>>>>>> e61d33d45b4dfd2119cb561fb26dc9ed59b722a7
     public void goodURL2() {
         UrlValidator urlVal = new UrlValidator(null, null,
                 UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
