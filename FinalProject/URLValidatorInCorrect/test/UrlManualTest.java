@@ -9,16 +9,8 @@ public class UrlManualTest {
                 UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
         assertTrue(urlVal.isValid("http://www.google.com"));
     }
+
     @Test
-<<<<<<< HEAD
-    public void goodURL1() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertTrue(urlVal.isValid("http://www.google.com"));
-    }
-    @Test
-=======
->>>>>>> e61d33d45b4dfd2119cb561fb26dc9ed59b722a7
     public void goodURL2() {
         UrlValidator urlVal = new UrlValidator(null, null,
                 UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
