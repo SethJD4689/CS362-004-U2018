@@ -30,9 +30,9 @@ public class URL {
 
         this.schemeIsValid = false;
         this.authorityIsValid = false;
-        this.portIsValid = false;
-        this.pathIsValid = false;
-        this.queryIsValid = false;
+        this.portIsValid = true;
+        this.pathIsValid = true;
+        this.queryIsValid = true;
     }
 
     /**
