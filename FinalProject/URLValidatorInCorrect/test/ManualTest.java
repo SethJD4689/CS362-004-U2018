@@ -1,7 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class UrlManualTest {
+public class ManualTest {
 
     @Test
     public void goodURL1() {

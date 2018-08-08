@@ -2,16 +2,20 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 
-// Port Range - 0 to 65535
-// Port must be preceded by ":"
-// Port can be null;
+import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests a URL, port specific, with the following test rules:
+ *
+ * - Port Range - 0 to 65535
+ * - Port must be preceded by ":"
+ * - Port can be null
+ */
 @RunWith(Parameterized.class)
 public class ProgrammingPortTest {
 
@@ -84,7 +88,7 @@ public class ProgrammingPortTest {
     }
 
     @Test
-    public void testScheme(){
+    public void testPort(){
 
         url.setPort(port, isValid);
         assertEquals(url.isURLValid(), validator.isValid(url.getURL()));

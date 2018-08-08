@@ -15,6 +15,7 @@ import java.util.Arrays;
  * - Scheme must end with ":"
  * - Scheme must begin with a letter
  * - Scheme must only include letters, number, "+", ".", and "-"
+ * - Scheme capitalization is
  * - Scheme must not be null
  * - Scheme has no length limits
  */
@@ -34,7 +35,7 @@ public class ProgrammingSchemeTest {
                         + UrlValidator.NO_FRAGMENTS);
 
         url = new URL(SCHEME, "//www.test.com", "", "", "",
-                true, true, true, true, true );
+                true, true, true, true, true);
     }
 
     @Parameter(0)
@@ -50,6 +51,9 @@ public class ProgrammingSchemeTest {
 
         Random random = new Random();
         random.setSeed(System.nanoTime());
+
+        final String VALID_CHARACTERS = "abcdefghijklmnopqrstuvwxyz" +
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890+.-";
 
         // Include a number in the Scheme (TRUE)
         data[0][0] = SCHEME.substring(0, SCHEME.length() - 3) + random.nextInt(10) + ":";
@@ -89,17 +93,18 @@ public class ProgrammingSchemeTest {
 
         // Build a large string with only valid characters
         final int CAPACITY = 10000;
-        StringBuilder largeString = new StringBuilder(CAPACITY);
-        final String validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890+.-";
+        StringBuilder largeScheme = new StringBuilder(CAPACITY);
 
         for(int i = 0; i < CAPACITY - 1; i++){
-            largeString.append(validCharacters.charAt(random.nextInt(validCharacters.length())));
+            largeScheme.append(VALID_CHARACTERS.charAt(random.nextInt(VALID_CHARACTERS.length())));
         }
 
-        largeString.append(":");
+        // Ensure proper format
+        largeScheme.append(":");
+        largeScheme.insert(0, "a");
 
         // Large Scheme Length (TRUE)
-        data[8][0] = largeString.toString();
+        data[8][0] = largeScheme.toString();
         data[8][1] = true;
 
         return Arrays.asList(data);
@@ -109,9 +114,6 @@ public class ProgrammingSchemeTest {
     public void testScheme(){
 
         url.setScheme(scheme, isValid);
-        System.out.println(url.getURL());
-        System.out.println(url.isURLValid());
         assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
-
     }
 }
