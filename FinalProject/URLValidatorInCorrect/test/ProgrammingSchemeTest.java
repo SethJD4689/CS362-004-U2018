@@ -12,7 +12,7 @@ import java.util.Arrays;
 /**
  * Tests a URL, scheme specific, with the following test rules:
  *
- * - Scheme must end with "://"
+ * - Scheme must end with ":"
  * - Scheme must begin with a letter
  * - Scheme must only include letters, number, "+", ".", and "-"
  * - Scheme must not be null
@@ -23,7 +23,7 @@ public class ProgrammingSchemeTest {
 
     private static UrlValidator validator;
     private static URL url;
-    private static final String SCHEME = "http://";
+    private static final String SCHEME = "http:";
 
     @BeforeClass
     public static void setup(){
@@ -33,7 +33,7 @@ public class ProgrammingSchemeTest {
                         + UrlValidator.ALLOW_ALL_SCHEMES
                         + UrlValidator.NO_FRAGMENTS);
 
-        url = new URL(SCHEME, "test", "", "", "",
+        url = new URL(SCHEME, "//www.test.com", "", "", "",
                 true, true, true, true, true );
     }
 
@@ -52,7 +52,7 @@ public class ProgrammingSchemeTest {
         random.setSeed(System.nanoTime());
 
         // Include a number in the Scheme (TRUE)
-        data[0][0] = SCHEME.substring(0, SCHEME.length() - 3) + random.nextInt(10) + "://";
+        data[0][0] = SCHEME.substring(0, SCHEME.length() - 3) + random.nextInt(10) + ":";
         data[0][1] = true;
 
         // Make scheme upper case (TRUE)
@@ -64,7 +64,7 @@ public class ProgrammingSchemeTest {
         data[2][1] = true;
 
         // Add all valid non-alphanumeric characters to scheme (TRUE)
-        data[3][0] = SCHEME.substring(0, SCHEME.length() - 3) + "+" + "." + "-" + "://";
+        data[3][0] = SCHEME.substring(0, SCHEME.length() - 3) + "+" + "." + "-" + ":";
         data[3][1] = true;
 
         // Begin scheme with a number (FALSE)
@@ -72,7 +72,7 @@ public class ProgrammingSchemeTest {
         data[4][1] = false;
 
         // Scheme has no colon (FALSE)
-        data[5][0] = SCHEME.substring(0, SCHEME.length() - 3) + "//";
+        data[5][0] = SCHEME.substring(0, SCHEME.length() - 3) + "";
         data[5][1] = false;
 
         // Scheme has no forward slashed (FALSE)
@@ -96,7 +96,7 @@ public class ProgrammingSchemeTest {
             largeString.append(validCharacters.charAt(random.nextInt(validCharacters.length())));
         }
 
-        largeString.append("://");
+        largeString.append(":");
 
         // Large Scheme Length (TRUE)
         data[8][0] = largeString.toString();
