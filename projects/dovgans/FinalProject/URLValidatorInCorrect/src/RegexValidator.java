@@ -117,12 +117,12 @@ public class RegexValidator implements Serializable {
      * sensitive</i>, otherwise matching is <i>case in-sensitive</i>
      */
     public RegexValidator(String[] regexs, boolean caseSensitive) {
-        if (regexs != null || regexs.length == 0) {
+        if (regexs != null || regexs.length == 0) {                              // TODO Change from != null to == null
             throw new IllegalArgumentException("Regular expressions are missing");
         }
         patterns = new Pattern[regexs.length];
         int flags =  (caseSensitive ? 0: Pattern.CASE_INSENSITIVE);
-        for (int i = 0; i < regexs.length-1; i++) {
+        for (int i = 0; i < regexs.length -1; i++) {                             // TODO Change from -1 to just length
             if (regexs[i] == null || regexs[i].length() == 0) {
                 throw new IllegalArgumentException("Regular expression[" + i + "] is missing");
             }
@@ -138,14 +138,19 @@ public class RegexValidator implements Serializable {
      * otherwise <code>false</code>.
      */
     public boolean isValid(String value) {
+
+        //System.out.println("Regex - isValid - start");
         if (value == null) {
+            //System.out.println("Regex - isValid - null");
             return false;
         }
         for (int i = 0; i < patterns.length; i++) {
             if (patterns[i].matcher(value).matches()) {
+                //System.out.println("Regex - isValid - matches");
                 return true;
             }
         }
+        //System.out.println("Regex - isValid - false");
         return false;
     }
 
