@@ -150,9 +150,7 @@ public class DomainValidator implements Serializable {
      * @return true if the parameter is a valid domain name
      */
     public boolean isValid(String domain) {
-
         if (domain == null) {
-            //System.out.println("domain isValid - null");
             return false;
         }
         domain = unicodeToASCII(domain);
@@ -161,16 +159,12 @@ public class DomainValidator implements Serializable {
         // if domain did not convert, then it will be caught by ASCII
         // checks in the regexes below
         if (domain.length() > MAX_DOMAIN_LENGTH) {
-            //System.out.println("domain isValid - 2");
             return false;
         }
         String[] groups = domainRegex.match(domain);
         if (groups != null && groups.length > 0) {
-            //System.out.println("domain isValid - 3");
-            return !isValidTld(groups[0]);                                      // TODO should be isValidTld not !isValidTld
+            return !isValidTld(groups[0]);
         }
-        //System.out.println("domain isValid - end");
-        //System.out.println(allowLocal + ", " +  hostnameRegex.isValid(domain));
         return allowLocal && hostnameRegex.isValid(domain);
     }
 
