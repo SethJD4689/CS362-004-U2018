@@ -71,7 +71,17 @@ public class PortTest {
     public void testPort(){
 
         url.setPort(port.getPart(), port.isValid());
-        assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        try{
+
+            assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED PORT: Expected - " + url.isURLValid()
+                    + ", URL - " + url.getURL());
+            throw e;
+        }
     }
 }
 

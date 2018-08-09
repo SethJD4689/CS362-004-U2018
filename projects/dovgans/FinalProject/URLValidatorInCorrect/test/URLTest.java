@@ -1,15 +1,14 @@
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ErrorCollector;
 import static org.junit.Assert.assertEquals;
 
 public class URLTest {
 
     private static UrlValidator validator;
     private static URL url;
-    private static int tests = SchemeTest.SCHEMES.length * AuthorityTest.AUTHORITIES.length * PortTest.PORTS.length
-            * PathTest.PATHS.length * QueryTest.QUERIES.length;
-    private static int testsRemaining = tests;
 
     @Before
     public void setup(){
@@ -52,7 +51,10 @@ public class URLTest {
         }
     }
 
-    private static void testUrl(int sI, int aI, int poI, int paI, int qI){
+    @Rule
+    public ErrorCollector collector = new ErrorCollector();
+
+    private void testUrl(int sI, int aI, int poI, int paI, int qI){
 
         url = new URL();
         url.setScheme(SchemeTest.SCHEMES[sI].getPart(), SchemeTest.SCHEMES[sI].isValid());
@@ -65,10 +67,11 @@ public class URLTest {
 
             assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
 
-        }catch(AssertionError e){
+        } catch(AssertionError e){
 
-            System.out.println("FAILED: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED URL: " + e.getMessage() + ", URL - " + url.getURL());
+
+            collector.addError(e);
         }
     }
 }

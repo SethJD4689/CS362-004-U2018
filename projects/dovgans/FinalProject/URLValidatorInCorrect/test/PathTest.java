@@ -74,7 +74,17 @@ public class PathTest {
     public void testPath(){
 
         url.setPath(path.getPart(), path.isValid());
-        assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        try{
+
+            assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED PATH: Expected - " + url.isURLValid()
+                    + ", URL - " + url.getURL());
+            throw e;
+        }
     }
 }
 

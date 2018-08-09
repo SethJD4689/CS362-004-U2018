@@ -91,7 +91,17 @@ public class AuthorityTest {
     public void testAuthority(){
 
         url.setAuthority(authority.getPart(), authority.isValid());
-        assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        try{
+
+            assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED AUTHORITY: Expected - " + url.isURLValid()
+                    + ", URL - " + url.getURL());
+            throw e;
+        }
     }
 
     private static String maxCharacterString(){

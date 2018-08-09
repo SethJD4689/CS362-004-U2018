@@ -1,67 +1,84 @@
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.After;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+/**
+ * Tests various URL manually.
+ */
+@RunWith(Parameterized.class)
 public class ManualTest {
 
-    @Test
-    public void goodURL1() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertTrue(urlVal.isValid("http://www.google.com"));
+    private UrlValidator validator;
+
+    @Before
+    public void setup(){
+
+        validator = new UrlValidator(null, null,
+                UrlValidator.ALLOW_2_SLASHES
+                        + UrlValidator.ALLOW_ALL_SCHEMES
+                        + UrlValidator.NO_FRAGMENTS);
+    }
+
+    @After
+    public void teardown(){
+
+        validator = null;
+    }
+
+    @Parameterized.Parameter(0)
+    public String url;
+
+    @Parameterized.Parameter(1)
+    public boolean isValid;
+
+    @Parameterized.Parameters(name= "[{index}] Expected: {1}, URL: {0}")
+    public static Collection<Object[]> portMutations() {
+
+        Object[][] data = new Object[10][2];
+
+        data[0][0] = "http://www.google.com";
+        data[0][1] = true;
+
+        data[1][0] = "ftp://go.com:65535/$23";
+        data[1][1] = true;
+
+        data[2][0] = "h3t://go.au:0/test1/file";
+        data[2][1] = true;
+
+        data[3][0] = "HTTP://www.google.com";
+        data[3][1] = true;
+
+        data[4][0] = "file://";
+        data[4][1] = true;
+
+        data[5][0] = "http://.";
+        data[5][1] = false;
+
+        data[6][0] = "http://go.a1a";
+        data[6][1] = false;
+
+        data[7][0] = "http://1.2.3.4/../";
+        data[7][1] = false;
+
+        data[8][0] = "http://www.google.com:65a/t123";
+        data[8][1] = false;
+
+        data[9][0] = "http://www.google.com:80/#";
+        data[9][1] = false;
+
+        return Arrays.asList(data);
     }
 
     @Test
-    public void goodURL2() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertTrue(urlVal.isValid("ftp://go.com:65535/$23"));
-    }
-    @Test
-    public void goodURL3() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertTrue(urlVal.isValid("h3t://go.au:0/test1/file"));
-    }
-    @Test
-    public void goodURL4() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertTrue(urlVal.isValid("HTTP://www.google.com"));
-    }
-    @Test
-    public void goodURL5() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertTrue(urlVal.isValid("file://"));
-    }
-    @Test
-    public void badURL1() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertFalse(urlVal.isValid("http://."));
-    }
-    @Test
-    public void badURL2() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertFalse(urlVal.isValid("http://go.a1a"));
-    }
-    @Test
-    public void badURL3() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertFalse(urlVal.isValid("http://1.2.3.4/../"));
-    }
-    @Test
-    public void badURL4() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertFalse(urlVal.isValid("http://www.google.com:65a/t123"));
-    }
-    @Test
-    public void badURL5() {
-        UrlValidator urlVal = new UrlValidator(null, null,
-                UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.NO_FRAGMENTS);
-        assertFalse(urlVal.isValid("http://www.google.com:80/#"));
+    public void testURL(){
+
+        assertEquals(isValid, validator.isValid(url));
     }
 }
+

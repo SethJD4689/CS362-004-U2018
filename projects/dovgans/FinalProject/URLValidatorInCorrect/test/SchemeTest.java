@@ -76,7 +76,17 @@ public class SchemeTest {
     public void testScheme(){
 
         url.setScheme(scheme.getPart(), scheme.isValid());
-        assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        try{
+
+            assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED SCHEME: Expected - " + url.isURLValid()
+                    + ", URL - " + url.getURL());
+            throw e;
+        }
     }
 
     private static String buildLargeScheme(){

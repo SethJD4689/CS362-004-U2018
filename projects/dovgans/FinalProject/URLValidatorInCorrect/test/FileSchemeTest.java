@@ -61,7 +61,16 @@ public class FileSchemeTest {
     @Test
     public void testScheme(){
 
-        assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+        try{
+
+            assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED FILE SCHEME: Expected - " + url.isURLValid()
+                    + ", URL - " + url.getURL());
+            throw e;
+        }
     }
 }
 

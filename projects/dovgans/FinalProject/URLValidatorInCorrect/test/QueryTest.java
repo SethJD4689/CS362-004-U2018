@@ -67,7 +67,17 @@ public class QueryTest {
     public void testQuery(){
 
         url.setQuery(query.getPart(), query.isValid());
-        assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        try{
+
+            assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED QUERY: Expected - " + url.isURLValid()
+                    + ", URL - " + url.getURL());
+            throw e;
+        }
     }
 }
 
