@@ -33,6 +33,7 @@ public class SchemeTest {
             new URLPart("ht7:", true),                           // Include a number in the Scheme
             new URLPart(BASE_SCHEME.toUpperCase(), true),             // Make scheme upper case
             new URLPart(BASE_SCHEME.toLowerCase(), true),             // Make scheme lower case
+            new URLPart("HttP:", true),                          // Mix of upper and lower case
             new URLPart("http" + "+" + "." + "-" + ":", true),   // Add all valid non-alphanumeric characters to scheme
             new URLPart("6http:", false),                        // Begin scheme with a number
             new URLPart("http", false),                          // Scheme has no colon
@@ -65,7 +66,7 @@ public class SchemeTest {
     @Parameterized.Parameter
     public URLPart scheme;
 
-    @Parameterized.Parameters(name= "{index}: Scheme - {0}, Expected = {1}")
+    @Parameterized.Parameters(name= "{index}: Scheme - {0}")
     public static List<URLPart> schemeMutations() {
 
         return Arrays.asList(SCHEMES);

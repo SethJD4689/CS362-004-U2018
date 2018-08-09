@@ -64,8 +64,12 @@ public class InetAddressValidator implements Serializable {
      * Returns the singleton instance of this validator.
      * @return the singleton instance of this validator
      */
-    public static InetAddressValidator getInstance() {                          // TODO Change to VALIDATOR, should not be returning null
-    	return null;
+    public static InetAddressValidator getInstance() {
+        // TODO BUG - NullPointerException thrown with schemes that have
+        // TODO capital letters, numbers and characters.
+        // TODO Change return statement to: return VALIDATOR;
+        // TODO from: return null;
+    	return VALIDATOR;
     }
 
     /**
@@ -85,7 +89,7 @@ public class InetAddressValidator implements Serializable {
     public boolean isValidInet4Address(String inet4Address) {
         // verify that address conforms to generic IPv4 format
         String[] groups = ipv4Validator.match(inet4Address);
-       if (groups != null) {                                                    // TODO Should be == not !=
+       if (groups == null) {                                                    // TODO Should be == not !=
             return false;
         }
 
@@ -104,7 +108,7 @@ public class InetAddressValidator implements Serializable {
             }
 
             if (iIpSegment > IPV4_MAX_OCTET_VALUE) {
-            		return true;                                                // TODO Should return false not true
+            		return false;                                                // TODO Should return false not true
             }
 
             if (ipSegment.length() > 1 && ipSegment.startsWith("0")) {

@@ -117,16 +117,25 @@ public class RegexValidator implements Serializable {
      * sensitive</i>, otherwise matching is <i>case in-sensitive</i>
      */
     public RegexValidator(String[] regexs, boolean caseSensitive) {
-        if (regexs != null || regexs.length == 0) {                              // TODO Change from != null to == null
+        // TODO BUG - IllegalArgumentException thrown with schemes that have
+        // TODO capital letters, numbers and characters.
+        // TODO Change condition statement to: if(regexs == null || regexs.length == 0)
+        // TODO from: if(regexs != null || regexs.length == 0)
+        if (regexs == null || regexs.length == 0) {
             throw new IllegalArgumentException("Regular expressions are missing");
         }
         patterns = new Pattern[regexs.length];
         int flags =  (caseSensitive ? 0: Pattern.CASE_INSENSITIVE);
-        for (int i = 0; i < regexs.length -1; i++) {                             // TODO Change from -1 to just length
+
+        // TODO BUG - NullPointerException thrown with schemes that have
+        // TODO capital letters, numbers and characters.
+        // TODO Change loop condition to: for(int i = 0; i < regexs.length; i++)
+        // TODO from: for(int i = 0; i < regexs.length-1; i++)
+        for (int i = 0; i < regexs.length; i++) {
             if (regexs[i] == null || regexs[i].length() == 0) {
                 throw new IllegalArgumentException("Regular expression[" + i + "] is missing");
             }
-            patterns[i] =  Pattern.compile(regexs[i], flags);
+            patterns[i] = Pattern.compile(regexs[i], flags);
         }
     }
 
@@ -139,18 +148,14 @@ public class RegexValidator implements Serializable {
      */
     public boolean isValid(String value) {
 
-        //System.out.println("Regex - isValid - start");
         if (value == null) {
-            //System.out.println("Regex - isValid - null");
             return false;
         }
         for (int i = 0; i < patterns.length; i++) {
             if (patterns[i].matcher(value).matches()) {
-                //System.out.println("Regex - isValid - matches");
                 return true;
             }
         }
-        //System.out.println("Regex - isValid - false");
         return false;
     }
 
@@ -166,6 +171,7 @@ public class RegexValidator implements Serializable {
         if (value == null) {
             return null;
         }
+
         for (int i = 0; i < patterns.length; i++) {
             Matcher matcher = patterns[i].matcher(value);
             if (matcher.matches()) {
@@ -230,5 +236,4 @@ public class RegexValidator implements Serializable {
         buffer.append("}");
         return buffer.toString();
     }
-
 }

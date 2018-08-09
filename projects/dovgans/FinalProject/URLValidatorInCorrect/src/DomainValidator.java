@@ -152,7 +152,7 @@ public class DomainValidator implements Serializable {
     public boolean isValid(String domain) {
 
         if (domain == null) {
-            //System.out.println("domain isValid - null");
+            System.out.println("Domain = null");
             return false;
         }
         domain = unicodeToASCII(domain);
@@ -161,16 +161,17 @@ public class DomainValidator implements Serializable {
         // if domain did not convert, then it will be caught by ASCII
         // checks in the regexes below
         if (domain.length() > MAX_DOMAIN_LENGTH) {
-            //System.out.println("domain isValid - 2");
+            System.out.println("Domain > MAX_DOMAIN_LENGTH");
             return false;
         }
         String[] groups = domainRegex.match(domain);
         if (groups != null && groups.length > 0) {
-            //System.out.println("domain isValid - 3");
+
+            // TODO BUG - Invalid URLS are Valid
+            // TODO Change loop condition to: for(int i = 0; i < regexs.length; i++)
+            // TODO from: for(int i = 0; i < regexs.length-1; i++)
             return !isValidTld(groups[0]);                                      // TODO should be isValidTld not !isValidTld
         }
-        //System.out.println("domain isValid - end");
-        //System.out.println(allowLocal + ", " +  hostnameRegex.isValid(domain));
         return allowLocal && hostnameRegex.isValid(domain);
     }
 
@@ -203,8 +204,22 @@ public class DomainValidator implements Serializable {
     public boolean isValidTld(String tld) {
         tld = unicodeToASCII(tld);
         if(allowLocal && isValidLocalTld(tld)) {
+
+            System.out.println("TLD = " + tld);
+            System.out.println("Local TLD: " + isValidInfrastructureTld(tld));
+
             return true;
         }
+
+        System.out.println("TLD = " + tld);
+        System.out.println("Infrastructure TLD: " + isValidInfrastructureTld(tld));
+        System.out.println("Generic TLD: " + isValidGenericTld(tld));
+        System.out.println("CountryCode TLD: " + isValidCountryCodeTld(tld));
+
+        System.out.println("Valid TLD: " + (isValidInfrastructureTld(tld)
+                || isValidGenericTld(tld)
+                || isValidCountryCodeTld(tld)));
+
         return isValidInfrastructureTld(tld)
                 || isValidGenericTld(tld)
                 || isValidCountryCodeTld(tld);

@@ -52,7 +52,7 @@ public class AuthorityTest {
 
             new URLPart("//www" + maxCharacterString() + ".com", true),          // Test max character limit
             new URLPart("//www" + maxCharacterString() + "a.com", false),        // Test above max character limit
-            new URLPart("//www.]];,.12&*^jksdfhja+_)(*&^^$|.com", false),           // Test invalid characters
+            new URLPart("//www.]];,.12&*^jksdfhja+_)(*&^^$|.com", false),        // Test invalid characters
 
             new URLPart("//123.01234567890.456", false),    // Test all numeric
             new URLPart("//www.01234567890.com", true)      // Test not all numeric

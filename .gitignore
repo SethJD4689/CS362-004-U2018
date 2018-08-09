@@ -185,3 +185,12 @@ FinalProject/URLValidatorCorrect/.idea/uiDesigner.xml
 *.jar
 projects/.DS_Store
 projects/dovgans/.DS_Store
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/compiler.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/encodings.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/libraries/hamcrest_core_1_3.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/libraries/junit_4_12.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/misc.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/modules.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/.idea/workspace.xml
+projects/dovgans/FinalProject/URLValidatorInCorrect/URLValidatorInCorrect.iml
+projects/dovgans/.DS_Store

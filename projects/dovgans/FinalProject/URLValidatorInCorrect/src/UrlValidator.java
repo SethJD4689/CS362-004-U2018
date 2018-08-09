@@ -134,7 +134,7 @@ public class UrlValidator implements Serializable {
     private static final Pattern SCHEME_PATTERN = Pattern.compile(SCHEME_REGEX);
 
     // Drop numeric, and  "+-." for now
-    // TODO does not allow for optional userinfo. 
+    // does not allow for optional userinfo.
     // Validation of character set is done by isValidAuthority
     private static final String AUTHORITY_CHARS_REGEX = "\\p{Alnum}\\-\\."; // allows for IPV4 but not IPV6
     private static final String IPV6_REGEX = "[0-9a-fA-F:]+"; // do this as separate match because : could cause ambiguity with port prefix
@@ -282,7 +282,10 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));         // TODO should be toLowerCase not toUpperCase
+                // TODO BUG - Assert Fail with URLS that have capital letters
+                // TODO Change schemes to: allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
+                // TODO from: allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
+                allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
 
             }
         }
@@ -302,31 +305,25 @@ public class UrlValidator implements Serializable {
      */
     public boolean isValid(String value) {
         if (value == null) {
-            //System.out.println("isValid - null value");
             return false;
         }
 
         // Check the whole url address structure
         Matcher urlMatcher = URL_PATTERN.matcher(value);
         if (!urlMatcher.matches()) {
-            //System.out.println("isValid - whole url");
             return false;
         }
 
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
         if (!isValidScheme(scheme)) {
-            //System.out.println("isValid - scheme");
             return false;
         }
 
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
 
         if ("http".equals(scheme)) {// Special case - file: allows an empty authority  // TODO should be "file" and not "http"
-            //System.out.println("isValid - 1");
             if (authority != null) {
-                //System.out.println("isValid - 2");
                 if (authority.contains(":")) { // but cannot allow trailing :
-                    //System.out.println("isValid - 3");
                     return false;
                 }
             }
@@ -334,7 +331,6 @@ public class UrlValidator implements Serializable {
         } else { // not file:
             // Validate the authority
             if (!isValidAuthority(authority)) {
-                //System.out.println("isValid - 4");
                 return false;
             }
         }
@@ -351,7 +347,6 @@ public class UrlValidator implements Serializable {
             return false;
         }
 
-        //System.out.println("isValidScheme");
         return true;
     }
 
@@ -369,7 +364,7 @@ public class UrlValidator implements Serializable {
             return false;
         }
 
-        // TODO could be removed if external schemes were checked in the ctor before being stored
+        // could be removed if external schemes were checked in the ctor before being stored
         if (!SCHEME_PATTERN.matcher(scheme).matches()) {
             return false;
         }
@@ -393,13 +388,11 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidAuthority(String authority) {
         if (authority == null) {
-            //System.out.println("isValidAuthority - null");
             return false;
         }
 
         // check manual authority validation if specified
         if (authorityValidator != null && authorityValidator.isValid(authority)) {
-            //System.out.println("isValidAuthority - manual");
             return true;
         }
         // convert to ASCII if possible
@@ -407,51 +400,40 @@ public class UrlValidator implements Serializable {
 
         Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authorityASCII);
         if (!authorityMatcher.matches()) {
-            //System.out.println("isValidAuthority - matcher");
             return false;
         }
 
         // We have to process IPV6 separately because that is parsed in a different group
         String ipv6 = authorityMatcher.group(PARSE_AUTHORITY_IPV6);
         if (ipv6 != null) {
-            //System.out.println("isValidAuthority - ipv6 !null");
             InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
                 if (!inetAddressValidator.isValidInet6Address(ipv6)) {
-                    //System.out.println("isValidAuthority - 1");
                     return false;
                 }
         } else {
-            //System.out.println("isValidAuthority - 2");
             String hostLocation = authorityMatcher.group(PARSE_AUTHORITY_HOST_IP);
             // check if authority is hostname or IP address:
             // try a hostname first since that's much more likely
-            //System.out.println("IsOn " + isOn(ALLOW_LOCAL_URLS));
             DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));
             if (!domainValidator.isValid(hostLocation)) {
-                //System.out.println("isValidAuthority - 3");
                 // try an IPv4 address
                 InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
                 if (!inetAddressValidator.isValidInet4Address(hostLocation)) {
                     // isn't IPv4, so the URL is invalid
-                    //System.out.println("isValidAuthority - 4");
                     return false;
                 }
             }
             String port = authorityMatcher.group(PARSE_AUTHORITY_PORT);
 
-
             if (port != null && port.length() > 0) {
-                //System.out.println(port);
-                //System.out.println("isValidAuthority - port 1");
+
                 try {
 
                     int iPort = Integer.parseInt(port);
                     if (iPort < 0 || iPort > MAX_UNSIGNED_16_BIT_INT) {
-                        //System.out.println("isValidAuthority - port 2");
                         return false;
                     }
                 } catch (NumberFormatException nfe) {
-                    //System.out.println("isValidAuthority - port nfe");
                     return false; // this can happen for big numbers
                 }
             }
@@ -459,11 +441,9 @@ public class UrlValidator implements Serializable {
 
         String extra = authorityMatcher.group(PARSE_AUTHORITY_EXTRA);
         if (extra != null && extra.trim().length() > 0){
-            //System.out.println("isValidAuthority - port 3");
             return false;
         }
 
-        //System.out.println("isValidAuthority - return true");
         return true;
     }
 
@@ -474,12 +454,10 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidPath(String path) {
         if (path == null) {
-            //System.out.println("\nisValidPath - null");
             return false;
         }
 
         if (!PATH_PATTERN.matcher(path).matches()) {
-            //System.out.println("isValidPath - no pattern match: " + path);
             return false;
         }
 
@@ -488,21 +466,17 @@ public class UrlValidator implements Serializable {
             String norm = uri.normalize().getPath();
             if (norm.startsWith("/../") // Trying to go via the parent dir 
              || norm.equals("/..")) {   // Trying to go to the parent dir
-                //System.out.println("isValidPath - /../ or /..");
                 return false;
             }
         } catch (URISyntaxException e) {
-            //System.out.println("isValidPath - URI exception");
             return false;
         }
         
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
-            //System.out.println("isValidPath - slash count");
             return false;
         }
 
-        //System.out.println("isValidPath - return true");
         return true;
     }
 
