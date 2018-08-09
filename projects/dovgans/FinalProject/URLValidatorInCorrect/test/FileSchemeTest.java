@@ -67,8 +67,12 @@ public class FileSchemeTest {
 
         } catch(AssertionError e){
 
-            System.out.println("FAILED FILE SCHEME: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED FILE SCHEME: " + e.getMessage() + ", URL - " + url.getURL());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED FILE SCHEME: " + e.getMessage() + ", URL - " + url.getURL());
             throw e;
         }
     }

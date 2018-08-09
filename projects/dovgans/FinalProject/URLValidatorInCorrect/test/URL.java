@@ -88,5 +88,4 @@ public class URL {
         return schemeIsValid && authorityIsValid && portIsValid && pathIsValid
                 && queryIsValid;
     }
-
 }

@@ -74,8 +74,12 @@ public class QueryTest {
 
         } catch(AssertionError e){
 
-            System.out.println("FAILED QUERY: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED QUERY: " + e.getMessage() + ", URL - " + url.getURL());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED QUERY: " + e.getMessage() + ", URL - " + url.getURL());
             throw e;
         }
     }

@@ -28,13 +28,38 @@ public class IsValidTest {
     @Test
     public void testNull(){
 
-        assertFalse(validator.isValid(null));
+        try{
+            assertFalse(validator.isValid(null));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED NULL TEST: " + e.getMessage());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED NULL TEST: " + e.getMessage());
+            throw e;
+        }
+
     }
 
     @Test
     public void testURLPatternMatch(){
 
-        assertFalse(validator.isValid("?#://?#\n"));
+        try{
+            assertFalse(validator.isValid("?#://?#\n"));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED PATTERN MATCH: " + e.getMessage());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED PATTERN MATCH: " + e.getMessage());
+            throw e;
+        }
     }
 }
 

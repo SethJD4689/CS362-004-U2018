@@ -83,8 +83,12 @@ public class SchemeTest {
 
         } catch(AssertionError e){
 
-            System.out.println("FAILED SCHEME: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED SCHEME: " + e.getMessage() + ", URL - " + url.getURL());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED SCHEME: " + e.getMessage() + ", URL - " + url.getURL());
             throw e;
         }
     }

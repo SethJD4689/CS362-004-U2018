@@ -89,7 +89,11 @@ public class InetAddressValidator implements Serializable {
     public boolean isValidInet4Address(String inet4Address) {
         // verify that address conforms to generic IPv4 format
         String[] groups = ipv4Validator.match(inet4Address);
-       if (groups == null) {                                                    // TODO Should be == not !=
+
+        // TODO BUG - NullPointerException thrown and erroneous results
+        // TODO Change conditional statement to: if(groups == null);
+        // TODO from: if (groups != null);
+        if (groups == null) {
             return false;
         }
 
@@ -108,7 +112,10 @@ public class InetAddressValidator implements Serializable {
             }
 
             if (iIpSegment > IPV4_MAX_OCTET_VALUE) {
-            		return false;                                                // TODO Should return false not true
+                // TODO BUG - Invalid Results when IP octet address value > upper limit (255)
+                // TODO Change return statement to: return false;
+                // TODO from: return true;
+                return true;
             }
 
             if (ipSegment.length() > 1 && ipSegment.startsWith("0")) {

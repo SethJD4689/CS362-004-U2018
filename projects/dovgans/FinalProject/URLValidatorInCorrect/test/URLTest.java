@@ -70,7 +70,6 @@ public class URLTest {
         } catch(AssertionError e){
 
             System.out.println("FAILED URL: " + e.getMessage() + ", URL - " + url.getURL());
-
             collector.addError(e);
         }
     }

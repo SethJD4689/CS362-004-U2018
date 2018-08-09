@@ -81,8 +81,12 @@ public class PathTest {
 
         } catch(AssertionError e){
 
-            System.out.println("FAILED PATH: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED PATH: " + e.getMessage() + ", URL - " + url.getURL());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED PATH: " + e.getMessage() + ", URL - " + url.getURL());
             throw e;
         }
     }

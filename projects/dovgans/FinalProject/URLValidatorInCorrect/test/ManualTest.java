@@ -78,7 +78,20 @@ public class ManualTest {
     @Test
     public void testURL(){
 
-        assertEquals(isValid, validator.isValid(url));
+        try{
+
+            assertEquals(isValid, validator.isValid(url));
+
+        } catch(AssertionError e){
+
+            System.out.println("FAILED AUTHORITY: " + e.getMessage() + ", URL - " + url);
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED AUTHORITY: " + e.getMessage() + ", URL - " + url);
+            throw e;
+        }
     }
 }
 

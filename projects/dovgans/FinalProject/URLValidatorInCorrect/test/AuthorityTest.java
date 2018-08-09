@@ -98,8 +98,12 @@ public class AuthorityTest {
 
         } catch(AssertionError e){
 
-            System.out.println("FAILED AUTHORITY: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED AUTHORITY: " + e.getMessage() + ", URL - " + url.getURL());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED AUTHORITY: " + e.getMessage() + ", URL - " + url.getURL());
             throw e;
         }
     }

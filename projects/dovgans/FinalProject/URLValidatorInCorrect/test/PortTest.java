@@ -78,8 +78,12 @@ public class PortTest {
 
         } catch(AssertionError e){
 
-            System.out.println("FAILED PORT: Expected - " + url.isURLValid()
-                    + ", URL - " + url.getURL());
+            System.out.println("FAILED PORT: " + e.getMessage() + ", URL - " + url.getURL());
+            throw e;
+
+        } catch(NullPointerException e){
+
+            System.out.println("FAILED PORT: " + e.getMessage() + ", URL - " + url.getURL());
             throw e;
         }
     }
