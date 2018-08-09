@@ -1,4 +1,5 @@
-import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,20 +17,23 @@ import java.util.Random;
  *  - Query cannot contain whitespace
  *  - Query excepts all characters
  */
-public class ProgrammingIsValidTest {
+public class IsValidTest {
 
-    private static UrlValidator validator;
-    private static URL url;
+    private UrlValidator validator;
 
-    @BeforeClass
-    public static void setup(){
+    @Before
+    public void setup(){
 
         validator = new UrlValidator(null, null,
                 UrlValidator.ALLOW_2_SLASHES
                         + UrlValidator.ALLOW_ALL_SCHEMES
                         + UrlValidator.NO_FRAGMENTS);
+    }
 
-        url = new URL();
+    @After
+    public void teardown(){
+
+        validator = null;
     }
 
     @Test

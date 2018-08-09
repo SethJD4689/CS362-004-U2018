@@ -1,4 +1,5 @@
-import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,12 +16,13 @@ import java.util.List;
  *  - Query excepts all characters
  */
 @RunWith(Parameterized.class)
-public class ProgrammingQueryTest {
+public class QueryTest {
 
-    private static UrlValidator validator;
-    private static URL url;
+    private UrlValidator validator;
+    private URL url;
 
     public final static String BASE_QUERY = "";                  // Null Value
+
     public final static URLPart QUERIES[] = {
 
             new URLPart(BASE_QUERY, true),
@@ -30,16 +32,26 @@ public class ProgrammingQueryTest {
             new URLPart("?test=query\t", false),    // White Space at end
     };
 
-    @BeforeClass
-    public static void setup(){
+    @Before
+    public void setup(){
 
         validator = new UrlValidator(null, null,
                 UrlValidator.ALLOW_2_SLASHES
                         + UrlValidator.ALLOW_ALL_SCHEMES
                         + UrlValidator.NO_FRAGMENTS);
 
-        url = new URL("Http:", "//www.test.com", "", "", BASE_QUERY,
-                true, true, true, true, true );
+        url = new URL(SchemeTest.BASE_SCHEME, AuthorityTest.BASE_AUTHORITY,
+                PortTest.BASE_PORT, PathTest.BASE_PATH, BASE_QUERY,
+                true, true, true,
+                true, true );
+    }
+
+    @After
+    public void teardown(){
+
+        validator = null;
+        url = null;
+        query = null;
     }
 
     @Parameterized.Parameter

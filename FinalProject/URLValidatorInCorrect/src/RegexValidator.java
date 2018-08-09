@@ -139,18 +139,18 @@ public class RegexValidator implements Serializable {
      */
     public boolean isValid(String value) {
 
-        System.out.println("Regex - isValid - start");
+        //System.out.println("Regex - isValid - start");
         if (value == null) {
-            System.out.println("Regex - isValid - null");
+            //System.out.println("Regex - isValid - null");
             return false;
         }
         for (int i = 0; i < patterns.length; i++) {
             if (patterns[i].matcher(value).matches()) {
-                System.out.println("Regex - isValid - matches");
+                //System.out.println("Regex - isValid - matches");
                 return true;
             }
         }
-        System.out.println("Regex - isValid - false");
+        //System.out.println("Regex - isValid - false");
         return false;
     }
 

@@ -1,4 +1,5 @@
-import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,22 +21,29 @@ import java.util.Arrays;
  * - Scheme has no length limits
  */
 @RunWith(Parameterized.class)
-public class ProgrammingFileSchemeTest {
+public class FileSchemeTest {
 
-    private static UrlValidator validator;
+    private UrlValidator validator;
     private static final String SCHEME = "file:";
     private static final String AUTHORITY = "//www.test.com";
     private static final String PORT = "";
     private static final String PATH = "";
     private static final String QUERY = "";
 
-    @BeforeClass
-    public static void setup(){
+    @Before
+    public void setup(){
 
         validator = new UrlValidator(null, null,
                 UrlValidator.ALLOW_2_SLASHES
                         + UrlValidator.ALLOW_ALL_SCHEMES
                         + UrlValidator.NO_FRAGMENTS);
+    }
+
+    @After
+    public void teardown(){
+
+        validator = null;
+        url = null;
     }
 
     @Parameter
