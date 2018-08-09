@@ -1,10 +1,15 @@
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertFalse;
 
 /**
- * Tests the IsValid class for complete coverage.
+ * Tests the IsValid Class:
+ *
+ *  - Query may be null
+ *  - Query cannot contain whitespace
+ *  - Query excepts all characters
  */
 public class IsValidTest {
 

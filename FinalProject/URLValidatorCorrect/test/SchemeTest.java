@@ -1,13 +1,14 @@
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests a URL, scheme specific, with the following test rules:

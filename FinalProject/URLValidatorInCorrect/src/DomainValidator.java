@@ -167,7 +167,7 @@ public class DomainValidator implements Serializable {
         String[] groups = domainRegex.match(domain);
         if (groups != null && groups.length > 0) {
             //System.out.println("domain isValid - 3");
-            return isValidTld(groups[0]);                                      // TODO should be isValid not !isValid
+            return !isValidTld(groups[0]);                                      // TODO should be isValidTld not !isValidTld
         }
         //System.out.println("domain isValid - end");
         //System.out.println(allowLocal + ", " +  hostnameRegex.isValid(domain));

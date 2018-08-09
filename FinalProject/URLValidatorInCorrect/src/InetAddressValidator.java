@@ -64,8 +64,8 @@ public class InetAddressValidator implements Serializable {
      * Returns the singleton instance of this validator.
      * @return the singleton instance of this validator
      */
-    public static InetAddressValidator getInstance() {                          // TODO Changed to VALIDATOR not null
-    	return VALIDATOR;
+    public static InetAddressValidator getInstance() {                          // TODO Change to VALIDATOR, should not be returning null
+    	return null;
     }
 
     /**
@@ -85,7 +85,7 @@ public class InetAddressValidator implements Serializable {
     public boolean isValidInet4Address(String inet4Address) {
         // verify that address conforms to generic IPv4 format
         String[] groups = ipv4Validator.match(inet4Address);
-       if (groups == null) {                                                    // TODO Should be == not !=
+       if (groups != null) {                                                    // TODO Should be == not !=
             return false;
         }
 
@@ -104,7 +104,7 @@ public class InetAddressValidator implements Serializable {
             }
 
             if (iIpSegment > IPV4_MAX_OCTET_VALUE) {
-            		return false;                                                // TODO Should be return false not true
+            		return true;                                                // TODO Should return false not true
             }
 
             if (ipSegment.length() > 1 && ipSegment.startsWith("0")) {
@@ -124,6 +124,7 @@ public class InetAddressValidator implements Serializable {
      * @since 1.4.1
      */
     public boolean isValidInet6Address(String inet6Address) {
+
         boolean containsCompressedZeroes = inet6Address.contains("::");
         if (containsCompressedZeroes && (inet6Address.indexOf("::") != inet6Address.lastIndexOf("::"))) {
             return false;

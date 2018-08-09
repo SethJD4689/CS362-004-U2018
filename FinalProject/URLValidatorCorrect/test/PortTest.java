@@ -1,12 +1,13 @@
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests a URL, port specific, with the following test rules:
@@ -29,7 +30,7 @@ public class PortTest {
             new URLPart(":0", true),                    // Lower Limit
             new URLPart(":65535", true),                // Upper Limit
             new URLPart(":-1", false),                  // Below Limit
-            new URLPart(":65536", false),               // Above Limit
+            new URLPart(":655536", false),              // Above Limit
             new URLPart(":", true),                     // No Port #
             new URLPart("12345", false),                // No Colon
             new URLPart("abc", false),                  // Invalid Characters

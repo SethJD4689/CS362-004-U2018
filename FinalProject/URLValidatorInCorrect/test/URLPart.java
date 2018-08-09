@@ -13,15 +13,7 @@ public class URLPart {
         return part;
     }
 
-    public void setPart(String part) {
-        this.part = part;
-    }
-
     public boolean isValid() {
         return isValid;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
     }
 }

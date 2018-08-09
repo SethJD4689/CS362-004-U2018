@@ -1,8 +1,14 @@
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+//@RunWith(Parameterized.class)
 public class URLTest {
 
     private static UrlValidator validator;
@@ -25,8 +31,13 @@ public class URLTest {
 
         validator = null;
         url = null;
+        //urlIndex = null;
     }
 
+    //@Parameterized.Parameter
+    //public int[] urlIndex;
+
+    //@Parameterized.Parameters
     @Test
     public void urlMutations() {
 
@@ -52,6 +63,7 @@ public class URLTest {
         }
     }
 
+
     private static void testUrl(int sI, int aI, int poI, int paI, int qI){
 
         url = new URL();
@@ -69,6 +81,8 @@ public class URLTest {
 
             System.out.println("FAILED: Expected - " + url.isURLValid()
                     + ", URL - " + url.getURL());
+
+            throw e;
         }
     }
 }

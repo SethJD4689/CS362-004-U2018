@@ -164,11 +164,11 @@ public class UrlValidator implements Serializable {
      */
     private static final int PARSE_AUTHORITY_EXTRA = 4;
 
-    //private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"; //TODO Wrong Path Pattern should be "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"
-    //private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);        // TODO instead of "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"
+    //private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$";
+    //private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
 
-    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"; // NEW PATTERN
-    private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);         // NEW PATTERN
+    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"; // TODO Wrong Path Regex Pattern should be "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"
+    private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);         // TODO instead of "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"
 
     private static final String QUERY_REGEX = "^(\\S*)$";
     private static final Pattern QUERY_PATTERN = Pattern.compile(QUERY_REGEX);
@@ -282,7 +282,7 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));         // TODO Change to lower case from uppercase
+                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));         // TODO should be toLowerCase not toUpperCase
 
             }
         }
@@ -321,7 +321,7 @@ public class UrlValidator implements Serializable {
 
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
 
-        if ("file".equals(scheme)) {// Special case - file: allows an empty authority // TODO change to file not http
+        if ("http".equals(scheme)) {// Special case - file: allows an empty authority  // TODO should be "file" and not "http"
             //System.out.println("isValid - 1");
             if (authority != null) {
                 //System.out.println("isValid - 2");
