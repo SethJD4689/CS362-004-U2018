@@ -42,7 +42,7 @@ public class ProgrammingPortTest {
     @Parameterized.Parameters(name= "{index}: Port - {0}, Expected = {1}")
     public static Collection<Object[]> portMutations() {
 
-        Object[][] data = new Object[8][2];
+        Object[][] data = new Object[9][2];
 
         final int LOWER_LIMIT = 0;
         final int UPPER_LIMIT = 65535;
@@ -82,6 +82,10 @@ public class ProgrammingPortTest {
         // Letters in port versus numbers
         data[7][0] = PRECURSOR + "abc";
         data[7][1] = false;
+
+        // Port above Integer Limit
+        data[8][0] = PRECURSOR + (Long.MAX_VALUE);
+        data[8][1] = false;
 
         return Arrays.asList(data);
     }

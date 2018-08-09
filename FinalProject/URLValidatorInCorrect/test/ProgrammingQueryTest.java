@@ -5,8 +5,7 @@ import org.junit.runners.Parameterized;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
+import java.util.List;
 
 /**
  * Tests a URL, query specific, with the following test rules:
@@ -20,7 +19,16 @@ public class ProgrammingQueryTest {
 
     private static UrlValidator validator;
     private static URL url;
-    private static final String QUERY = "?test=query";
+
+    public final static String BASE_QUERY = "";                  // Null Value
+    public final static URLPart QUERIES[] = {
+
+            new URLPart(BASE_QUERY, true),
+            new URLPart("?test=query", true),
+            new URLPart("?test = query", false),    // White Space in middle
+            new URLPart("\n?test=query", false),    // White Space in beginning
+            new URLPart("?test=query\t", false),    // White Space at end
+    };
 
     @BeforeClass
     public static void setup(){
@@ -30,47 +38,23 @@ public class ProgrammingQueryTest {
                         + UrlValidator.ALLOW_ALL_SCHEMES
                         + UrlValidator.NO_FRAGMENTS);
 
-        url = new URL("Http:", "//www.test.com", "", "", QUERY,
+        url = new URL("Http:", "//www.test.com", "", "", BASE_QUERY,
                 true, true, true, true, true );
     }
 
-    @Parameterized.Parameter(0)
-    public String query;
+    @Parameterized.Parameter
+    public URLPart query;
 
-    @Parameterized.Parameter(1)
-    public boolean isValid;
+    @Parameterized.Parameters(name= "Query Test {0}")
+    public static List<URLPart> queryMutations() {
 
-    @Parameterized.Parameters(name= "{index}: Query - {0}, Expected = {1}")
-    public static Collection<Object[]> queryMutations() {
-
-        Object[][] data = new Object[4][2];
-
-        Random random = new Random();
-        random.setSeed(System.nanoTime());
-
-        // Base Test
-        data[0][0] = QUERY;
-        data[0][1] = true;
-
-        // Query with beginning whitespace
-        data[1][0] = "\n" + QUERY;
-        data[1][1] = false;
-
-        // Query with middle whitespace
-        data[2][0] = "?test = query";
-        data[2][1] = false;
-
-        // Query with end whitespace
-        data[3][0] = QUERY + "\t";
-        data[3][1] = false;
-
-        return Arrays.asList(data);
+        return Arrays.asList(QUERIES);
     }
 
     @Test
     public void testQuery(){
 
-        url.setQuery(query, isValid);
+        url.setQuery(query.getPart(), query.isValid());
         assertEquals(url.isURLValid(), validator.isValid(url.getURL()));
     }
 }

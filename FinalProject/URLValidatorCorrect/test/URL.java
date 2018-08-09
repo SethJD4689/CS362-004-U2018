@@ -110,6 +110,10 @@ public class URL {
         return portIsValid;
     }
 
+    public void setPortIsValid(boolean isValid){
+        this.portIsValid = isValid;
+    }
+
     public void setPort(String port, boolean isValid) {
 
         this.port = port;

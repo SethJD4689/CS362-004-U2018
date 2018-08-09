@@ -443,8 +443,9 @@ public class UrlValidator implements Serializable {
         if (path == null) {
             return false;
         }
-
+        System.out.println(path);
         if (!PATH_PATTERN.matcher(path).matches()) {
+            //System.out.println("path");
             return false;
         }
 

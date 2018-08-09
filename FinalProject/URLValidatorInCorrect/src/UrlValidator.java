@@ -164,8 +164,11 @@ public class UrlValidator implements Serializable {
      */
     private static final int PARSE_AUTHORITY_EXTRA = 4;
 
-    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$";
-    private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
+    //private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"; //TODO Wrong Path Pattern should be "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"
+    //private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);        // TODO instead of "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"
+
+    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"; // NEW PATTERN
+    private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);         // NEW PATTERN
 
     private static final String QUERY_REGEX = "^(\\S*)$";
     private static final Pattern QUERY_PATTERN = Pattern.compile(QUERY_REGEX);
@@ -435,9 +438,13 @@ public class UrlValidator implements Serializable {
                 }
             }
             String port = authorityMatcher.group(PARSE_AUTHORITY_PORT);
+
+
             if (port != null && port.length() > 0) {
+                System.out.println(port);
                 System.out.println("isValidAuthority - port 1");
                 try {
+
                     int iPort = Integer.parseInt(port);
                     if (iPort < 0 || iPort > MAX_UNSIGNED_16_BIT_INT) {
                         System.out.println("isValidAuthority - port 2");
@@ -467,10 +474,12 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidPath(String path) {
         if (path == null) {
+            System.out.println("\nisValidPath - null");
             return false;
         }
 
         if (!PATH_PATTERN.matcher(path).matches()) {
+            System.out.println("isValidPath - no pattern match: " + path);
             return false;
         }
 
@@ -479,17 +488,21 @@ public class UrlValidator implements Serializable {
             String norm = uri.normalize().getPath();
             if (norm.startsWith("/../") // Trying to go via the parent dir 
              || norm.equals("/..")) {   // Trying to go to the parent dir
+                System.out.println("isValidPath - /../ or /..");
                 return false;
             }
         } catch (URISyntaxException e) {
+            System.out.println("isValidPath - URI exception");
             return false;
         }
         
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
+            System.out.println("isValidPath - slash count");
             return false;
         }
 
+        System.out.println("isValidPath - return true");
         return true;
     }
 

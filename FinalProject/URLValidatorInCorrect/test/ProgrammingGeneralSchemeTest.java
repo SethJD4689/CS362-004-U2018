@@ -20,7 +20,7 @@ import java.util.Arrays;
  * - Scheme has no length limits
  */
 @RunWith(Parameterized.class)
-public class ProgrammingSchemeTest {
+public class ProgrammingGeneralSchemeTest {
 
     private static UrlValidator validator;
     private static URL url;
