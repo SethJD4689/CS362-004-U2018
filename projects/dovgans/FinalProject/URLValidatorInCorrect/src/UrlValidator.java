@@ -164,11 +164,11 @@ public class UrlValidator implements Serializable {
      */
     private static final int PARSE_AUTHORITY_EXTRA = 4;
 
-    //private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$";
-    //private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
-
-    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"; // TODO Wrong Path Regex Pattern should be "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"
-    private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);         // TODO instead of "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"
+    // TODO BUG - Path
+    // TODO Change PATH_REGEX String to: "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"
+    // TODO from: "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"
+    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$";
+    private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
 
     private static final String QUERY_REGEX = "^(\\S*)$";
     private static final Pattern QUERY_PATTERN = Pattern.compile(QUERY_REGEX);

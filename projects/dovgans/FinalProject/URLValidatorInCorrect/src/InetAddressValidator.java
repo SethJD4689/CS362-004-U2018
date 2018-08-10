@@ -115,13 +115,12 @@ public class InetAddressValidator implements Serializable {
                 // TODO BUG - Invalid Results when IP octet address value > upper limit (255)
                 // TODO Change return statement to: return false;
                 // TODO from: return true;
-                return true;
+                return false;
             }
 
             if (ipSegment.length() > 1 && ipSegment.startsWith("0")) {
                 return false;
             }
-
         }
 
         return true;
