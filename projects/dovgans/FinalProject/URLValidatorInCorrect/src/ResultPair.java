@@ -27,6 +27,9 @@
 
       public ResultPair(String item, boolean valid) {
          this.item = item;
-         this.valid = valid;  //Weather the individual part of url is valid.       //TODO Change from !Valid to valid
+          // TODO BUG - Result Pair saves the negated boolean value passed to it
+          // TODO Change assignment statement to: this.valid = valid;
+          // TODO from: this.valid = !valid;
+         this.valid = !valid;  //Weather the individual part of url is valid.
       }
    }
