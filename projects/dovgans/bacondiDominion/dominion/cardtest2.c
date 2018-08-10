@@ -69,7 +69,7 @@ void testGameState(struct gameState game, struct gameState test, int actionCards
     // Test the state of the game
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, hand, deck, played,
                            discard, NO_CHANGE, NO_CHANGE, NO_CHANGE, NO_CHANGE,
-                           adventurer, passed, tests);
+                           passed, tests);
 
     // Check if the card was actually played
     testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, passed, tests);

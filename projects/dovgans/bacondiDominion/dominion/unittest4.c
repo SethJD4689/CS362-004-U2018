@@ -72,7 +72,7 @@ int main() {
 	printTestHeader(TYPE, FUNCTION);
 
 	// Test all cards with no card in hand, deck or discards
-	printf("\n# Testing %s function with no cards in hand, deck or discard...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with no cards in hand, deck or discard...\n\n", FUNCTION);
 
 	// Set test conditions
     game.handCount[CURRENT_PLAYER] = 0;
@@ -110,7 +110,7 @@ int main() {
 
 
 	// Test all cards with no card in hand, deck or discards
-	printf("\n# Testing %s function with card not in hand, deck or discard...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with card not in hand, deck or discard...\n\n", FUNCTION);
 
     // Set # of cards for the players
 	game.handCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT;
@@ -193,7 +193,7 @@ int main() {
 
 
     // Test all cards with card in hand, deck and discards
-    printf("\n# Testing %s function with card in hand, deck and discard...\n\n", TEST_FUNCTION);
+    printf("\n# Testing %s function with card in hand, deck and discard...\n\n", FUNCTION);
 
     // Test for each card in the deck
     for(int i = 0; i < SUPPLY_CARD_COUNT; i++){
@@ -221,7 +221,7 @@ int main() {
 
 
     // Test all cards with multiple cards in hand, deck and discards
-    printf("\n# Testing %s function with multiple cards in hand, deck and discard...\n\n", TEST_FUNCTION);
+    printf("\n# Testing %s function with multiple cards in hand, deck and discard...\n\n", FUNCTION);
 
     // Set # of cards for the players
     game.handCount[CURRENT_PLAYER] = SUPPLY_CARD_COUNT * 2;

@@ -1,12 +1,6 @@
-//
-// Created by Seth Dovgan on 7/17/18.
-//
-
 #ifndef _TESTER_H
 #define _TESTER_H
 
-#define TEST_FUNCTION "scoreFor"
-#define TEST_TYPE "Function"
 #define NUM_PLAYERS 2
 #define CURRENT_PLAYER 0
 #define OTHER_PLAYER 1
@@ -14,22 +8,26 @@
 #define NUM_K_CARDS 10
 #define SEED 100
 #define MAX_STRING_LENGTH 32
-
-
 #define EQ(A, B) ((A) == (B))
+#define NUM_OF_TESTS 100
 
 void assertTrue(int expected, int actual, char *message, int *passed, int *tests);
 
 void testCurrentPlayerState(struct gameState *game, struct gameState *test,
 							int player, int hand, int deck, int played,
 							int discard, int coins, int buys, int actions,
-							int score, int card, int *passed, int *tests);
+							int score, int *passed, int *tests);
 
 void testCardPlayed(struct gameState *game, struct gameState *test, int player,
 					int handPos, int *passed, int *tests);
 
 void testCurrentPlayerNoStateChange(struct gameState *game, struct gameState *test,
                                     int player, int *passed, int *tests);
+
+void testCurrentPlayerStateModified(struct gameState *game, struct gameState *test,
+                                    int player, int hand, int played, int coins,
+                                    int buys, int actions, int score,
+                                    int *passed, int *tests);
 
 void testOtherPlayerState(struct gameState *game, struct gameState *test,
                           int player, int hand, int deck, int discard,
@@ -65,5 +63,9 @@ void compareCards(int game[][MAX_DECK], int gameCount, int test[][MAX_DECK],
 void printTestSummary(int passed, int tests);
 
 void printTestHeader(char type[], char name[]);
+
+int* generateRandomGameState(struct gameState *game, int playedCard, int *handPos);
+
+int* generateRandomActionCards(int playedCard);
 
 #endif //_TESTER_H

@@ -43,7 +43,7 @@ int main() {
     printTestHeader(TYPE, FUNCTION);
 
 	// Tests if game status is not over when all supply piles are full
-    printf("\n# Testing %s function with full supply piles...\n\n", TEST_FUNCTION);
+    printf("\n# Testing %s function with full supply piles...\n\n", FUNCTION);
 
 	printf("- Game Status\n");
     assertTrue(isGameOver(&test), GAME_IS_NOT_OVER, "Game Status", &passed, &tests);
@@ -65,7 +65,7 @@ int main() {
 
 
 	// Tests if game status is over when providence pile is empty
-    printf("\n# Testing %s function with empty province pile...\n\n", TEST_FUNCTION);
+    printf("\n# Testing %s function with empty province pile...\n\n", FUNCTION);
 
 	test.supplyCount[province] = 0;	// Set test condition
 
@@ -90,7 +90,7 @@ int main() {
 
 
 	// Tests if game status is not over with 1 remaining province card
-	printf("\n# Testing %s function with 1 province card in pile...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with 1 province card in pile...\n\n", FUNCTION);
 
 	test.supplyCount[province] = 1;	// Set test condition
 
@@ -115,7 +115,7 @@ int main() {
 
 
 	// Tests every combination of 3 empty card pile
-	printf("\n# Testing %s function with every option of 3 empty piles of cards...\n\n", TEST_FUNCTION);
+	printf("\n# Testing %s function with every option of 3 empty piles of cards...\n\n", FUNCTION);
 
 	int supplyCards[] = {curse, estate, duchy, province, copper, silver,
 	                     gold, actionCards[0], actionCards[1], actionCards[2],

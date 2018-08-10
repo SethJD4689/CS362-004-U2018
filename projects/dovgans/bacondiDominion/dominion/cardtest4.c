@@ -57,7 +57,7 @@ int main() {
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
                            (CARDS_DRAWN - CARDS_PLAYED),
                            (-CARDS_DRAWN), CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
-                           BUY_GAIN, NO_CHANGE, NO_CHANGE, council_room, &passed, &tests);
+                           BUY_GAIN, NO_CHANGE, NO_CHANGE, &passed, &tests);
 
     // Check if the card was actually played
     testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);
@@ -98,7 +98,7 @@ int main() {
 
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, ( - CARDS_PLAYED),
                            EMPTY_DECK, CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
-                           BUY_GAIN, NO_CHANGE, NO_CHANGE, council_room, &passed, &tests);
+                           BUY_GAIN, NO_CHANGE, NO_CHANGE, &passed, &tests);
 
     // Check if the card was actually played
     testCardPlayed(&game, &test, CURRENT_PLAYER, HAND_POS, &passed, &tests);
