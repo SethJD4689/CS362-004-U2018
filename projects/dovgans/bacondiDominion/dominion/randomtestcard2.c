@@ -23,6 +23,7 @@
 #define BUY_GAIN 1          // Buys gained playing Council Room card
 #define OTHER_CARDS_DRAWN 1 // Cards drawn by other players
 #define EMPTY_DECK 0
+#define NOT_USED 0
 
 /*******************************************************************************
 **  Function: main
@@ -40,6 +41,7 @@ int main() {
 	int testCase;
 	int passedCaseTests;
     int handPos;
+    int bonus;
     long randomTests = NUM_OF_TESTS;
 
     // Print Test Header
@@ -52,12 +54,13 @@ int main() {
 
         int *actionCards = generateRandomGameState(&game, council_room, &handPos);
         int selectedPlayer = game.whoseTurn;
+        bonus = 0;
 
         // Copy a test instance
         memcpy(&test, &game, sizeof(struct gameState));
 
         // Call Council Room function
-        councilRoomCardEffect(&test, selectedPlayer, handPos);
+        cardEffect(council_room, NOT_USED, NOT_USED, NOT_USED, &test, handPos, &bonus);
 
         int deckCount = game.deckCount[selectedPlayer];
         int discardCount = game.discardCount[selectedPlayer];

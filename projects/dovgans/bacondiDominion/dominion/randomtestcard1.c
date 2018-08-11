@@ -54,7 +54,7 @@ int main() {
 		memcpy(&test, &game, sizeof(struct gameState));
 
 		// Call smithy function
-		smithyCardEffect(&test, selectedPlayer, handPos);
+		smithyEffect(&test, handPos);
 
 		int deckCount = game.deckCount[selectedPlayer];
 		int discardCount = game.discardCount[selectedPlayer];

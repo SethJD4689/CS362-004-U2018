@@ -21,6 +21,7 @@
 #define CARDS_TRASHED 1     // Number of Card trashed using Salvager card
 #define EXTRA_BUY 1         // Extra buys granted by Salvager card
 #define HAND_POS 0
+#define NOT_USED 0
 
 /*******************************************************************************
 **  Function: getScoreForCard
@@ -60,9 +61,11 @@ int main() {
 
     int tests = 0;
     int passed = 0;
+    int bonus = 0;
 
     // Initialize the game instance for the test
     initializeGame(NUM_PLAYERS, actionCards, SEED, &base);
+    game.whoseTurn = CURRENT_PLAYER;
 
     // Print Test Header
     printTestHeader(TYPE, CARD);
@@ -96,7 +99,7 @@ int main() {
         printf("\n* Testing Current Player Playing %s card using trash option for card %d...\n\n", CARD, trashPos);
 
         // Call Salvager function
-        salvagerCardEffect(&test, CURRENT_PLAYER, salvagerPos, trashPos);
+        cardEffect(salvager, trashPos, NOT_USED, NOT_USED, &test, salvagerPos, &bonus);
 
         testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
                                (- CARDS_PLAYED - CARDS_TRASHED), NO_CHANGE,
@@ -137,7 +140,7 @@ int main() {
     memcpy(&test, &game, sizeof(struct gameState));
 
     // Call Salvager function
-    salvagerCardEffect(&test, CURRENT_PLAYER, HAND_POS, NO_TRASH_OPTION);
+    cardEffect(salvager, NO_TRASH_OPTION, NOT_USED, NOT_USED, &test, HAND_POS, &bonus);
 
 	testCurrentPlayerState(&game, &test, CURRENT_PLAYER,
 	                       (- CARDS_PLAYED), NO_CHANGE,

@@ -64,7 +64,7 @@ void testGameState(struct gameState game, struct gameState test, int actionCards
                    int deck, int played, int discard, int *passed, int *tests){
 
     // Call Adventurer function
-    adventurerCardEffect(&test, CURRENT_PLAYER);
+    adventurerEffect(&test);
 
     // Test the state of the game
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, hand, deck, played,
@@ -109,10 +109,10 @@ int main() {
 
     // Initialize the game instance for the test
     initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
+    game.whoseTurn = CURRENT_PLAYER;
 
     // Print Test Header
     printTestHeader(TYPE, CARD);
-
 
     // Check the effects the Adventurer card has on the game state for the current player.
     printf("\n* Testing Current Player Playing %s card with treasure cards at top of deck...\n\n", CARD);
@@ -207,7 +207,6 @@ int main() {
     // Run test case
     testGameState(game, test, actionCards, (-CARDS_PLAYED),
                   (-DISCARD_PILE), CARDS_PLAYED, DISCARD_PILE, &passed, &tests);
-
 
     // Print Summary and Footer
     printTestSummary(passed, tests);

@@ -568,7 +568,7 @@ void printTestSummary(int passed, int tests){
 		printf("\nAll Tests Passed\n");
 	}
 
-	printf(">>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, "
+	printf("\n>>> Summary >>>\n\nTests Conducted = %d, PASSED = %d, "
 	       "FAILED = %d\n\n", tests, passed, (tests - passed));
 }
 

@@ -37,6 +37,7 @@ int main() {
 
 	// Initialize the game instance for the test
 	initializeGame(NUM_PLAYERS, actionCards, SEED, &game);
+	game.whoseTurn = CURRENT_PLAYER;
 
 	// Place Smithy card in hand
 	game.hand[CURRENT_PLAYER][HAND_POS] = smithy;
@@ -45,7 +46,7 @@ int main() {
 	memcpy(&test, &game, sizeof(struct gameState));
 
 	// Call smithy function
-	smithyCardEffect(&test, CURRENT_PLAYER, HAND_POS);
+	smithyEffect(&test, HAND_POS);
 
 	// Print Test Header
 	printTestHeader(CARD, TYPE);
@@ -76,6 +77,12 @@ int main() {
     printf("\n* Testing Kingdom Card Piles...\n\n");
 	testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
 
+	printf("\n* Preconditions for Player %d Playing %s card...\n\n",
+		   CURRENT_PLAYER, CARD);
+	printf("Smithy Card Hand Position: %d\n", HAND_POS);
+	printf("Hand Count: %d\n", game.handCount[CURRENT_PLAYER]);
+	printf("Deck Count: %d\n", game.deckCount[CURRENT_PLAYER]);
+	printf("Discard Count: %d\n", game.discardCount[CURRENT_PLAYER]);
 
     // Check the effects the Smithy card has on the game state for the current player with no cards to draw.
     printf("\n* Testing Current Player Playing %s card with no cards to draw...\n\n", CARD);
@@ -88,7 +95,7 @@ int main() {
     memcpy(&test, &game, sizeof(struct gameState));
 
     // Call smithy function
-    smithyCardEffect(&test, CURRENT_PLAYER, HAND_POS);
+    smithyEffect(&test, HAND_POS);
 
     testCurrentPlayerState(&game, &test, CURRENT_PLAYER, (- CARDS_PLAYED),
                            EMPTY_DECK, CARDS_PLAYED, NO_CHANGE, NO_CHANGE,
@@ -112,6 +119,13 @@ int main() {
     // Verify no kingdom card piles were affected
     printf("\n* Testing Kingdom Card Piles...\n\n");
     testKingdomCardPilesNoChange(&game, &test, actionCards, &passed, &tests);
+
+	printf("\n* Preconditions for Player %d Playing %s card...\n\n",
+		   CURRENT_PLAYER, CARD);
+	printf("Smithy Card Hand Position: %d\n", HAND_POS);
+	printf("Hand Count: %d\n", game.handCount[CURRENT_PLAYER]);
+	printf("Deck Count: %d\n", game.deckCount[CURRENT_PLAYER]);
+	printf("Discard Count: %d\n", game.discardCount[CURRENT_PLAYER]);
 
 	// Print Test Summary
 	printTestSummary(passed, tests);

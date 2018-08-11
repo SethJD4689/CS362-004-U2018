@@ -124,7 +124,7 @@ int main() {
 	    memcpy(&test, &game, sizeof(struct gameState));
 
         // Call Adventurer function
-        adventurerCardEffect(&test, selectedPlayer);
+        adventurerEffect(&test);
 
         // Calculate expected outcomes for various deck and discard counts
         // Deck has less than the amount of cards treasure cards to draw
