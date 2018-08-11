@@ -5,7 +5,7 @@ import org.junit.Rule;
 import org.junit.rules.ErrorCollector;
 import static org.junit.Assert.assertEquals;
 
-public class URLTest {
+public class ProgrammingTest {
 
     private static UrlValidator validator;
     private static URL url;

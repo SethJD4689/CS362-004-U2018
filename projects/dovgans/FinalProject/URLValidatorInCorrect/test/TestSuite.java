@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         ManualTest.class,
+        PartitionsTest.class,
         SchemeTest.class,
         FileSchemeTest.class,
         AuthorityTest.class,
@@ -11,7 +12,7 @@ import org.junit.runner.RunWith;
         PathTest.class,
         QueryTest.class,
         IsValidTest.class,
-        URLTest.class
+        ProgrammingTest.class
 })
 
 public class TestSuite {
