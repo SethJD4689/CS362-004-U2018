@@ -25,7 +25,7 @@
 #define SEED 100
 #define NUM_A_CARDS 20
 #define NUM_ALL_CARDS 27
-#define LIMIT_PRINT 0
+#define LIMIT_PRINT 1
 
 /*******************************************************************************
 **  Function: assertTrue
