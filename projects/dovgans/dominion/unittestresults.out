@@ -1,0 +1,3344 @@
+
+###--------------------------------------------------------------------------###
+###                        Coverage Results for Tests                        ###
+###--------------------------------------------------------------------------###
+
+Function 'compare'
+Lines executed:83.33% of 6
+Branches executed:100.00% of 4
+Taken at least once:75.00% of 4
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'kingdomCards'
+Lines executed:0.00% of 12
+No branches
+No calls
+
+Function 'initializeGame'
+Lines executed:80.77% of 78
+Branches executed:91.30% of 46
+Taken at least once:73.91% of 46
+No calls
+
+Function 'shuffle'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+No calls
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'numHandCards'
+Lines executed:0.00% of 1
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:100.00% of 2
+No branches
+No calls
+
+Function 'supplyCount'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:100.00% of 11
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'whoseTurn'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'endTurn'
+Lines executed:0.00% of 22
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'isGameOver'
+Lines executed:100.00% of 12
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'scoreFor'
+Lines executed:100.00% of 26
+Branches executed:100.00% of 42
+Taken at least once:90.48% of 42
+No calls
+
+Function 'getWinners'
+Lines executed:0.00% of 33
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+No calls
+
+Function 'drawCard'
+Lines executed:100.00% of 24
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'getCost'
+Lines executed:13.33% of 30
+Branches executed:100.00% of 28
+Taken at least once:7.14% of 28
+No calls
+
+Function 'adventurerCardEffect'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 12
+Taken at least once:91.67% of 12
+No calls
+
+Function 'smithyCardEffect'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+No calls
+
+Function 'salvagerCardEffect'
+Lines executed:100.00% of 7
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+No calls
+
+Function 'stewardCardEffect'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+No calls
+
+Function 'baronCardEffect'
+Lines executed:0.00% of 35
+Branches executed:0.00% of 18
+Taken at least once:0.00% of 18
+No calls
+
+Function 'councilRoomCardEffect'
+Lines executed:100.00% of 11
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'cardEffect'
+Lines executed:0.00% of 209
+Branches executed:0.00% of 155
+Taken at least once:0.00% of 155
+No calls
+
+Function 'discardCard'
+Lines executed:86.67% of 15
+Branches executed:100.00% of 6
+Taken at least once:83.33% of 6
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 15
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'updateCoins'
+Lines executed:100.00% of 14
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+File 'dominion.c'
+Lines executed:36.53% of 646
+Branches executed:44.60% of 417
+Taken at least once:34.77% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+###--------------------------------------------------------------------------###
+###                      Results for Running Card Tests                      ###
+###--------------------------------------------------------------------------###
+
+>>> Testing Smithy: Card >>>
+
+* Testing Current Player Playing Smithy card...
+
+FAILED: Cards in Hand = 8, expected = 7
+FAILED: Cards in Deck = 1, expected = 2
+FAILED: Cards Played = 0, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 2, expected = 1
+FAILED: Card Played = none, expected = Smithy
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Smithy card with no cards to draw...
+
+PASSED: Cards in Hand = 4, expected = 4
+PASSED: Cards in Deck = 0, expected = 0
+FAILED: Cards Played = 0, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+FAILED: Card Played = none, expected = Smithy
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+>>> Summary >>>
+
+Tests Conducted = 80, PASSED = 73, FAILED = 7
+
+###--------------------------------------------------------------------------###
+
+>>> Testing Card: Adventurer >>>
+
+* Testing Current Player Playing Adventurer card with treasure cards at top of deck...
+
+FAILED: Cards in Hand = 7, expected = 6
+PASSED: Cards in Deck = 3, expected = 3
+FAILED: Cards Played = 0, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+FAILED: Card Played = none, expected = Adventurer
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing both cards drawn were treasure cards...
+
+PASSED: Copper Card Drawn = 1, expected = 1
+PASSED: Copper Card Drawn = 1, expected = 1
+
+* Testing Current Player Playing Adventurer card with treasure cards at bottom of deck...
+
+FAILED: Cards in Hand = 7, expected = 6
+PASSED: Cards in Deck = 0, expected = 0
+FAILED: Cards Played = 0, expected = 1
+PASSED: Discard Pile = 3, expected = 3
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 7, expected = 1
+FAILED: Card Played = none, expected = Adventurer
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing both cards drawn were treasure cards...
+
+PASSED: Copper Card Drawn = 1, expected = 1
+PASSED: Silver Card Drawn = 1, expected = 1
+
+* Testing Current Player Playing Adventurer card with empty deck...
+
+FAILED: Cards in Hand = 7, expected = 6
+PASSED: Cards in Deck = 3, expected = 3
+FAILED: Cards Played = 0, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 1, expected = 6
+FAILED: Card Played = none, expected = Adventurer
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing both cards drawn were treasure cards...
+
+PASSED: Copper Card Drawn = 1, expected = 1
+PASSED: Silver Card Drawn = 1, expected = 1
+
+* Testing Current Player Playing Adventurer card with NO treasure cards...
+
+FAILED: Cards in Hand = -1, expected = 4
+PASSED: Cards in Deck = 0, expected = 0
+FAILED: Cards Played = 0, expected = 1
+FAILED: Discard Pile = 11, expected = 5
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 1, expected = 0
+FAILED: Card Played = none, expected = Council Room
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing both cards drawn were treasure cards...
+
+FAILED: No treasure card = 1, expected = 0
+FAILED: No treasure card = 1, expected = 0
+
+>>> Summary >>>
+
+Tests Conducted = 168, PASSED = 150, FAILED = 18
+
+###--------------------------------------------------------------------------###
+
+>>> Testing Card: Salvager >>>
+
+* Testing Current Player Playing Salvager card using trash option for card 0...
+
+FAILED: Cards in Hand = 4, expected = 3
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+PASSED: Card Played = Salvager, expected = Salvager
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Salvager card using trash option for card 1...
+
+PASSED: Cards in Hand = 3, expected = 3
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 6, expected = 6
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 1, expected = 0
+FAILED: Card Played = Copper, expected = Salvager
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Salvager card using trash option for card 2...
+
+PASSED: Cards in Hand = 3, expected = 3
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+FAILED: Card Played = Copper, expected = Salvager
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Salvager card using trash option for card 3...
+
+PASSED: Cards in Hand = 3, expected = 3
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+FAILED: Card Played = ?, expected = Salvager
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Salvager card using trash option for card 4...
+
+PASSED: Cards in Hand = 3, expected = 3
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+FAILED: Card Played = Copper, expected = Salvager
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Salvager card NOT using trash option...
+
+PASSED: Cards in Hand = 4, expected = 4
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 0, expected = 1
+PASSED: Card Played = Estate, expected = Estate
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+>>> Summary >>>
+
+Tests Conducted = 240, PASSED = 233, FAILED = 7
+
+###--------------------------------------------------------------------------###
+
+>>> Testing Council Room: Card >>>
+
+* Testing Current Player Playing Council Room card...
+
+PASSED: Cards in Hand = 8, expected = 8
+PASSED: Cards in Deck = 1, expected = 1
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+FAILED: Player Score = 2, expected = 1
+PASSED: Card Played = Council Room, expected = Council Room
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 1, expected = 1
+PASSED: Cards in Deck = 9, expected = 9
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+* Testing Current Player Playing Council Room card with no cards to draw...
+
+PASSED: Cards in Hand = 4, expected = 4
+PASSED: Cards in Deck = 0, expected = 0
+PASSED: Cards Played = 1, expected = 1
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 2, expected = 2
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+PASSED: Card Played = Council Room, expected = Council Room
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 1, expected = 1
+PASSED: Cards in Deck = 9, expected = 9
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+>>> Summary >>>
+
+Tests Conducted = 78, PASSED = 77, FAILED = 1
+
+###--------------------------------------------------------------------------###
+###                    Results for Running Function Tests                    ###
+###--------------------------------------------------------------------------###
+
+>>> Testing Function: isGameOver >>>
+
+# Testing scoreFor function with full supply piles...
+
+- Game Status
+PASSED: Game Status = 0, expected = 0
+
+- Current Player Game State
+PASSED: Cards in Hand = 5, expected = 5
+- PASSED: Hand Card 0 - Copper, expected = Copper
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Copper, expected = Copper
+- PASSED: Hand Card 3 - Copper, expected = Copper
+- PASSED: Hand Card 4 - Copper, expected = Copper
+PASSED: Cards in Deck = 5, expected = 5
+- PASSED: Deck Card 0 - Estate, expected = Estate
+- PASSED: Deck Card 1 - Copper, expected = Copper
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with empty province pile...
+
+- Game Status
+PASSED: Game Status = 1, expected = 1
+
+- Current Player Game State
+PASSED: Cards in Hand = 5, expected = 5
+- PASSED: Hand Card 0 - Copper, expected = Copper
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Copper, expected = Copper
+- PASSED: Hand Card 3 - Copper, expected = Copper
+- PASSED: Hand Card 4 - Copper, expected = Copper
+PASSED: Cards in Deck = 5, expected = 5
+- PASSED: Deck Card 0 - Estate, expected = Estate
+- PASSED: Deck Card 1 - Copper, expected = Copper
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 0, expected = 0
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with 1 province card in pile...
+
+- Game Status
+PASSED: Game Status = 0, expected = 0
+
+- Current Player Game State
+PASSED: Cards in Hand = 5, expected = 5
+- PASSED: Hand Card 0 - Copper, expected = Copper
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Copper, expected = Copper
+- PASSED: Hand Card 3 - Copper, expected = Copper
+- PASSED: Hand Card 4 - Copper, expected = Copper
+PASSED: Cards in Deck = 5, expected = 5
+- PASSED: Deck Card 0 - Estate, expected = Estate
+- PASSED: Deck Card 1 - Copper, expected = Copper
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 1, expected = 1
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 1, expected = 1
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with every option of 3 empty piles of cards...
+
+PASSED: Card Piles - Curse, Estate, Duchy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Province are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Copper are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Estate, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Province are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Copper are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Duchy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Copper are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Province, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Copper, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Silver, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Gold, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Curse, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Province are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Copper are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Duchy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Copper are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Province, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Copper, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Silver, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Gold, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Estate, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Copper are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Province, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Copper, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Silver, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Gold, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Duchy, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Silver are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Copper, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Silver, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Gold, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Province, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Gold are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Silver, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Gold, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Copper, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Smithy are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Gold, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Silver, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Adventurer are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Smithy, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Gold, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Salvager are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Adventurer, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Smithy, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Steward are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Salvager, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Adventurer, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Steward, Baron are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Steward, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Steward, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Steward, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Steward, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Steward, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Salvager, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Baron, Village are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Baron, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Baron, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Baron, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Baron, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Steward, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Village, Minion are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Village, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Village, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Village, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Baron, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Village, Minion, Feast are Empty = 1, expected = 1
+PASSED: Card Piles - Village, Minion, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Village, Minion, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Village, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Village, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Village, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Minion, Feast, Embargo are Empty = 1, expected = 1
+PASSED: Card Piles - Minion, Feast, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Minion, Embargo, Outpost are Empty = 1, expected = 1
+PASSED: Card Piles - Feast, Embargo, Outpost are Empty = 1, expected = 1
+
+>>> Summary >>>
+
+Tests Conducted = 830, PASSED = 830, FAILED = 0
+
+###--------------------------------------------------------------------------###
+
+>>> Testing Function: updateCoins >>>
+
+# Testing updateCoins function with no coins in hand...
+
+- Coin Update
+PASSED: Coins in Hand = 0, expected = 0
+
+- Current Player Game State
+PASSED: Cards in Hand = 5, expected = 5
+- PASSED: Hand Card 0 - Smithy, expected = Smithy
+- PASSED: Hand Card 1 - Smithy, expected = Smithy
+- PASSED: Hand Card 2 - Smithy, expected = Smithy
+- PASSED: Hand Card 3 - Smithy, expected = Smithy
+- PASSED: Hand Card 4 - Smithy, expected = Smithy
+PASSED: Cards in Deck = 5, expected = 5
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 0, expected = 0
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing updateCoins function with no cards in hand...
+
+- Coin Update
+PASSED: Coins in Hand = 0, expected = 0
+
+- Current Player Game State
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 5, expected = 5
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 0, expected = 0
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing updateCoins function with combination of coins in hand...
+
+- Coin Update
+PASSED: Coins in Hand = 8, expected = 8
+
+- Current Player Game State
+PASSED: Cards in Hand = 5, expected = 5
+- PASSED: Hand Card 0 - Copper, expected = Copper
+- PASSED: Hand Card 1 - Silver, expected = Silver
+- PASSED: Hand Card 2 - Gold, expected = Gold
+- PASSED: Hand Card 3 - Copper, expected = Copper
+- PASSED: Hand Card 4 - Copper, expected = Copper
+PASSED: Cards in Deck = 5, expected = 5
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 8, expected = 8
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 5, expected = 5
+- PASSED: Hand Card 0 - Copper, expected = Copper
+- PASSED: Hand Card 1 - Silver, expected = Silver
+- PASSED: Hand Card 2 - Gold, expected = Gold
+- PASSED: Hand Card 3 - Copper, expected = Copper
+- PASSED: Hand Card 4 - Copper, expected = Copper
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing updateCoins function with all cards and bonus (0) in hand...
+
+- Coin Update
+PASSED: Coins in Hand = 6, expected = 6
+
+- Current Player Game State
+PASSED: Cards in Hand = 17, expected = 17
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 6, expected = 6
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 9, expected = 9
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 17, expected = 17
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 9, expected = 9
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing updateCoins function with all cards and bonus (10) in hand...
+
+- Coin Update
+PASSED: Coins in Hand = 16, expected = 16
+
+- Current Player Game State
+PASSED: Cards in Hand = 17, expected = 17
+PASSED: Cards in Deck = 5, expected = 5
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 16, expected = 16
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 9, expected = 9
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 17, expected = 17
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Smithy, expected = Smithy
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Smithy, expected = Smithy
+- PASSED: Deck Card 4 - Smithy, expected = Smithy
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 9, expected = 9
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+>>> Summary >>>
+
+Tests Conducted = 264, PASSED = 264, FAILED = 0
+
+###--------------------------------------------------------------------------###
+
+>>> Testing Function: scoreFor >>>
+
+# Testing scoreFor function with no hand, deck or discard...
+
+* Score For
+PASSED: Player Score = 0, expected = 0
+
+* Current Player Game State
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 0, expected = 0
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with score in deck, hand and discard...
+
+* Score For
+FAILED: Player Score = 21, expected = 10
+
+* Current Player Game State
+PASSED: Cards in Hand = 6, expected = 6
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Great Hall, expected = Great Hall
+- PASSED: Hand Card 5 - Gardens, expected = Gardens
+PASSED: Cards in Deck = 6, expected = 6
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Great Hall, expected = Great Hall
+- PASSED: Deck Card 5 - Gardens, expected = Gardens
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 1, expected = 1
+- PASSED: Discard Card 0 - Estate, expected = Estate
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 10, expected = 10
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with score cards in hand only...
+
+* Score For
+PASSED: Player Score = 10, expected = 10
+
+* Current Player Game State
+PASSED: Cards in Hand = 6, expected = 6
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Great Hall, expected = Great Hall
+- PASSED: Hand Card 5 - Gardens, expected = Gardens
+PASSED: Cards in Deck = 6, expected = 6
+- PASSED: Deck Card 0 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 1 - Minion, expected = Minion
+- PASSED: Deck Card 2 - Feast, expected = Feast
+- PASSED: Deck Card 3 - Embargo, expected = Embargo
+- PASSED: Deck Card 4 - Outpost, expected = Outpost
+- PASSED: Deck Card 5 - Village, expected = Village
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 1, expected = 1
+- PASSED: Discard Card 0 - Smithy, expected = Smithy
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 10, expected = 10
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with score cards in deck only...
+
+* Score For
+FAILED: Player Score = 10, expected = -1
+
+* Current Player Game State
+PASSED: Cards in Hand = 6, expected = 6
+- PASSED: Hand Card 0 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 1 - Minion, expected = Minion
+- PASSED: Hand Card 2 - Feast, expected = Feast
+- PASSED: Hand Card 3 - Embargo, expected = Embargo
+- PASSED: Hand Card 4 - Outpost, expected = Outpost
+- PASSED: Hand Card 5 - Village, expected = Village
+PASSED: Cards in Deck = 6, expected = 6
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Great Hall, expected = Great Hall
+- PASSED: Deck Card 5 - Gardens, expected = Gardens
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 1, expected = 1
+- PASSED: Discard Card 0 - Smithy, expected = Smithy
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = -1, expected = -1
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with score cards in discard only...
+
+* Score For
+PASSED: Player Score = 6, expected = 6
+
+* Current Player Game State
+PASSED: Cards in Hand = 6, expected = 6
+- PASSED: Hand Card 0 - Minion, expected = Minion
+- PASSED: Hand Card 1 - Minion, expected = Minion
+- PASSED: Hand Card 2 - Feast, expected = Feast
+- PASSED: Hand Card 3 - Embargo, expected = Embargo
+- PASSED: Hand Card 4 - Outpost, expected = Outpost
+- PASSED: Hand Card 5 - Village, expected = Village
+PASSED: Cards in Deck = 6, expected = 6
+- PASSED: Deck Card 0 - Smithy, expected = Smithy
+- PASSED: Deck Card 1 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 2 - Smithy, expected = Smithy
+- PASSED: Deck Card 3 - Village, expected = Village
+- PASSED: Deck Card 4 - Outpost, expected = Outpost
+- PASSED: Deck Card 5 - Feast, expected = Feast
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 1, expected = 1
+- PASSED: Discard Card 0 - Province, expected = Province
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 6, expected = 6
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 10, expected = 10
+- PASSED: Deck Card 0 - Copper, expected = Copper
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Estate, expected = Estate
+- PASSED: Deck Card 3 - Copper, expected = Copper
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Estate, expected = Estate
+- PASSED: Deck Card 6 - Copper, expected = Copper
+- PASSED: Deck Card 7 - Copper, expected = Copper
+- PASSED: Deck Card 8 - Copper, expected = Copper
+- PASSED: Deck Card 9 - Copper, expected = Copper
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+>>> Summary >>>
+
+Tests Conducted = 252, PASSED = 250, FAILED = 2
+
+###--------------------------------------------------------------------------###
+
+>>> Testing Function: fullDeckCount >>>
+
+# Testing scoreFor function with no cards in hand, deck or discard...
+
+PASSED: Count of Curse card in player's deck = 0, expected = 0
+PASSED: Count of Curse card in other player's deck = 0, expected = 0
+PASSED: Count of Estate card in player's deck = 0, expected = 0
+PASSED: Count of Estate card in other player's deck = 0, expected = 0
+PASSED: Count of Duchy card in player's deck = 0, expected = 0
+PASSED: Count of Duchy card in other player's deck = 0, expected = 0
+PASSED: Count of Province card in player's deck = 0, expected = 0
+PASSED: Count of Province card in other player's deck = 0, expected = 0
+PASSED: Count of Copper card in player's deck = 0, expected = 0
+PASSED: Count of Copper card in other player's deck = 0, expected = 0
+PASSED: Count of Silver card in player's deck = 0, expected = 0
+PASSED: Count of Silver card in other player's deck = 0, expected = 0
+PASSED: Count of Gold card in player's deck = 0, expected = 0
+PASSED: Count of Gold card in other player's deck = 0, expected = 0
+PASSED: Count of Smithy card in player's deck = 0, expected = 0
+PASSED: Count of Smithy card in other player's deck = 0, expected = 0
+PASSED: Count of Adventurer card in player's deck = 0, expected = 0
+PASSED: Count of Adventurer card in other player's deck = 0, expected = 0
+PASSED: Count of Salvager card in player's deck = 0, expected = 0
+PASSED: Count of Salvager card in other player's deck = 0, expected = 0
+PASSED: Count of Steward card in player's deck = 0, expected = 0
+PASSED: Count of Steward card in other player's deck = 0, expected = 0
+PASSED: Count of Baron card in player's deck = 0, expected = 0
+PASSED: Count of Baron card in other player's deck = 0, expected = 0
+PASSED: Count of Village card in player's deck = 0, expected = 0
+PASSED: Count of Village card in other player's deck = 0, expected = 0
+PASSED: Count of Minion card in player's deck = 0, expected = 0
+PASSED: Count of Minion card in other player's deck = 0, expected = 0
+PASSED: Count of Feast card in player's deck = 0, expected = 0
+PASSED: Count of Feast card in other player's deck = 0, expected = 0
+PASSED: Count of Embargo card in player's deck = 0, expected = 0
+PASSED: Count of Embargo card in other player's deck = 0, expected = 0
+PASSED: Count of Outpost card in player's deck = 0, expected = 0
+PASSED: Count of Outpost card in other player's deck = 0, expected = 0
+
+* Current Player Game State
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 0, expected = 0
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 0, expected = 0
+PASSED: Cards in Deck = 0, expected = 0
+PASSED: Discard Pile = 0, expected = 0
+PASSED: Player Score = 0, expected = 0
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with card not in hand, deck or discard...
+
+PASSED: Count of Curse card in player's deck = 0, expected = 0
+PASSED: Count of Curse card in other player's deck = 0, expected = 0
+PASSED: Count of Estate card in player's deck = 0, expected = 0
+PASSED: Count of Estate card in other player's deck = 0, expected = 0
+PASSED: Count of Duchy card in player's deck = 0, expected = 0
+PASSED: Count of Duchy card in other player's deck = 0, expected = 0
+PASSED: Count of Province card in player's deck = 0, expected = 0
+PASSED: Count of Province card in other player's deck = 0, expected = 0
+PASSED: Count of Copper card in player's deck = 0, expected = 0
+PASSED: Count of Copper card in other player's deck = 0, expected = 0
+PASSED: Count of Silver card in player's deck = 0, expected = 0
+PASSED: Count of Silver card in other player's deck = 0, expected = 0
+PASSED: Count of Gold card in player's deck = 0, expected = 0
+PASSED: Count of Gold card in other player's deck = 0, expected = 0
+PASSED: Count of Smithy card in player's deck = 0, expected = 0
+PASSED: Count of Smithy card in other player's deck = 0, expected = 0
+PASSED: Count of Adventurer card in player's deck = 0, expected = 0
+PASSED: Count of Adventurer card in other player's deck = 0, expected = 0
+PASSED: Count of Salvager card in player's deck = 0, expected = 0
+PASSED: Count of Salvager card in other player's deck = 0, expected = 0
+PASSED: Count of Steward card in player's deck = 0, expected = 0
+PASSED: Count of Steward card in other player's deck = 0, expected = 0
+PASSED: Count of Baron card in player's deck = 0, expected = 0
+PASSED: Count of Baron card in other player's deck = 0, expected = 0
+PASSED: Count of Village card in player's deck = 0, expected = 0
+PASSED: Count of Village card in other player's deck = 0, expected = 0
+PASSED: Count of Minion card in player's deck = 0, expected = 0
+PASSED: Count of Minion card in other player's deck = 0, expected = 0
+PASSED: Count of Feast card in player's deck = 0, expected = 0
+PASSED: Count of Feast card in other player's deck = 0, expected = 0
+PASSED: Count of Embargo card in player's deck = 0, expected = 0
+PASSED: Count of Embargo card in other player's deck = 0, expected = 0
+PASSED: Count of Outpost card in player's deck = 0, expected = 0
+PASSED: Count of Outpost card in other player's deck = 0, expected = 0
+
+* Current Player Game State
+PASSED: Cards in Hand = 17, expected = 17
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 17, expected = 17
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Silver, expected = Silver
+- PASSED: Deck Card 6 - Gold, expected = Gold
+- PASSED: Deck Card 7 - Smithy, expected = Smithy
+- PASSED: Deck Card 8 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 9 - Salvager, expected = Salvager
+- PASSED: Deck Card 10 - Steward, expected = Steward
+- PASSED: Deck Card 11 - Baron, expected = Baron
+- PASSED: Deck Card 12 - Village, expected = Village
+- PASSED: Deck Card 13 - Minion, expected = Minion
+- PASSED: Deck Card 14 - Feast, expected = Feast
+- PASSED: Deck Card 15 - Embargo, expected = Embargo
+- PASSED: Deck Card 16 - Outpost, expected = Outpost
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 17, expected = 17
+- PASSED: Discard Card 0 - Curse, expected = Curse
+- PASSED: Discard Card 1 - Estate, expected = Estate
+- PASSED: Discard Card 2 - Duchy, expected = Duchy
+- PASSED: Discard Card 3 - Province, expected = Province
+- PASSED: Discard Card 4 - Copper, expected = Copper
+- PASSED: Discard Card 5 - Silver, expected = Silver
+- PASSED: Discard Card 6 - Gold, expected = Gold
+- PASSED: Discard Card 7 - Smithy, expected = Smithy
+- PASSED: Discard Card 8 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 9 - Salvager, expected = Salvager
+- PASSED: Discard Card 10 - Steward, expected = Steward
+- PASSED: Discard Card 11 - Baron, expected = Baron
+- PASSED: Discard Card 12 - Village, expected = Village
+- PASSED: Discard Card 13 - Minion, expected = Minion
+- PASSED: Discard Card 14 - Feast, expected = Feast
+- PASSED: Discard Card 15 - Embargo, expected = Embargo
+- PASSED: Discard Card 16 - Outpost, expected = Outpost
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 27, expected = 27
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 17, expected = 17
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 17, expected = 17
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Silver, expected = Silver
+- PASSED: Deck Card 6 - Gold, expected = Gold
+- PASSED: Deck Card 7 - Smithy, expected = Smithy
+- PASSED: Deck Card 8 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 9 - Salvager, expected = Salvager
+- PASSED: Deck Card 10 - Steward, expected = Steward
+- PASSED: Deck Card 11 - Baron, expected = Baron
+- PASSED: Deck Card 12 - Village, expected = Village
+- PASSED: Deck Card 13 - Minion, expected = Minion
+- PASSED: Deck Card 14 - Feast, expected = Feast
+- PASSED: Deck Card 15 - Embargo, expected = Embargo
+- PASSED: Deck Card 16 - Outpost, expected = Outpost
+PASSED: Discard Pile = 17, expected = 17
+- PASSED: Discard Card 0 - Curse, expected = Curse
+- PASSED: Discard Card 1 - Estate, expected = Estate
+- PASSED: Discard Card 2 - Duchy, expected = Duchy
+- PASSED: Discard Card 3 - Province, expected = Province
+- PASSED: Discard Card 4 - Copper, expected = Copper
+- PASSED: Discard Card 5 - Silver, expected = Silver
+- PASSED: Discard Card 6 - Gold, expected = Gold
+- PASSED: Discard Card 7 - Smithy, expected = Smithy
+- PASSED: Discard Card 8 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 9 - Salvager, expected = Salvager
+- PASSED: Discard Card 10 - Steward, expected = Steward
+- PASSED: Discard Card 11 - Baron, expected = Baron
+- PASSED: Discard Card 12 - Village, expected = Village
+- PASSED: Discard Card 13 - Minion, expected = Minion
+- PASSED: Discard Card 14 - Feast, expected = Feast
+- PASSED: Discard Card 15 - Embargo, expected = Embargo
+- PASSED: Discard Card 16 - Outpost, expected = Outpost
+PASSED: Player Score = 27, expected = 27
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with card in hand, deck and discard...
+
+PASSED: Count of Curse card in player's deck = 3, expected = 3
+PASSED: Count of Curse card in other player's deck = 3, expected = 3
+PASSED: Count of Estate card in player's deck = 3, expected = 3
+PASSED: Count of Estate card in other player's deck = 3, expected = 3
+PASSED: Count of Duchy card in player's deck = 3, expected = 3
+PASSED: Count of Duchy card in other player's deck = 3, expected = 3
+PASSED: Count of Province card in player's deck = 3, expected = 3
+PASSED: Count of Province card in other player's deck = 3, expected = 3
+PASSED: Count of Copper card in player's deck = 3, expected = 3
+PASSED: Count of Copper card in other player's deck = 3, expected = 3
+PASSED: Count of Silver card in player's deck = 3, expected = 3
+PASSED: Count of Silver card in other player's deck = 3, expected = 3
+PASSED: Count of Gold card in player's deck = 3, expected = 3
+PASSED: Count of Gold card in other player's deck = 3, expected = 3
+PASSED: Count of Smithy card in player's deck = 3, expected = 3
+PASSED: Count of Smithy card in other player's deck = 3, expected = 3
+PASSED: Count of Adventurer card in player's deck = 3, expected = 3
+PASSED: Count of Adventurer card in other player's deck = 3, expected = 3
+PASSED: Count of Salvager card in player's deck = 3, expected = 3
+PASSED: Count of Salvager card in other player's deck = 3, expected = 3
+PASSED: Count of Steward card in player's deck = 3, expected = 3
+PASSED: Count of Steward card in other player's deck = 3, expected = 3
+PASSED: Count of Baron card in player's deck = 3, expected = 3
+PASSED: Count of Baron card in other player's deck = 3, expected = 3
+PASSED: Count of Village card in player's deck = 3, expected = 3
+PASSED: Count of Village card in other player's deck = 3, expected = 3
+PASSED: Count of Minion card in player's deck = 3, expected = 3
+PASSED: Count of Minion card in other player's deck = 3, expected = 3
+PASSED: Count of Feast card in player's deck = 3, expected = 3
+PASSED: Count of Feast card in other player's deck = 3, expected = 3
+PASSED: Count of Embargo card in player's deck = 3, expected = 3
+PASSED: Count of Embargo card in other player's deck = 3, expected = 3
+PASSED: Count of Outpost card in player's deck = 3, expected = 3
+PASSED: Count of Outpost card in other player's deck = 3, expected = 3
+
+* Current Player Game State
+PASSED: Cards in Hand = 17, expected = 17
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 17, expected = 17
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Silver, expected = Silver
+- PASSED: Deck Card 6 - Gold, expected = Gold
+- PASSED: Deck Card 7 - Smithy, expected = Smithy
+- PASSED: Deck Card 8 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 9 - Salvager, expected = Salvager
+- PASSED: Deck Card 10 - Steward, expected = Steward
+- PASSED: Deck Card 11 - Baron, expected = Baron
+- PASSED: Deck Card 12 - Village, expected = Village
+- PASSED: Deck Card 13 - Minion, expected = Minion
+- PASSED: Deck Card 14 - Feast, expected = Feast
+- PASSED: Deck Card 15 - Embargo, expected = Embargo
+- PASSED: Deck Card 16 - Outpost, expected = Outpost
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 17, expected = 17
+- PASSED: Discard Card 0 - Curse, expected = Curse
+- PASSED: Discard Card 1 - Estate, expected = Estate
+- PASSED: Discard Card 2 - Duchy, expected = Duchy
+- PASSED: Discard Card 3 - Province, expected = Province
+- PASSED: Discard Card 4 - Copper, expected = Copper
+- PASSED: Discard Card 5 - Silver, expected = Silver
+- PASSED: Discard Card 6 - Gold, expected = Gold
+- PASSED: Discard Card 7 - Smithy, expected = Smithy
+- PASSED: Discard Card 8 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 9 - Salvager, expected = Salvager
+- PASSED: Discard Card 10 - Steward, expected = Steward
+- PASSED: Discard Card 11 - Baron, expected = Baron
+- PASSED: Discard Card 12 - Village, expected = Village
+- PASSED: Discard Card 13 - Minion, expected = Minion
+- PASSED: Discard Card 14 - Feast, expected = Feast
+- PASSED: Discard Card 15 - Embargo, expected = Embargo
+- PASSED: Discard Card 16 - Outpost, expected = Outpost
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 27, expected = 27
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 17, expected = 17
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 17, expected = 17
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Silver, expected = Silver
+- PASSED: Deck Card 6 - Gold, expected = Gold
+- PASSED: Deck Card 7 - Smithy, expected = Smithy
+- PASSED: Deck Card 8 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 9 - Salvager, expected = Salvager
+- PASSED: Deck Card 10 - Steward, expected = Steward
+- PASSED: Deck Card 11 - Baron, expected = Baron
+- PASSED: Deck Card 12 - Village, expected = Village
+- PASSED: Deck Card 13 - Minion, expected = Minion
+- PASSED: Deck Card 14 - Feast, expected = Feast
+- PASSED: Deck Card 15 - Embargo, expected = Embargo
+- PASSED: Deck Card 16 - Outpost, expected = Outpost
+PASSED: Discard Pile = 17, expected = 17
+- PASSED: Discard Card 0 - Curse, expected = Curse
+- PASSED: Discard Card 1 - Estate, expected = Estate
+- PASSED: Discard Card 2 - Duchy, expected = Duchy
+- PASSED: Discard Card 3 - Province, expected = Province
+- PASSED: Discard Card 4 - Copper, expected = Copper
+- PASSED: Discard Card 5 - Silver, expected = Silver
+- PASSED: Discard Card 6 - Gold, expected = Gold
+- PASSED: Discard Card 7 - Smithy, expected = Smithy
+- PASSED: Discard Card 8 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 9 - Salvager, expected = Salvager
+- PASSED: Discard Card 10 - Steward, expected = Steward
+- PASSED: Discard Card 11 - Baron, expected = Baron
+- PASSED: Discard Card 12 - Village, expected = Village
+- PASSED: Discard Card 13 - Minion, expected = Minion
+- PASSED: Discard Card 14 - Feast, expected = Feast
+- PASSED: Discard Card 15 - Embargo, expected = Embargo
+- PASSED: Discard Card 16 - Outpost, expected = Outpost
+PASSED: Player Score = 27, expected = 27
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+# Testing scoreFor function with multiple cards in hand, deck and discard...
+
+PASSED: Count of Curse card in player's deck = 6, expected = 6
+PASSED: Count of Curse card in other player's deck = 6, expected = 6
+PASSED: Count of Estate card in player's deck = 6, expected = 6
+PASSED: Count of Estate card in other player's deck = 6, expected = 6
+PASSED: Count of Duchy card in player's deck = 6, expected = 6
+PASSED: Count of Duchy card in other player's deck = 6, expected = 6
+PASSED: Count of Province card in player's deck = 6, expected = 6
+PASSED: Count of Province card in other player's deck = 6, expected = 6
+PASSED: Count of Copper card in player's deck = 6, expected = 6
+PASSED: Count of Copper card in other player's deck = 6, expected = 6
+PASSED: Count of Silver card in player's deck = 6, expected = 6
+PASSED: Count of Silver card in other player's deck = 6, expected = 6
+PASSED: Count of Gold card in player's deck = 6, expected = 6
+PASSED: Count of Gold card in other player's deck = 6, expected = 6
+PASSED: Count of Smithy card in player's deck = 6, expected = 6
+PASSED: Count of Smithy card in other player's deck = 6, expected = 6
+PASSED: Count of Adventurer card in player's deck = 6, expected = 6
+PASSED: Count of Adventurer card in other player's deck = 6, expected = 6
+PASSED: Count of Salvager card in player's deck = 6, expected = 6
+PASSED: Count of Salvager card in other player's deck = 6, expected = 6
+PASSED: Count of Steward card in player's deck = 6, expected = 6
+PASSED: Count of Steward card in other player's deck = 6, expected = 6
+PASSED: Count of Baron card in player's deck = 6, expected = 6
+PASSED: Count of Baron card in other player's deck = 6, expected = 6
+PASSED: Count of Village card in player's deck = 6, expected = 6
+PASSED: Count of Village card in other player's deck = 6, expected = 6
+PASSED: Count of Minion card in player's deck = 6, expected = 6
+PASSED: Count of Minion card in other player's deck = 6, expected = 6
+PASSED: Count of Feast card in player's deck = 6, expected = 6
+PASSED: Count of Feast card in other player's deck = 6, expected = 6
+PASSED: Count of Embargo card in player's deck = 6, expected = 6
+PASSED: Count of Embargo card in other player's deck = 6, expected = 6
+PASSED: Count of Outpost card in player's deck = 6, expected = 6
+PASSED: Count of Outpost card in other player's deck = 6, expected = 6
+
+* Current Player Game State
+PASSED: Cards in Hand = 34, expected = 34
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+- PASSED: Hand Card 17 - Curse, expected = Curse
+- PASSED: Hand Card 18 - Estate, expected = Estate
+- PASSED: Hand Card 19 - Duchy, expected = Duchy
+- PASSED: Hand Card 20 - Province, expected = Province
+- PASSED: Hand Card 21 - Copper, expected = Copper
+- PASSED: Hand Card 22 - Silver, expected = Silver
+- PASSED: Hand Card 23 - Gold, expected = Gold
+- PASSED: Hand Card 24 - Smithy, expected = Smithy
+- PASSED: Hand Card 25 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 26 - Salvager, expected = Salvager
+- PASSED: Hand Card 27 - Steward, expected = Steward
+- PASSED: Hand Card 28 - Baron, expected = Baron
+- PASSED: Hand Card 29 - Village, expected = Village
+- PASSED: Hand Card 30 - Minion, expected = Minion
+- PASSED: Hand Card 31 - Feast, expected = Feast
+- PASSED: Hand Card 32 - Embargo, expected = Embargo
+- PASSED: Hand Card 33 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 34, expected = 34
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Silver, expected = Silver
+- PASSED: Deck Card 6 - Gold, expected = Gold
+- PASSED: Deck Card 7 - Smithy, expected = Smithy
+- PASSED: Deck Card 8 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 9 - Salvager, expected = Salvager
+- PASSED: Deck Card 10 - Steward, expected = Steward
+- PASSED: Deck Card 11 - Baron, expected = Baron
+- PASSED: Deck Card 12 - Village, expected = Village
+- PASSED: Deck Card 13 - Minion, expected = Minion
+- PASSED: Deck Card 14 - Feast, expected = Feast
+- PASSED: Deck Card 15 - Embargo, expected = Embargo
+- PASSED: Deck Card 16 - Outpost, expected = Outpost
+- PASSED: Deck Card 17 - Curse, expected = Curse
+- PASSED: Deck Card 18 - Estate, expected = Estate
+- PASSED: Deck Card 19 - Duchy, expected = Duchy
+- PASSED: Deck Card 20 - Province, expected = Province
+- PASSED: Deck Card 21 - Copper, expected = Copper
+- PASSED: Deck Card 22 - Silver, expected = Silver
+- PASSED: Deck Card 23 - Gold, expected = Gold
+- PASSED: Deck Card 24 - Smithy, expected = Smithy
+- PASSED: Deck Card 25 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 26 - Salvager, expected = Salvager
+- PASSED: Deck Card 27 - Steward, expected = Steward
+- PASSED: Deck Card 28 - Baron, expected = Baron
+- PASSED: Deck Card 29 - Village, expected = Village
+- PASSED: Deck Card 30 - Minion, expected = Minion
+- PASSED: Deck Card 31 - Feast, expected = Feast
+- PASSED: Deck Card 32 - Embargo, expected = Embargo
+- PASSED: Deck Card 33 - Outpost, expected = Outpost
+PASSED: Cards Played = 0, expected = 0
+PASSED: Discard Pile = 34, expected = 34
+- PASSED: Discard Card 0 - Curse, expected = Curse
+- PASSED: Discard Card 1 - Estate, expected = Estate
+- PASSED: Discard Card 2 - Duchy, expected = Duchy
+- PASSED: Discard Card 3 - Province, expected = Province
+- PASSED: Discard Card 4 - Copper, expected = Copper
+- PASSED: Discard Card 5 - Silver, expected = Silver
+- PASSED: Discard Card 6 - Gold, expected = Gold
+- PASSED: Discard Card 7 - Smithy, expected = Smithy
+- PASSED: Discard Card 8 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 9 - Salvager, expected = Salvager
+- PASSED: Discard Card 10 - Steward, expected = Steward
+- PASSED: Discard Card 11 - Baron, expected = Baron
+- PASSED: Discard Card 12 - Village, expected = Village
+- PASSED: Discard Card 13 - Minion, expected = Minion
+- PASSED: Discard Card 14 - Feast, expected = Feast
+- PASSED: Discard Card 15 - Embargo, expected = Embargo
+- PASSED: Discard Card 16 - Outpost, expected = Outpost
+- PASSED: Discard Card 17 - Curse, expected = Curse
+- PASSED: Discard Card 18 - Estate, expected = Estate
+- PASSED: Discard Card 19 - Duchy, expected = Duchy
+- PASSED: Discard Card 20 - Province, expected = Province
+- PASSED: Discard Card 21 - Copper, expected = Copper
+- PASSED: Discard Card 22 - Silver, expected = Silver
+- PASSED: Discard Card 23 - Gold, expected = Gold
+- PASSED: Discard Card 24 - Smithy, expected = Smithy
+- PASSED: Discard Card 25 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 26 - Salvager, expected = Salvager
+- PASSED: Discard Card 27 - Steward, expected = Steward
+- PASSED: Discard Card 28 - Baron, expected = Baron
+- PASSED: Discard Card 29 - Village, expected = Village
+- PASSED: Discard Card 30 - Minion, expected = Minion
+- PASSED: Discard Card 31 - Feast, expected = Feast
+- PASSED: Discard Card 32 - Embargo, expected = Embargo
+- PASSED: Discard Card 33 - Outpost, expected = Outpost
+PASSED: Coins Remaining = 4, expected = 4
+PASSED: Buys Remaining = 1, expected = 1
+PASSED: Actions Remaining = 1, expected = 1
+PASSED: Outpost Played = 0, expected = 0
+PASSED: Player Score = 54, expected = 54
+
+* Testing Other Player...
+
+PASSED: Cards in Hand = 34, expected = 34
+- PASSED: Hand Card 0 - Curse, expected = Curse
+- PASSED: Hand Card 1 - Estate, expected = Estate
+- PASSED: Hand Card 2 - Duchy, expected = Duchy
+- PASSED: Hand Card 3 - Province, expected = Province
+- PASSED: Hand Card 4 - Copper, expected = Copper
+- PASSED: Hand Card 5 - Silver, expected = Silver
+- PASSED: Hand Card 6 - Gold, expected = Gold
+- PASSED: Hand Card 7 - Smithy, expected = Smithy
+- PASSED: Hand Card 8 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 9 - Salvager, expected = Salvager
+- PASSED: Hand Card 10 - Steward, expected = Steward
+- PASSED: Hand Card 11 - Baron, expected = Baron
+- PASSED: Hand Card 12 - Village, expected = Village
+- PASSED: Hand Card 13 - Minion, expected = Minion
+- PASSED: Hand Card 14 - Feast, expected = Feast
+- PASSED: Hand Card 15 - Embargo, expected = Embargo
+- PASSED: Hand Card 16 - Outpost, expected = Outpost
+- PASSED: Hand Card 17 - Curse, expected = Curse
+- PASSED: Hand Card 18 - Estate, expected = Estate
+- PASSED: Hand Card 19 - Duchy, expected = Duchy
+- PASSED: Hand Card 20 - Province, expected = Province
+- PASSED: Hand Card 21 - Copper, expected = Copper
+- PASSED: Hand Card 22 - Silver, expected = Silver
+- PASSED: Hand Card 23 - Gold, expected = Gold
+- PASSED: Hand Card 24 - Smithy, expected = Smithy
+- PASSED: Hand Card 25 - Adventurer, expected = Adventurer
+- PASSED: Hand Card 26 - Salvager, expected = Salvager
+- PASSED: Hand Card 27 - Steward, expected = Steward
+- PASSED: Hand Card 28 - Baron, expected = Baron
+- PASSED: Hand Card 29 - Village, expected = Village
+- PASSED: Hand Card 30 - Minion, expected = Minion
+- PASSED: Hand Card 31 - Feast, expected = Feast
+- PASSED: Hand Card 32 - Embargo, expected = Embargo
+- PASSED: Hand Card 33 - Outpost, expected = Outpost
+PASSED: Cards in Deck = 34, expected = 34
+- PASSED: Deck Card 0 - Curse, expected = Curse
+- PASSED: Deck Card 1 - Estate, expected = Estate
+- PASSED: Deck Card 2 - Duchy, expected = Duchy
+- PASSED: Deck Card 3 - Province, expected = Province
+- PASSED: Deck Card 4 - Copper, expected = Copper
+- PASSED: Deck Card 5 - Silver, expected = Silver
+- PASSED: Deck Card 6 - Gold, expected = Gold
+- PASSED: Deck Card 7 - Smithy, expected = Smithy
+- PASSED: Deck Card 8 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 9 - Salvager, expected = Salvager
+- PASSED: Deck Card 10 - Steward, expected = Steward
+- PASSED: Deck Card 11 - Baron, expected = Baron
+- PASSED: Deck Card 12 - Village, expected = Village
+- PASSED: Deck Card 13 - Minion, expected = Minion
+- PASSED: Deck Card 14 - Feast, expected = Feast
+- PASSED: Deck Card 15 - Embargo, expected = Embargo
+- PASSED: Deck Card 16 - Outpost, expected = Outpost
+- PASSED: Deck Card 17 - Curse, expected = Curse
+- PASSED: Deck Card 18 - Estate, expected = Estate
+- PASSED: Deck Card 19 - Duchy, expected = Duchy
+- PASSED: Deck Card 20 - Province, expected = Province
+- PASSED: Deck Card 21 - Copper, expected = Copper
+- PASSED: Deck Card 22 - Silver, expected = Silver
+- PASSED: Deck Card 23 - Gold, expected = Gold
+- PASSED: Deck Card 24 - Smithy, expected = Smithy
+- PASSED: Deck Card 25 - Adventurer, expected = Adventurer
+- PASSED: Deck Card 26 - Salvager, expected = Salvager
+- PASSED: Deck Card 27 - Steward, expected = Steward
+- PASSED: Deck Card 28 - Baron, expected = Baron
+- PASSED: Deck Card 29 - Village, expected = Village
+- PASSED: Deck Card 30 - Minion, expected = Minion
+- PASSED: Deck Card 31 - Feast, expected = Feast
+- PASSED: Deck Card 32 - Embargo, expected = Embargo
+- PASSED: Deck Card 33 - Outpost, expected = Outpost
+PASSED: Discard Pile = 34, expected = 34
+- PASSED: Discard Card 0 - Curse, expected = Curse
+- PASSED: Discard Card 1 - Estate, expected = Estate
+- PASSED: Discard Card 2 - Duchy, expected = Duchy
+- PASSED: Discard Card 3 - Province, expected = Province
+- PASSED: Discard Card 4 - Copper, expected = Copper
+- PASSED: Discard Card 5 - Silver, expected = Silver
+- PASSED: Discard Card 6 - Gold, expected = Gold
+- PASSED: Discard Card 7 - Smithy, expected = Smithy
+- PASSED: Discard Card 8 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 9 - Salvager, expected = Salvager
+- PASSED: Discard Card 10 - Steward, expected = Steward
+- PASSED: Discard Card 11 - Baron, expected = Baron
+- PASSED: Discard Card 12 - Village, expected = Village
+- PASSED: Discard Card 13 - Minion, expected = Minion
+- PASSED: Discard Card 14 - Feast, expected = Feast
+- PASSED: Discard Card 15 - Embargo, expected = Embargo
+- PASSED: Discard Card 16 - Outpost, expected = Outpost
+- PASSED: Discard Card 17 - Curse, expected = Curse
+- PASSED: Discard Card 18 - Estate, expected = Estate
+- PASSED: Discard Card 19 - Duchy, expected = Duchy
+- PASSED: Discard Card 20 - Province, expected = Province
+- PASSED: Discard Card 21 - Copper, expected = Copper
+- PASSED: Discard Card 22 - Silver, expected = Silver
+- PASSED: Discard Card 23 - Gold, expected = Gold
+- PASSED: Discard Card 24 - Smithy, expected = Smithy
+- PASSED: Discard Card 25 - Adventurer, expected = Adventurer
+- PASSED: Discard Card 26 - Salvager, expected = Salvager
+- PASSED: Discard Card 27 - Steward, expected = Steward
+- PASSED: Discard Card 28 - Baron, expected = Baron
+- PASSED: Discard Card 29 - Village, expected = Village
+- PASSED: Discard Card 30 - Minion, expected = Minion
+- PASSED: Discard Card 31 - Feast, expected = Feast
+- PASSED: Discard Card 32 - Embargo, expected = Embargo
+- PASSED: Discard Card 33 - Outpost, expected = Outpost
+PASSED: Player Score = 54, expected = 54
+
+* Testing Victory Card Piles...
+
+PASSED: Estate Cards Remaining = 8, expected = 8
+PASSED: Duchy Cards Remaining = 8, expected = 8
+PASSED: Province Cards Remaining = 8, expected = 8
+
+* Testing Treasure Card Piles...
+
+PASSED: Copper Cards Remaining = 46, expected = 46
+PASSED: Silver Cards Remaining = 40, expected = 40
+PASSED: Gold Cards Remaining = 30, expected = 30
+
+* Testing Kingdom Card Piles...
+
+PASSED: Smithy Cards Remaining = 10, expected = 10
+PASSED: Adventurer Cards Remaining = 10, expected = 10
+PASSED: Salvager Cards Remaining = 10, expected = 10
+PASSED: Steward Cards Remaining = 10, expected = 10
+PASSED: Baron Cards Remaining = 10, expected = 10
+PASSED: Village Cards Remaining = 10, expected = 10
+PASSED: Minion Cards Remaining = 10, expected = 10
+PASSED: Feast Cards Remaining = 10, expected = 10
+PASSED: Embargo Cards Remaining = 10, expected = 10
+PASSED: Outpost Cards Remaining = 10, expected = 10
+
+>>> Summary >>>
+
+Tests Conducted = 660, PASSED = 660, FAILED = 0
+
+###--------------------------------------------------------------------------###
+###                               End of File                                ###
+###--------------------------------------------------------------------------###
