@@ -262,11 +262,9 @@ projects/dovgans/bacondiDominion/dominion/interface.o
 projects/dovgans/bacondiDominion/dominion/randomtestcard1
 projects/dovgans/bacondiDominion/dominion/randomtestcard1.gcda
 projects/dovgans/bacondiDominion/dominion/randomtestcard1.gcno
-projects/dovgans/bacondiDominion/dominion/randomtestcard1.out
 projects/dovgans/bacondiDominion/dominion/randomtestcard2
 projects/dovgans/bacondiDominion/dominion/randomtestcard2.gcda
 projects/dovgans/bacondiDominion/dominion/randomtestcard2.gcno
-projects/dovgans/bacondiDominion/dominion/randomtestcard2.out
 projects/dovgans/bacondiDominion/dominion/rngs.gcda
 projects/dovgans/bacondiDominion/dominion/rngs.gcno
 projects/dovgans/bacondiDominion/dominion/rngs.o
@@ -285,11 +283,8 @@ projects/dovgans/bacondiDominion/dominion/unittest3.gcno
 projects/dovgans/bacondiDominion/dominion/unittest4
 projects/dovgans/bacondiDominion/dominion/unittest4.gcda
 projects/dovgans/bacondiDominion/dominion/unittest4.gcno
-projects/dovgans/bacondiDominion/dominion/unittestresults.out
-projects/dovgans/bacondiDominion/dominion/randomtestadventurer.out
 projects/dovgans/bacondiDominion/dominion/randomtestadventurer.gcno
 projects/dovgans/bacondiDominion/dominion/randomtestadventurer
-projects/dovgans/bacondiDominion/dominion/cardtest2.c
 projects/dovgans/.DS_Store
 projects/.DS_Store
 .DS_Store

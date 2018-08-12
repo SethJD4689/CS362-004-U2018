@@ -1,0 +1,752 @@
+
+###--------------------------------------------------------------------------###
+###   Coverage Results for Tests
+###--------------------------------------------------------------------------###
+
+Function 'compare'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 4
+Taken at least once:100.00% of 4
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'kingdomCards'
+Lines executed:0.00% of 12
+No branches
+No calls
+
+Function 'initializeGame'
+Lines executed:96.15% of 78
+Branches executed:100.00% of 46
+Taken at least once:91.30% of 46
+No calls
+
+Function 'shuffle'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+No calls
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'numHandCards'
+Lines executed:0.00% of 1
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:100.00% of 2
+No branches
+No calls
+
+Function 'supplyCount'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:100.00% of 11
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'whoseTurn'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'endTurn'
+Lines executed:0.00% of 22
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'isGameOver'
+Lines executed:100.00% of 12
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'scoreFor'
+Lines executed:100.00% of 26
+Branches executed:100.00% of 42
+Taken at least once:100.00% of 42
+No calls
+
+Function 'getWinners'
+Lines executed:0.00% of 33
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+No calls
+
+Function 'drawCard'
+Lines executed:100.00% of 24
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'getCost'
+Lines executed:16.67% of 30
+Branches executed:100.00% of 28
+Taken at least once:10.71% of 28
+No calls
+
+Function 'adventurerEffect'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'smithyEffect'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+No calls
+
+Function 'sea_hagEffect'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+No calls
+
+Function 'mineEffect'
+Lines executed:0.00% of 17
+Branches executed:0.00% of 14
+Taken at least once:0.00% of 14
+No calls
+
+Function 'tributeEffect'
+Lines executed:0.00% of 47
+Branches executed:0.00% of 32
+Taken at least once:0.00% of 32
+No calls
+
+Function 'cardEffect'
+Lines executed:10.34% of 203
+Branches executed:21.48% of 135
+Taken at least once:7.41% of 135
+No calls
+
+Function 'discardCard'
+Lines executed:100.00% of 15
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 15
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'updateCoins'
+Lines executed:100.00% of 14
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+File 'dominion.c'
+Lines executed:39.17% of 651
+Branches executed:50.60% of 417
+Taken at least once:39.09% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+###--------------------------------------------------------------------------###
+###   Testing Smithy: Card (Showing Fail Results Only)
+###--------------------------------------------------------------------------###
+
+FAILED: Current Player 1 - Score = 57, expected = 51
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 29
+Hand Count: 72
+Deck Count: 4
+Discard Count: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 29, expected = 23
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 5
+Hand Count: 6
+Deck Count: 55
+Discard Count: 26
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 67, expected = 68
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 38
+Hand Count: 78
+Deck Count: 17
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 8, expected = 7
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 4
+Hand Count: 5
+Deck Count: 53
+Discard Count: 19
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 19, expected = 13
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 0
+Hand Count: 39
+Deck Count: 56
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 26, expected = 25
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 5
+Hand Count: 13
+Deck Count: 57
+Discard Count: 28
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 9, expected = 10
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 3
+Hand Count: 16
+Deck Count: 16
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 51, expected = 50
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 16
+Hand Count: 82
+Deck Count: 27
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 3, expected = 4
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 8
+Hand Count: 9
+Deck Count: 97
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 1, expected = 2
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 6
+Hand Count: 17
+Deck Count: 6
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 8, expected = 7
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 4
+Hand Count: 15
+Deck Count: 14
+Discard Count: 10
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 125, expected = 123
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 44
+Hand Count: 121
+Deck Count: 44
+Discard Count: 77
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = -1, expected = 0
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 0
+Hand Count: 1
+Deck Count: 23
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 45, expected = 44
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 59
+Hand Count: 84
+Deck Count: 119
+Discard Count: 13
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 2, expected = 8
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 2
+Hand Count: 4
+Deck Count: 1
+Discard Count: 3
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 21, expected = 38
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 6
+Hand Count: 16
+Deck Count: 1
+Discard Count: 19
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 6, expected = 0
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 11
+Hand Count: 28
+Deck Count: 22
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 35, expected = 34
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 44
+Hand Count: 50
+Deck Count: 21
+Discard Count: 42
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 69, expected = 68
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 61
+Hand Count: 84
+Deck Count: 50
+Discard Count: 13
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Score = 1, expected = -1
+
+* Preconditions for Player 3 Playing Smithy card...
+
+Smithy Card Hand Position: 1
+Hand Count: 6
+Deck Count: 5
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 33, expected = 27
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 1
+Hand Count: 27
+Deck Count: 11
+Discard Count: 44
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 7, expected = 6
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 4
+Hand Count: 26
+Deck Count: 7
+Discard Count: 22
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 5, expected = 6
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 10
+Hand Count: 19
+Deck Count: 10
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 1, expected = 0
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 1
+Hand Count: 14
+Deck Count: 5
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 47, expected = 35
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 16
+Hand Count: 54
+Deck Count: 68
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 4, expected = 3
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 0
+Hand Count: 1
+Deck Count: 24
+Discard Count: 33
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 37, expected = 38
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 2
+Hand Count: 5
+Deck Count: 41
+Discard Count: 37
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 5, expected = 4
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 5
+Hand Count: 28
+Deck Count: 14
+Discard Count: 16
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 9, expected = 8
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 19
+Hand Count: 23
+Deck Count: 12
+Discard Count: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 6, expected = 7
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 6
+Hand Count: 33
+Deck Count: 9
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 72, expected = 71
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 28
+Hand Count: 103
+Deck Count: 3
+Discard Count: 3
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 63, expected = 62
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 35
+Hand Count: 58
+Deck Count: 33
+Discard Count: 52
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 68, expected = 66
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 38
+Hand Count: 72
+Deck Count: 38
+Discard Count: 29
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 8, expected = 7
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 7
+Hand Count: 11
+Deck Count: 52
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 20, expected = 19
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 12
+Hand Count: 36
+Deck Count: 16
+Discard Count: 21
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 59, expected = 57
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 77
+Hand Count: 111
+Deck Count: 23
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 51, expected = 50
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 19
+Hand Count: 52
+Deck Count: 62
+Discard Count: 36
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 9, expected = 10
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 23
+Hand Count: 39
+Deck Count: 10
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 3, expected = 2
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 6
+Hand Count: 19
+Deck Count: 33
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 94, expected = 95
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 38
+Hand Count: 92
+Deck Count: 50
+Discard Count: 46
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 38, expected = 37
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 5
+Hand Count: 34
+Deck Count: 93
+Discard Count: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 71, expected = 66
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 9
+Hand Count: 41
+Deck Count: 80
+Discard Count: 38
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 105, expected = 101
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 64
+Hand Count: 102
+Deck Count: 26
+Discard Count: 24
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 5, expected = 3
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 0
+Hand Count: 1
+Deck Count: 3
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 0, expected = 1
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 0
+Hand Count: 3
+Deck Count: 1
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 10, expected = 18
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 4
+Hand Count: 18
+Deck Count: 2
+Discard Count: 13
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 68, expected = 67
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 1
+Hand Count: 114
+Deck Count: 32
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 8, expected = 9
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 3
+Hand Count: 22
+Deck Count: 28
+Discard Count: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 10, expected = 9
+
+* Preconditions for Player 2 Playing Smithy card...
+
+Smithy Card Hand Position: 33
+Hand Count: 51
+Deck Count: 62
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 12, expected = 0
+
+* Preconditions for Player 1 Playing Smithy card...
+
+Smithy Card Hand Position: 3
+Hand Count: 4
+Deck Count: 41
+Discard Count: 5
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Score = -2, expected = -1
+
+* Preconditions for Player 3 Playing Smithy card...
+
+Smithy Card Hand Position: 0
+Hand Count: 4
+Deck Count: 3
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 26, expected = 25
+
+* Preconditions for Player 0 Playing Smithy card...
+
+Smithy Card Hand Position: 13
+Hand Count: 35
+Deck Count: 10
+Discard Count: 45
+
+#------------------------------------------------------------------------------#
+
+
+>>> Summary >>>
+
+Tests Conducted = 20247, PASSED = 20195, FAILED = 52
+
+###--------------------------------------------------------------------------###
+###   End of File
+###--------------------------------------------------------------------------###

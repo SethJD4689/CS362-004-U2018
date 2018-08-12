@@ -1,0 +1,1113 @@
+
+###--------------------------------------------------------------------------###
+###   Coverage Results for Tests
+###--------------------------------------------------------------------------###
+
+Function 'compare'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 4
+Taken at least once:100.00% of 4
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'kingdomCards'
+Lines executed:0.00% of 12
+No branches
+No calls
+
+Function 'initializeGame'
+Lines executed:96.15% of 78
+Branches executed:100.00% of 46
+Taken at least once:91.30% of 46
+No calls
+
+Function 'shuffle'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+No calls
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'numHandCards'
+Lines executed:0.00% of 1
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:100.00% of 2
+No branches
+No calls
+
+Function 'supplyCount'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:100.00% of 11
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'whoseTurn'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'endTurn'
+Lines executed:0.00% of 22
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'isGameOver'
+Lines executed:100.00% of 12
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'scoreFor'
+Lines executed:100.00% of 26
+Branches executed:100.00% of 42
+Taken at least once:100.00% of 42
+No calls
+
+Function 'getWinners'
+Lines executed:0.00% of 33
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+No calls
+
+Function 'drawCard'
+Lines executed:100.00% of 24
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'getCost'
+Lines executed:16.67% of 30
+Branches executed:100.00% of 28
+Taken at least once:10.71% of 28
+No calls
+
+Function 'adventurerEffect'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'smithyEffect'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+No calls
+
+Function 'sea_hagEffect'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+No calls
+
+Function 'mineEffect'
+Lines executed:0.00% of 17
+Branches executed:0.00% of 14
+Taken at least once:0.00% of 14
+No calls
+
+Function 'tributeEffect'
+Lines executed:0.00% of 47
+Branches executed:0.00% of 32
+Taken at least once:0.00% of 32
+No calls
+
+Function 'cardEffect'
+Lines executed:10.34% of 203
+Branches executed:21.48% of 135
+Taken at least once:7.41% of 135
+No calls
+
+Function 'discardCard'
+Lines executed:100.00% of 15
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 15
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'updateCoins'
+Lines executed:100.00% of 14
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+File 'dominion.c'
+Lines executed:39.17% of 651
+Branches executed:50.60% of 417
+Taken at least once:39.09% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+###--------------------------------------------------------------------------###
+###   Testing Council Room: Card (Showing Fail Results Only)
+###--------------------------------------------------------------------------###
+
+FAILED: Current Player 0 - Score = 60, expected = 61
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 22
+Hand Count: 89
+Deck Count: 42
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = -1, expected = 0
+FAILED: Player 0 Score = 13, expected = 14
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 10
+Hand Count: 21
+Deck Count: 12
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 61, expected = 57
+FAILED: Player 2 Score = 13, expected = 12
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 16
+Hand Count: 70
+Deck Count: 54
+Discard Count: 25
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Score = 1, expected = 2
+
+* Preconditions for Player 3 Playing Council Room card...
+
+Council Room Card Hand Position: 11
+Hand Count: 22
+Deck Count: 19
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 34, expected = 35
+FAILED: Player 2 Score = 13, expected = 12
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 30
+Deck Count: 92
+Discard Count: 23
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 3 Score = -1, expected = -2
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 4
+Hand Count: 14
+Deck Count: 10
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 58, expected = 59
+
+* Preconditions for Player 3 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 1
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 29, expected = 26
+FAILED: Player 3 Score = 0, expected = 1
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 1
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 6, expected = 5
+FAILED: Player 0 Score = 33, expected = 32
+FAILED: Player 2 Score = -1, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 1
+Hand Count: 2
+Deck Count: 12
+Discard Count: 4
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 15, expected = 10
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 4
+Hand Count: 7
+Deck Count: 8
+Discard Count: 5
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 31, expected = 30
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 11
+Hand Count: 13
+Deck Count: 9
+Discard Count: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = -4, expected = -1
+FAILED: Player 1 Score = 32, expected = 29
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 6
+Discard Count: 14
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 0, expected = -2
+FAILED: Player 0 Score = 41, expected = 35
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 1
+Hand Count: 3
+Deck Count: 2
+Discard Count: 4
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 18, expected = 17
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 12
+Hand Count: 19
+Deck Count: 3
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 112, expected = 106
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 9
+Hand Count: 81
+Deck Count: 46
+Discard Count: 53
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 2, expected = 4
+FAILED: Player 0 Score = 14, expected = 15
+FAILED: Player 2 Score = 22, expected = 21
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 6
+Hand Count: 7
+Deck Count: 16
+Discard Count: 3
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 57, expected = 51
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 0
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 1 Score = 3, expected = 0
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 15
+Hand Count: 24
+Deck Count: 23
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 32, expected = 33
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 1
+Hand Count: 2
+Deck Count: 1
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 41, expected = 29
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 16
+Hand Count: 19
+Deck Count: 83
+Discard Count: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 2, expected = 1
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 10
+Hand Count: 19
+Deck Count: 53
+Discard Count: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 27, expected = 26
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 12
+Deck Count: 21
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 132, expected = 126
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 1
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 59, expected = 58
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 34
+Hand Count: 45
+Deck Count: 7
+Discard Count: 24
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 9, expected = 11
+FAILED: Player 1 Score = 3, expected = 0
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 9
+Hand Count: 11
+Deck Count: 46
+Discard Count: 22
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 42, expected = 43
+FAILED: Player 1 Score = 3, expected = 0
+FAILED: Player 3 Score = 3, expected = 2
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 3
+Hand Count: 5
+Deck Count: 75
+Discard Count: 43
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 80, expected = 77
+FAILED: Player 1 Score = 18, expected = 17
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 3
+Hand Count: 103
+Deck Count: 9
+Discard Count: 32
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 22, expected = 15
+FAILED: Player 0 Score = 3, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 3
+Hand Count: 12
+Deck Count: 7
+Discard Count: 4
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 3, expected = 2
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 56
+Hand Count: 65
+Deck Count: 37
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Score = 6, expected = 3
+FAILED: Player 0 Score = 37, expected = 36
+
+* Preconditions for Player 3 Playing Council Room card...
+
+Council Room Card Hand Position: 3
+Hand Count: 14
+Deck Count: 19
+Discard Count: 3
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 6, expected = 0
+FAILED: Player 0 Score = 77, expected = 78
+FAILED: Player 2 Score = 2, expected = 1
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 40
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = -3, expected = -2
+FAILED: Player 0 Score = -1, expected = 32
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 2
+Hand Count: 7
+Deck Count: 6
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 50, expected = 45
+FAILED: Player 0 Score = 22, expected = 23
+FAILED: Player 3 Score = 3, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 22
+Hand Count: 73
+Deck Count: 19
+Discard Count: 18
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 44, expected = 43
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 51
+Hand Count: 82
+Deck Count: 9
+Discard Count: 25
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 79, expected = 78
+FAILED: Player 1 Score = 36, expected = 30
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 104
+Hand Count: 130
+Deck Count: 24
+Discard Count: 29
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 15, expected = 12
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 10
+Hand Count: 37
+Deck Count: 5
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 0, expected = 1
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 12
+Hand Count: 20
+Deck Count: 23
+Discard Count: 24
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 50, expected = 49
+FAILED: Player 0 Score = 8, expected = 5
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 28
+Hand Count: 53
+Deck Count: 21
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = -1, expected = 0
+FAILED: Player 0 Score = 36, expected = 35
+FAILED: Player 1 Score = 5, expected = 4
+FAILED: Player 3 Score = 2, expected = 1
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 3
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 28, expected = 22
+FAILED: Player 1 Score = 0, expected = 3
+FAILED: Player 2 Score = -1, expected = 0
+FAILED: Player 3 Score = 0, expected = 3
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 4
+Hand Count: 55
+Deck Count: 151
+Discard Count: 43
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 9, expected = 2
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 16
+Hand Count: 22
+Deck Count: 20
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 40, expected = 37
+FAILED: Player 1 Score = 1, expected = 12
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 7
+Hand Count: 82
+Deck Count: 120
+Discard Count: 10
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 39, expected = 27
+FAILED: Player 2 Score = 1, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 8
+Deck Count: 8
+Discard Count: 6
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 3, expected = 13
+FAILED: Player 0 Score = 16, expected = 17
+FAILED: Player 2 Score = 7, expected = 6
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 2
+Hand Count: 8
+Deck Count: 2
+Discard Count: 15
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 68, expected = 65
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 72
+Hand Count: 103
+Deck Count: 12
+Discard Count: 17
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 1, expected = 5
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 2
+Hand Count: 15
+Deck Count: 2
+Discard Count: 15
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 66, expected = 65
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 9
+Deck Count: 29
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 18, expected = 15
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 1
+Hand Count: 4
+Deck Count: 13
+Discard Count: 34
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 126, expected = 123
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 40
+Hand Count: 164
+Deck Count: 50
+Discard Count: 53
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 55, expected = 49
+FAILED: Player 1 Score = 3, expected = 2
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 49
+Hand Count: 50
+Deck Count: 95
+Discard Count: 35
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 0, expected = 4
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 3
+Hand Count: 5
+Deck Count: 2
+Discard Count: 16
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 3, expected = 35
+FAILED: Player 2 Score = 0, expected = 1
+FAILED: Player 3 Score = 3, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 78
+Hand Count: 106
+Deck Count: 10
+Discard Count: 30
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 5, expected = 6
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 26
+Deck Count: 42
+Discard Count: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 83, expected = 80
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 16
+Hand Count: 125
+Deck Count: 29
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 101, expected = 94
+FAILED: Player 2 Score = 10, expected = 7
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 28
+Hand Count: 115
+Deck Count: 80
+Discard Count: 30
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 77, expected = 71
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 34
+Hand Count: 119
+Deck Count: 51
+Discard Count: 27
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 7, expected = 6
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 15
+Hand Count: 17
+Deck Count: 12
+Discard Count: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 93, expected = 91
+FAILED: Player 1 Score = 6, expected = 0
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 7
+Hand Count: 83
+Deck Count: 62
+Discard Count: 74
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 6, expected = 7
+FAILED: Player 0 Score = 29, expected = 23
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 14
+Hand Count: 15
+Deck Count: 6
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 11, expected = 10
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 93
+Hand Count: 101
+Deck Count: 4
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 81, expected = 75
+FAILED: Player 2 Score = 2, expected = 1
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 25
+Hand Count: 35
+Deck Count: 35
+Discard Count: 42
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 46, expected = 45
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 29
+Hand Count: 47
+Deck Count: 38
+Discard Count: 46
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 65, expected = 59
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 60
+Hand Count: 107
+Deck Count: 44
+Discard Count: 30
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 78, expected = 77
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 33
+Hand Count: 41
+Deck Count: 89
+Discard Count: 51
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 104, expected = 95
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 87
+Deck Count: 19
+Discard Count: 51
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 23, expected = 22
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 5
+Hand Count: 29
+Deck Count: 15
+Discard Count: 29
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 109, expected = 107
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 63
+Hand Count: 79
+Deck Count: 24
+Discard Count: 77
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 6, expected = 8
+FAILED: Player 3 Score = -3, expected = -2
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 9
+Hand Count: 10
+Deck Count: 37
+Discard Count: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 62, expected = 61
+FAILED: Player 2 Score = -1, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 20
+Hand Count: 65
+Deck Count: 53
+Discard Count: 9
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Score = 43, expected = 42
+FAILED: Player 2 Score = 19, expected = 13
+FAILED: Player 3 Score = 1, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 22
+Hand Count: 83
+Deck Count: 40
+Discard Count: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 1, expected = 3
+FAILED: Player 0 Score = 46, expected = 47
+FAILED: Player 1 Score = -1, expected = -2
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 10
+Hand Count: 13
+Deck Count: 0
+Discard Count: 4
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Score = 0, expected = 1
+FAILED: Player 0 Score = 28, expected = 22
+FAILED: Player 1 Score = 2, expected = 3
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 1
+Hand Count: 2
+Deck Count: 2
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 12, expected = 9
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 13
+Hand Count: 95
+Deck Count: 45
+Discard Count: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 86, expected = 82
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 53
+Hand Count: 72
+Deck Count: 30
+Discard Count: 42
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = -1, expected = 0
+
+* Preconditions for Player 1 Playing Council Room card...
+
+Council Room Card Hand Position: 19
+Hand Count: 44
+Deck Count: 31
+Discard Count: 47
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 0 Score = 66, expected = 65
+FAILED: Player 1 Score = -1, expected = 0
+FAILED: Player 3 Score = -1, expected = 0
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 1
+Deck Count: 1
+Discard Count: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 100, expected = 88
+FAILED: Player 2 Score = 0, expected = -1
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 27
+Hand Count: 86
+Deck Count: 8
+Discard Count: 29
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 89, expected = 86
+FAILED: Player 1 Score = 11, expected = 8
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 66
+Hand Count: 109
+Deck Count: 61
+Discard Count: 40
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Score = 41, expected = 38
+
+* Preconditions for Player 0 Playing Council Room card...
+
+Council Room Card Hand Position: 0
+Hand Count: 16
+Deck Count: 86
+Discard Count: 28
+
+#------------------------------------------------------------------------------#
+
+FAILED: Player 1 Score = 18, expected = 19
+FAILED: Player 3 Score = -2, expected = -1
+
+* Preconditions for Player 2 Playing Council Room card...
+
+Council Room Card Hand Position: 3
+Hand Count: 4
+Deck Count: 57
+Discard Count: 20
+
+#------------------------------------------------------------------------------#
+
+
+>>> Summary >>>
+
+Tests Conducted = 19448, PASSED = 19315, FAILED = 133
+
+###--------------------------------------------------------------------------###
+###                               End of File                                ###
+###--------------------------------------------------------------------------###

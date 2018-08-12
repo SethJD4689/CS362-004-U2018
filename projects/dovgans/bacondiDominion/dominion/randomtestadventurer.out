@@ -1,0 +1,1668 @@
+
+###--------------------------------------------------------------------------###
+###   Coverage Results for Tests
+###--------------------------------------------------------------------------###
+
+Function 'compare'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 4
+Taken at least once:100.00% of 4
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'kingdomCards'
+Lines executed:0.00% of 12
+No branches
+No calls
+
+Function 'initializeGame'
+Lines executed:96.15% of 78
+Branches executed:100.00% of 46
+Taken at least once:91.30% of 46
+No calls
+
+Function 'shuffle'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+No calls
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'numHandCards'
+Lines executed:0.00% of 1
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:100.00% of 2
+No branches
+No calls
+
+Function 'supplyCount'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:100.00% of 11
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'whoseTurn'
+Lines executed:100.00% of 1
+No branches
+No calls
+
+Function 'endTurn'
+Lines executed:0.00% of 22
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'isGameOver'
+Lines executed:100.00% of 12
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+Function 'scoreFor'
+Lines executed:100.00% of 26
+Branches executed:100.00% of 42
+Taken at least once:100.00% of 42
+No calls
+
+Function 'getWinners'
+Lines executed:0.00% of 33
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+No calls
+
+Function 'drawCard'
+Lines executed:100.00% of 24
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'getCost'
+Lines executed:16.67% of 30
+Branches executed:100.00% of 28
+Taken at least once:10.71% of 28
+No calls
+
+Function 'adventurerEffect'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 12
+Taken at least once:100.00% of 12
+No calls
+
+Function 'smithyEffect'
+Lines executed:100.00% of 6
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+No calls
+
+Function 'sea_hagEffect'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+No calls
+
+Function 'mineEffect'
+Lines executed:0.00% of 17
+Branches executed:0.00% of 14
+Taken at least once:0.00% of 14
+No calls
+
+Function 'tributeEffect'
+Lines executed:0.00% of 47
+Branches executed:0.00% of 32
+Taken at least once:0.00% of 32
+No calls
+
+Function 'cardEffect'
+Lines executed:10.34% of 203
+Branches executed:21.48% of 135
+Taken at least once:7.41% of 135
+No calls
+
+Function 'discardCard'
+Lines executed:100.00% of 15
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 15
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'updateCoins'
+Lines executed:100.00% of 14
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+
+File 'dominion.c'
+Lines executed:39.17% of 651
+Branches executed:50.60% of 417
+Taken at least once:39.09% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+###--------------------------------------------------------------------------###
+###   Testing Adventurer: Card (Showing Fail Results Only)
+###--------------------------------------------------------------------------###
+
+FAILED: Current Player 2 - Cards in Hand = 20, expected = 19
+FAILED: Current Player 2 - Score = 2, expected = 0
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 1
+Hand Count: 18
+Deck Count: 12
+Discard Count: 1
+Treasurer Cards in Deck: 6
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 53, expected = 52
+FAILED: Current Player 0 - Score = 10, expected = 11
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 6
+Hand Count: 51
+Deck Count: 30
+Discard Count: 0
+Treasurer Cards in Deck: 20
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 50, expected = 49
+FAILED: Current Player 0 - Score = 83, expected = 69
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 23
+Hand Count: 48
+Deck Count: 21
+Discard Count: 33
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 21, expected = 20
+FAILED: Current Player 1 - Score = 51, expected = 9
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 16
+Hand Count: 19
+Deck Count: 43
+Discard Count: 0
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 93, expected = 92
+FAILED: Current Player 0 - Score = 97, expected = 88
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 58
+Hand Count: 91
+Deck Count: 70
+Discard Count: 20
+Treasurer Cards in Deck: 13
+Treasurer Cards in Discard: 14
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 2, expected = 1
+FAILED: Current Player 2 - Cards Played = 0, expected = 1
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 0
+Discard Count: 1
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 14, expected = 13
+FAILED: Current Player 2 - Cards Played = 0, expected = 1
+FAILED: Current Player 2 - Score = 0, expected = 3
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 10
+Hand Count: 13
+Deck Count: 5
+Discard Count: 0
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 4, expected = 3
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 1
+Hand Count: 2
+Deck Count: 3
+Discard Count: 4
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 24, expected = 23
+FAILED: Current Player 2 - Score = 26, expected = 21
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 12
+Hand Count: 22
+Deck Count: 9
+Discard Count: 4
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 26, expected = 25
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 22
+Hand Count: 24
+Deck Count: 41
+Discard Count: 0
+Treasurer Cards in Deck: 10
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 44, expected = 43
+FAILED: Current Player 1 - Score = 48, expected = 36
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 19
+Hand Count: 42
+Deck Count: 22
+Discard Count: 17
+Treasurer Cards in Deck: 5
+Treasurer Cards in Discard: 10
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 2, expected = 1
+FAILED: Current Player 2 - Cards Played = 0, expected = 1
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 1
+Discard Count: 1
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 21, expected = 20
+FAILED: Current Player 1 - Score = 37, expected = 11
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 3
+Hand Count: 19
+Deck Count: 71
+Discard Count: 0
+Treasurer Cards in Deck: 17
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 19, expected = 18
+FAILED: Current Player 2 - Score = 31, expected = 19
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 15
+Hand Count: 17
+Deck Count: 14
+Discard Count: 5
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 5
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 14, expected = 13
+FAILED: Current Player 1 - Score = 4, expected = -2
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 12
+Deck Count: 118
+Discard Count: 1
+Treasurer Cards in Deck: 18
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 45, expected = 44
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 28
+Hand Count: 43
+Deck Count: 6
+Discard Count: 15
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 26, expected = 25
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 2
+Hand Count: 24
+Deck Count: 4
+Discard Count: 0
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 133, expected = 132
+FAILED: Current Player 0 - Score = 125, expected = 122
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 13
+Hand Count: 131
+Deck Count: 12
+Discard Count: 43
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 28
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 112, expected = 111
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 55, expected = 79
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 26
+Hand Count: 110
+Deck Count: 3
+Discard Count: 28
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 24
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 113, expected = 112
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 95
+Hand Count: 111
+Deck Count: 62
+Discard Count: 20
+Treasurer Cards in Deck: 10
+Treasurer Cards in Discard: 20
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 34, expected = 33
+FAILED: Current Player 3 - Score = 11, expected = 10
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 13
+Hand Count: 32
+Deck Count: 4
+Discard Count: 12
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 24, expected = 23
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 13
+Hand Count: 22
+Deck Count: 79
+Discard Count: 28
+Treasurer Cards in Deck: 16
+Treasurer Cards in Discard: 28
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 41, expected = 40
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 7
+Hand Count: 39
+Deck Count: 35
+Discard Count: 2
+Treasurer Cards in Deck: 17
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 7, expected = 6
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 2
+Hand Count: 5
+Deck Count: 5
+Discard Count: 6
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 6
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 66, expected = 65
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 28
+Hand Count: 64
+Deck Count: 35
+Discard Count: 23
+Treasurer Cards in Deck: 10
+Treasurer Cards in Discard: 5
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 2, expected = 1
+FAILED: Current Player 0 - Cards Played = 0, expected = 1
+FAILED: Current Player 0 - Score = 14, expected = 7
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 2
+Discard Count: 5
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 66, expected = 65
+FAILED: Current Player 1 - Score = 21, expected = 15
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 58
+Hand Count: 64
+Deck Count: 93
+Discard Count: 29
+Treasurer Cards in Deck: 23
+Treasurer Cards in Discard: 27
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 115, expected = 114
+FAILED: Current Player 0 - Score = 78, expected = 69
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 75
+Hand Count: 113
+Deck Count: 77
+Discard Count: 15
+Treasurer Cards in Deck: 15
+Treasurer Cards in Discard: 9
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 27, expected = 26
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 7
+Hand Count: 25
+Deck Count: 50
+Discard Count: 4
+Treasurer Cards in Deck: 10
+Treasurer Cards in Discard: 4
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 13, expected = 12
+FAILED: Current Player 2 - Cards Played = 0, expected = 1
+FAILED: Current Player 2 - Score = -4, expected = -7
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 3
+Hand Count: 11
+Deck Count: 3
+Discard Count: 11
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 26, expected = 25
+FAILED: Current Player 0 - Score = 58, expected = 41
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 1
+Hand Count: 24
+Deck Count: 36
+Discard Count: 34
+Treasurer Cards in Deck: 6
+Treasurer Cards in Discard: 27
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 12, expected = 11
+FAILED: Current Player 0 - Score = 28, expected = 12
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 9
+Hand Count: 10
+Deck Count: 52
+Discard Count: 0
+Treasurer Cards in Deck: 11
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 39, expected = 38
+FAILED: Current Player 0 - Score = 21, expected = 20
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 32
+Hand Count: 37
+Deck Count: 15
+Discard Count: 27
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 10
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 165, expected = 164
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 147
+Hand Count: 163
+Deck Count: 29
+Discard Count: 0
+Treasurer Cards in Deck: 14
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 11, expected = 10
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 8
+Hand Count: 9
+Deck Count: 3
+Discard Count: 0
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 22, expected = 21
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 20
+Deck Count: 22
+Discard Count: 3
+Treasurer Cards in Deck: 9
+Treasurer Cards in Discard: 3
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 9, expected = 8
+FAILED: Current Player 2 - Score = -2, expected = 1
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 6
+Hand Count: 7
+Deck Count: 9
+Discard Count: 0
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 108, expected = 107
+FAILED: Current Player 0 - Score = 168, expected = 116
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 73
+Hand Count: 106
+Deck Count: 44
+Discard Count: 50
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 37
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 4, expected = 3
+FAILED: Current Player 3 - Cards Played = 0, expected = 1
+FAILED: Current Player 3 - Score = -2, expected = 0
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 1
+Hand Count: 3
+Deck Count: 2
+Discard Count: 0
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 16, expected = 15
+FAILED: Current Player 2 - Score = 21, expected = 20
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 6
+Hand Count: 14
+Deck Count: 10
+Discard Count: 3
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 16, expected = 15
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 5, expected = 7
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 11
+Hand Count: 14
+Deck Count: 1
+Discard Count: 11
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 11
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 3, expected = 2
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 6
+Discard Count: 2
+Treasurer Cards in Deck: 6
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 10, expected = 9
+FAILED: Current Player 2 - Score = 55, expected = 18
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 3
+Hand Count: 8
+Deck Count: 38
+Discard Count: 24
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 15
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 14, expected = 13
+FAILED: Current Player 1 - Score = 23, expected = 17
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 6
+Hand Count: 12
+Deck Count: 3
+Discard Count: 22
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 21
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 69, expected = 68
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 22
+Hand Count: 67
+Deck Count: 45
+Discard Count: 0
+Treasurer Cards in Deck: 16
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 54, expected = 53
+FAILED: Current Player 1 - Score = 23, expected = 21
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 31
+Hand Count: 52
+Deck Count: 32
+Discard Count: 7
+Treasurer Cards in Deck: 7
+Treasurer Cards in Discard: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 13, expected = 12
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 11
+Deck Count: 3
+Discard Count: 0
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 30, expected = 29
+FAILED: Current Player 2 - Score = 17, expected = 18
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 8
+Hand Count: 28
+Deck Count: 4
+Discard Count: 5
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 5
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 17, expected = 16
+FAILED: Current Player 1 - Score = 37, expected = 28
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 11
+Hand Count: 15
+Deck Count: 44
+Discard Count: 8
+Treasurer Cards in Deck: 7
+Treasurer Cards in Discard: 6
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 18, expected = 17
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 6
+Hand Count: 16
+Deck Count: 7
+Discard Count: 0
+Treasurer Cards in Deck: 7
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 8, expected = 7
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 2, expected = 3
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 6
+Deck Count: 4
+Discard Count: 8
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 213, expected = 212
+FAILED: Current Player 0 - Cards Played = 0, expected = 1
+FAILED: Current Player 0 - Score = 149, expected = 167
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 34
+Hand Count: 211
+Deck Count: 0
+Discard Count: 45
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 28
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 13, expected = 12
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 8
+Hand Count: 11
+Deck Count: 26
+Discard Count: 0
+Treasurer Cards in Deck: 24
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 31, expected = 30
+FAILED: Current Player 2 - Score = 33, expected = 19
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 2
+Hand Count: 29
+Deck Count: 56
+Discard Count: 18
+Treasurer Cards in Deck: 9
+Treasurer Cards in Discard: 18
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 60, expected = 59
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 8
+Hand Count: 58
+Deck Count: 27
+Discard Count: 0
+Treasurer Cards in Deck: 27
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 5, expected = 4
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 3
+Deck Count: 41
+Discard Count: 18
+Treasurer Cards in Deck: 21
+Treasurer Cards in Discard: 12
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 3, expected = 2
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 3
+Discard Count: 1
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 64, expected = 63
+FAILED: Current Player 0 - Score = 133, expected = 111
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 39
+Hand Count: 62
+Deck Count: 59
+Discard Count: 63
+Treasurer Cards in Deck: 10
+Treasurer Cards in Discard: 41
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 8, expected = 7
+FAILED: Current Player 3 - Score = -2, expected = -1
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 6
+Deck Count: 3
+Discard Count: 0
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 16, expected = 15
+FAILED: Current Player 1 - Score = 74, expected = 67
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 10
+Hand Count: 14
+Deck Count: 16
+Discard Count: 59
+Treasurer Cards in Deck: 5
+Treasurer Cards in Discard: 37
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 24, expected = 23
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 2, expected = 5
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 13
+Hand Count: 22
+Deck Count: 1
+Discard Count: 17
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 17
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 187, expected = 186
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 75
+Hand Count: 185
+Deck Count: 5
+Discard Count: 8
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 5
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 6, expected = 5
+FAILED: Current Player 0 - Cards Played = 0, expected = 1
+FAILED: Current Player 0 - Score = 31, expected = 16
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 3
+Hand Count: 5
+Deck Count: 8
+Discard Count: 5
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 27, expected = 26
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 9
+Hand Count: 25
+Deck Count: 19
+Discard Count: 0
+Treasurer Cards in Deck: 19
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = -442, expected = 0
+FAILED: Current Player 3 - Cards Played = 0, expected = 1
+FAILED: Current Player 3 - Score = -361, expected = 0
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 0
+Discard Count: 0
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 3, expected = 2
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 14
+Discard Count: 0
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 63, expected = 62
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 50
+Hand Count: 61
+Deck Count: 29
+Discard Count: 7
+Treasurer Cards in Deck: 10
+Treasurer Cards in Discard: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 74, expected = 73
+FAILED: Current Player 0 - Score = 63, expected = 61
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 59
+Hand Count: 72
+Deck Count: 50
+Discard Count: 2
+Treasurer Cards in Deck: 8
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 7, expected = 6
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 5
+Deck Count: 13
+Discard Count: 0
+Treasurer Cards in Deck: 13
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 8, expected = 7
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 6
+Deck Count: 3
+Discard Count: 0
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 2, expected = 1
+FAILED: Current Player 2 - Cards Played = 0, expected = 1
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 0
+Discard Count: 1
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 44, expected = 43
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 16, expected = 10
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 13
+Hand Count: 42
+Deck Count: 9
+Discard Count: 3
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 3
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 6, expected = 5
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 3
+Hand Count: 4
+Deck Count: 7
+Discard Count: 2
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 3, expected = 2
+FAILED: Current Player 3 - Cards Played = 0, expected = 1
+FAILED: Current Player 3 - Score = 24, expected = 0
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 6
+Discard Count: 1
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 69, expected = 68
+FAILED: Current Player 0 - Score = 137, expected = 121
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 63
+Hand Count: 67
+Deck Count: 16
+Discard Count: 88
+Treasurer Cards in Deck: 3
+Treasurer Cards in Discard: 37
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 28, expected = 27
+FAILED: Current Player 3 - Score = 6, expected = 4
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 9
+Hand Count: 26
+Deck Count: 9
+Discard Count: 16
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 80, expected = 79
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 35
+Hand Count: 78
+Deck Count: 11
+Discard Count: 0
+Treasurer Cards in Deck: 8
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 99, expected = 98
+FAILED: Current Player 0 - Score = 53, expected = 51
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 45
+Hand Count: 97
+Deck Count: 42
+Discard Count: 0
+Treasurer Cards in Deck: 19
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 7, expected = 6
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 5
+Deck Count: 5
+Discard Count: 1
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 1
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 36, expected = 35
+FAILED: Current Player 2 - Score = 21, expected = 20
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 13
+Hand Count: 34
+Deck Count: 14
+Discard Count: 0
+Treasurer Cards in Deck: 12
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 19, expected = 18
+FAILED: Current Player 1 - Score = 0, expected = -1
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 12
+Hand Count: 17
+Deck Count: 5
+Discard Count: 14
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 14
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 54, expected = 53
+FAILED: Current Player 0 - Score = 18, expected = 19
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 52
+Deck Count: 52
+Discard Count: 0
+Treasurer Cards in Deck: 29
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 101, expected = 100
+FAILED: Current Player 1 - Score = 73, expected = 74
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 26
+Hand Count: 99
+Deck Count: 25
+Discard Count: 0
+Treasurer Cards in Deck: 14
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 57, expected = 56
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 51, expected = 27
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 26
+Hand Count: 55
+Deck Count: 21
+Discard Count: 7
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 28, expected = 27
+FAILED: Current Player 1 - Score = 32, expected = 19
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 7
+Hand Count: 26
+Deck Count: 19
+Discard Count: 9
+Treasurer Cards in Deck: 5
+Treasurer Cards in Discard: 7
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 189, expected = 188
+FAILED: Current Player 0 - Cards Played = 0, expected = 1
+FAILED: Current Player 0 - Score = 125, expected = 155
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 96
+Hand Count: 187
+Deck Count: 9
+Discard Count: 36
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 27
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 7, expected = 6
+FAILED: Current Player 2 - Score = 20, expected = 19
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 2
+Hand Count: 5
+Deck Count: 46
+Discard Count: 11
+Treasurer Cards in Deck: 13
+Treasurer Cards in Discard: 8
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 145, expected = 144
+FAILED: Current Player 0 - Cards Played = 0, expected = 1
+FAILED: Current Player 0 - Score = 77, expected = 90
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 81
+Hand Count: 143
+Deck Count: 6
+Discard Count: 30
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 27
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 54, expected = 53
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 5, expected = 10
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 30
+Hand Count: 52
+Deck Count: 0
+Discard Count: 30
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 24
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 7, expected = 6
+FAILED: Current Player 0 - Score = 11, expected = 10
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 3
+Hand Count: 5
+Deck Count: 64
+Discard Count: 18
+Treasurer Cards in Deck: 12
+Treasurer Cards in Discard: 13
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 64, expected = 63
+FAILED: Current Player 0 - Score = 59, expected = 52
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 52
+Hand Count: 62
+Deck Count: 23
+Discard Count: 30
+Treasurer Cards in Deck: 4
+Treasurer Cards in Discard: 29
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 3 - Cards in Hand = 4, expected = 3
+FAILED: Current Player 3 - Cards Played = 0, expected = 1
+FAILED: Current Player 3 - Score = -1, expected = -3
+FAILED: Current Player 3 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 3 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 2
+Deck Count: 1
+Discard Count: 5
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 4
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 100, expected = 99
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 52
+Hand Count: 98
+Deck Count: 33
+Discard Count: 62
+Treasurer Cards in Deck: 7
+Treasurer Cards in Discard: 41
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 61, expected = 60
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 30
+Hand Count: 59
+Deck Count: 102
+Discard Count: 33
+Treasurer Cards in Deck: 24
+Treasurer Cards in Discard: 18
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 25, expected = 24
+FAILED: Current Player 1 - Score = 5, expected = 3
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 11
+Hand Count: 23
+Deck Count: 4
+Discard Count: 0
+Treasurer Cards in Deck: 2
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 134, expected = 133
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 87, expected = 92
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 109
+Hand Count: 132
+Deck Count: 5
+Discard Count: 14
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 14
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 26, expected = 25
+FAILED: Current Player 1 - Score = 45, expected = 27
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 11
+Hand Count: 24
+Deck Count: 117
+Discard Count: 38
+Treasurer Cards in Deck: 17
+Treasurer Cards in Discard: 36
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 2 - Cards in Hand = 3, expected = 2
+FAILED: Current Player 2 - Cards Played = 0, expected = 1
+FAILED: Current Player 2 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 2 Playing Adventurer card...
+
+Adventurer Card Hand Position: 0
+Hand Count: 1
+Deck Count: 0
+Discard Count: 2
+Treasurer Cards in Deck: 0
+Treasurer Cards in Discard: 2
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 0 - Cards in Hand = 15, expected = 14
+FAILED: Current Player 0 - Score = 35, expected = 17
+FAILED: Current Player 0 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 0 Playing Adventurer card...
+
+Adventurer Card Hand Position: 7
+Hand Count: 13
+Deck Count: 56
+Discard Count: 14
+Treasurer Cards in Deck: 12
+Treasurer Cards in Discard: 9
+
+#------------------------------------------------------------------------------#
+
+FAILED: Current Player 1 - Cards in Hand = 6, expected = 5
+FAILED: Current Player 1 - Cards Played = 0, expected = 1
+FAILED: Current Player 1 - Score = 36, expected = 1
+FAILED: Current Player 1 - Card Played = none, expected = Adventurer
+
+* Preconditions for Player 1 Playing Adventurer card...
+
+Adventurer Card Hand Position: 4
+Hand Count: 5
+Deck Count: 20
+Discard Count: 0
+Treasurer Cards in Deck: 1
+Treasurer Cards in Discard: 0
+
+#------------------------------------------------------------------------------#
+
+
+>>> Summary >>>
+
+Tests Conducted = 20478, PASSED = 20190, FAILED = 288
+
+###--------------------------------------------------------------------------###
+###                               End of File                                ###
+###--------------------------------------------------------------------------###
