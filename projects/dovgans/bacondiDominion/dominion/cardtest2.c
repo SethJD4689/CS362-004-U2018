@@ -91,6 +91,13 @@ void testGameState(struct gameState game, struct gameState test, int actionCards
     testKingdomCardPilesNoChange(&game, &test, actionCards, passed, tests);
 
     testDrawnTreasureCards(test, CURRENT_PLAYER, passed, tests);
+
+    printf("\n* Preconditions for Player %d Playing %s card...\n\n",
+           CURRENT_PLAYER, CARD);
+    printf("Adventurer Card Hand Position: %d\n", HAND_POS);
+    printf("Hand Count: %d\n", game.handCount[CURRENT_PLAYER]);
+    printf("Deck Count: %d\n", game.deckCount[CURRENT_PLAYER]);
+    printf("Discard Count: %d\n", game.discardCount[CURRENT_PLAYER]);
 }
 
 /*******************************************************************************
