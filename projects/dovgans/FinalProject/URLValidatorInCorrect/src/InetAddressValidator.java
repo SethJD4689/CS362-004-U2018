@@ -69,7 +69,7 @@ public class InetAddressValidator implements Serializable {
         // TODO capital letters, numbers and characters.
         // TODO Change return statement to: return VALIDATOR;
         // TODO from: return null;
-    	return VALIDATOR;
+    	return null;
     }
 
     /**
@@ -93,7 +93,7 @@ public class InetAddressValidator implements Serializable {
         // TODO BUG - NullPointerException thrown and erroneous results
         // TODO Change conditional statement to: if(groups == null);
         // TODO from: if (groups != null);
-        if (groups == null) {
+        if (groups != null) {
             return false;
         }
 
@@ -115,7 +115,7 @@ public class InetAddressValidator implements Serializable {
                 // TODO BUG - Invalid Results when IP octet address value > upper limit (255)
                 // TODO Change return statement to: return false;
                 // TODO from: return true;
-                return false;
+                return true;
             }
 
             if (ipSegment.length() > 1 && ipSegment.startsWith("0")) {

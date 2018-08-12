@@ -165,9 +165,9 @@ public class UrlValidator implements Serializable {
     private static final int PARSE_AUTHORITY_EXTRA = 4;
 
     // TODO BUG - Path
-    // TODO Change PATH_REGEX String to: "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$"
+    // TODO Change PATH_REGEX String to: "^(/[-\w:@&?=+,.!/~*'%$_;\(\)]*)?$"
     // TODO from: "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$"
-    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$";
+    private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$";
     private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
 
     private static final String QUERY_REGEX = "^(\\S*)$";
@@ -282,10 +282,7 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                // TODO BUG - Assert Fail with URLS that have capital letters
-                // TODO Change schemes to: allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
-                // TODO from: allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
-                allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
+                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
             }
         }
 
@@ -323,7 +320,7 @@ public class UrlValidator implements Serializable {
         // TODO BUG - Assert Fail with File Schemes that have empty domains
         // TODO Change condition statement to: if("file".equals(scheme))
         // TODO from: if("http".equals(scheme))
-        if ("file".equals(scheme)) {// Special case - file: allows an empty authority
+        if ("http".equals(scheme)) {// Special case - file: allows an empty authority
             if (authority != null) {
                 if (authority.contains(":")) { // but cannot allow trailing :
                     return false;

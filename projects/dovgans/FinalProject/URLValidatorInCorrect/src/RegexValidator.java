@@ -121,7 +121,7 @@ public class RegexValidator implements Serializable {
         // TODO capital letters, numbers and characters.
         // TODO Change condition statement to: if(regexs == null || regexs.length == 0)
         // TODO from: if(regexs != null || regexs.length == 0)
-        if (regexs == null || regexs.length == 0) {
+        if (regexs != null || regexs.length == 0) {
             throw new IllegalArgumentException("Regular expressions are missing");
         }
         patterns = new Pattern[regexs.length];
@@ -131,7 +131,7 @@ public class RegexValidator implements Serializable {
         // TODO capital letters, numbers and characters.
         // TODO Change loop condition to: for(int i = 0; i < regexs.length; i++)
         // TODO from: for(int i = 0; i < regexs.length-1; i++)
-        for (int i = 0; i < regexs.length; i++) {
+        for (int i = 0; i < regexs.length-1; i++) {
             if (regexs[i] == null || regexs[i].length() == 0) {
                 throw new IllegalArgumentException("Regular expression[" + i + "] is missing");
             }

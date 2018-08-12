@@ -168,7 +168,7 @@ public class DomainValidator implements Serializable {
             // TODO BUG - Invalid URLS are Valid from negated return value
             // TODO Change return statement to: return isValidTld(group[0])
             // TODO from: !isValidTld(group[0])
-            return isValidTld(groups[0]);
+            return !isValidTld(groups[0]);
         }
         return allowLocal && hostnameRegex.isValid(domain);
     }
