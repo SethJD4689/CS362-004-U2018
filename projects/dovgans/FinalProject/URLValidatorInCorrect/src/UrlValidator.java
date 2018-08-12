@@ -286,7 +286,6 @@ public class UrlValidator implements Serializable {
                 // TODO Change schemes to: allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
                 // TODO from: allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
                 allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
-
             }
         }
 
